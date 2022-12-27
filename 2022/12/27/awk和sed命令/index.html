@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>故乡的雪花飘落了</title>
+  <title>awk和sed命令 | 故乡的雪花飘落了</title>
 
   
   <meta name="author" content="昆汀">
@@ -14,12 +14,15 @@
   
 
   
+  
+  <meta name="keywords" content="linux,shell">
+  
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  
+  <meta property="og:title" content="awk和sed命令"/>
 
   <meta property="og:site_name" content="故乡的雪花飘落了"/>
 
@@ -60,12 +63,11 @@
 </header>
 
     <main class="site-main posts-loop">
-    
-  <article>
+    <article>
 
   
     
-    <h3 class="article-title"><a href="/2022/12/27/awk和sed命令/"><span>awk和sed命令</span></a></h3>
+    <h3 class="article-title"><span>awk和sed命令</span></h3>
     
   
 
@@ -135,152 +137,36 @@
     </div>
 
     
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2022/12/27/awk和sed命令/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
   </div>
 </article>
 
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2022/12/26/linux常见易错/"><span>shell常见易错</span></a></h3>
-    
   
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2022/12/26/linux常见易错/" rel="bookmark">
-        <time class="entry-date published" datetime="2022-12-26T14:06:35.000Z">
-          2022-12-26
-        </time>
-      </a>
-    </span>
-  </div>
 
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h3 id="直接进入正题"><a href="#直接进入正题" class="headerlink" title="直接进入正题"></a>直接进入正题</h3><p>常见的一个错误就是赋值，简单举例子来说</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str1=&quot;This is a sentence.&quot;</span><br></pre></td></tr></table></figure>
-<p>赋值的时候不能带空格。</p>
-<p>在下面这种情况就需要带，不然的话会被当做一个整体字符串来看</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">expr <span class="number">10</span> + <span class="number">2</span></span><br><span class="line"><span class="comment">//这里顺便提一嘴,如果用expr作乘法运算比如: expr 10 * 2，是错误的，在shell中这里的星号会被认为和ls *.sh中的星号作用一样，所以需要加转义字符expr 10  \* 2</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2022/12/26/linux常见易错/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2022/12/26/test/"><span>test</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2022/12/26/test/" rel="bookmark">
-        <time class="entry-date published" datetime="2022-12-26T03:38:46.000Z">
-          2022-12-26
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>this is a test</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2022/12/26/test/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
+	<section id="comment" class="comment">
+		<div id="gitment"></div>
+	</section>
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: '63099094',
+			repo: 'https://github.com/zkrun/zkrun.github.io',
+			oauth: {
+				client_id: 'd1da504c3af61e9dce78',
+				client_secret: '1087267ad53f145ab435767fa87c9f490f335cc7',
+			},
+		})
+		gitment.render('gitment')
+	</script>
 
 
 
 
-<nav class="pagination">
-  
-  
-</nav>
+
+
+
+
     </main>
 
     <footer class="site-footer">
