@@ -88,6 +88,7 @@
     <div class="entry">
       
         <h3 id="阶段三就要完成了，下面的课程将是我更所期待的"><a href="#阶段三就要完成了，下面的课程将是我更所期待的" class="headerlink" title="阶段三就要完成了，下面的课程将是我更所期待的"></a>阶段三就要完成了，下面的课程将是我更所期待的</h3><h3 id="makefile在工程很多时可以用自动编译将效率提高很多"><a href="#makefile在工程很多时可以用自动编译将效率提高很多" class="headerlink" title="makefile在工程很多时可以用自动编译将效率提高很多"></a>makefile在工程很多时可以用自动编译将效率提高很多</h3><h3 id="在用makefile之前需要安装make-本人是ubuntu系统所以直接"><a href="#在用makefile之前需要安装make-本人是ubuntu系统所以直接" class="headerlink" title="在用makefile之前需要安装make,本人是ubuntu系统所以直接"></a>在用makefile之前需要安装make,本人是ubuntu系统所以直接</h3><p>  <code>sudo apt-get install make  </code></p>
+<span id="more"></span>
 <p>Makefile的本质是一个文件，需要配合make命令进行自动化编译。文件名常首字母大写。<br>在Makefile中的格式为:<br>&lt;目标&gt; : &lt;依赖&gt;<br><em><font color=red>一个TAB</font></em>&lt;命令&gt;<br>Makefile的 &#x3D; 赋值的话有个易错点，就是变量按照最后一次赋的值而进行，具体的意思就是：  </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">OBJ1 = A</span><br><span class="line">OBJ2 = $(OBJ1A) B</span><br><span class="line">OBJ1 = AA</span><br><span class="line">all : </span><br><span class="line">    @echo $&#123;OBJ2&#125;</span><br><span class="line"><span class="comment">//经过上面的赋值后，OBJ2的值为 AA B </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
