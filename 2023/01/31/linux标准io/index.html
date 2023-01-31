@@ -108,17 +108,19 @@
 <hr>
 <p>在标准io中，提前预定义了三个流指针，在应用程序运行自动被打开.<br>分别是:<br><strong>stdin</strong>对应的是标准输入设备<br><strong>stdout</strong>对应的是标准输出设备<br><strong>stderr</strong>对应的是标准错误输出设备<br>上面对应的文件描述符分别为0,1,2。  </p>
 <hr>
-<p>我们常用的printf函数其实是默认为stdout为流对象。如果我们想改变的话需要用到<code>fprintf</code>函数:  </p>
+<p>我们常用的printf函数其实是默认为stdout为流对象。如果我们想改变的话需要用到<strong>fprintf</strong>函数:  </p>
 <hr>
-<p><code>int fprintf(FILE *stream, const char *format, …);</code><br>比如我想在屏幕上输出一个hello linux。那我只需要:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fprintf</span><span class="params">(FILE *stream, <span class="type">const</span> <span class="type">char</span> *format, …)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>比如我想在屏幕上输出一个hello linux。那我只需要:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">fprintf</span>(<span class="built_in">stdout</span>,<span class="string">&quot;hello linux&quot;</span>);</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">上面这句话如果在单语句执行的时候是没有什么问题的，但是假如我在<span class="built_in">fprintf</span>下面加上一个死循环，比如:</span><br><span class="line"></span><br><span class="line">```c</span><br><span class="line"><span class="title function_">fprintf</span><span class="params">(<span class="built_in">stdout</span>,<span class="string">&quot;hello linux&quot;</span>)</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;&#125;</span><br></pre></td></tr></table></figure>
 
 <p>那么就输出不了这句话，这就涉及到缓存了：  </p>
 <hr>
-<p>上面说过标准io自带缓存区，分为三类:<br><strong>1.全缓存:等缓存区的数据占满以后再进行系统调用</strong><br><strong>2.行缓存:等缓存区的数据占满一行后进入io操作(stdout就是行缓存)</strong><br><strong>3.不缓存:来什么数据我就进行io操作(stderr就是不缓存，以免错误堆积)</strong><br>所以上面的数据默认fprintf的数据没有占满一行，程序也没有结束，不输出，如果要输出的话有三种办法:<br>1.后面加一个<code>\n</code><br>2.用fflush强制刷新缓存<br>3.把流对象换成stderr    </p>
+<p>上面说过标准io自带缓存区，分为三类:<br><strong>1.全缓存:等缓存区的数据占满以后再进行系统调用</strong><br><strong>2.行缓存:等缓存区的数据占满一行后进入io操作(stdout就是行缓存)</strong><br><strong>3.不缓存:来什么数据我就进行io操作(stderr就是不缓存，以免错误堆积)</strong><br>所以上面的数据默认fprintf的数据没有占满一行，程序也没有结束，不输出，如果要输出的话有三种办法:<br>1.后面加一个 <strong>\n</strong><br>2.用fflush强制刷新缓存<br>3.把流对象换成stderr    </p>
 <hr>
 <p>一般情况下,程序在结束时会 自动刷新缓冲区,但是当程序还未结束时,刷新缓冲区则需要调用 fflush() 函数 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int fflush(FILE *stream);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fflush</span><span class="params">(FILE *stream)</span>;</span><br></pre></td></tr></table></figure>
       
     </div>
 
