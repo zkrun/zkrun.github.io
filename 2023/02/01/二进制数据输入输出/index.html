@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>故乡的雪花飘落了</title>
+  <title>二进制数据输入输出 | 故乡的雪花飘落了</title>
 
   
   <meta name="author" content="昆汀">
@@ -14,12 +14,15 @@
   
 
   
+  
+  <meta name="keywords" content="linux">
+  
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  
+  <meta property="og:title" content="二进制数据输入输出"/>
 
   <meta property="og:site_name" content="故乡的雪花飘落了"/>
 
@@ -74,12 +77,11 @@
 </header>
 
     <main class="site-main posts-loop">
-    
-  <article>
+    <article>
 
   
     
-    <h3 class="article-title"><a href="/2023/02/01/二进制数据输入输出/"><span>二进制数据输入输出</span></a></h3>
+    <h3 class="article-title"><span>二进制数据输入输出</span></h3>
     
   
 
@@ -137,371 +139,34 @@
   </div>
 </article>
 
-
-
-  <article>
-
   
-    
-    <h3 class="article-title"><a href="/2023/01/31/linux标准io/"><span>linux标准io</span></a></h3>
-    
-  
+	<section id="comment" class="comment">
+		<div id="gitalk-container"></div>
+	</section>
+	<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+	<script>
+		var gitalk = new Gitalk({
+			clientID: 'bb93b87a14125e3cc588',
+			clientSecret: 'cfd397d929190cc616347ba9037d7667f8e2a0f0',
+			repo: 'blog_comments',
+			owner: 'zkrun',
+			admin: ['zkrun'],
+			id: location.pathname,
+			distractionFreeMode: false
+		})
+		gitalk.render('gitalk-container')
+	</script>
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/01/31/linux标准io/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-01-31T13:45:08.000Z">
-          2023-01-31
-        </time>
-      </a>
-    </span>
-  </div>
 
 
-  
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>标准io是另一套io接口，但底层还是依赖于文件io，优点就是自带缓冲区以及效率更快，而且标准io是跨平台的，文件io操作只能在linux进行。</p>
-        
-          <p><a class="excerpt-btn" href="/2023/01/31/linux标准io/"><span>...More</span></a></p>
-        
-      
-    </div>
 
-  </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
 
-    
-      
 
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
 
-    
-    
 
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2023/01/27/linux文件io/"><span>linux文件io</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/01/27/linux文件io/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-01-27T03:57:13.000Z">
-          2023-01-27
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h3 id="踏入了阶段四"><a href="#踏入了阶段四" class="headerlink" title="踏入了阶段四"></a><strong>踏入了阶段四</strong></h3><p>在 Linux 系统下,用于对文件操作的库函数叫做 文件 I&#x2F;O<br>主要包括 open()&#x2F;close()&#x2F;read()&#x2F;write() &#x2F;lseek()相应的系统调用(准确说法是对系统调用的封装的库函数)</p>
-        
-          <p><a class="excerpt-btn" href="/2023/01/27/linux文件io/"><span>...More</span></a></p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a><a href="/tags/io/">io</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2023/01/24/Makefile的那些事/"><span>Makefile的那些事</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/01/24/Makefile的那些事/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-01-24T10:53:51.000Z">
-          2023-01-24
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h3 id="阶段三就要完成了，下面的课程将是我更所期待的"><a href="#阶段三就要完成了，下面的课程将是我更所期待的" class="headerlink" title="阶段三就要完成了，下面的课程将是我更所期待的"></a>阶段三就要完成了，下面的课程将是我更所期待的</h3><h3 id="makefile在工程很多时可以用自动编译将效率提高很多"><a href="#makefile在工程很多时可以用自动编译将效率提高很多" class="headerlink" title="makefile在工程很多时可以用自动编译将效率提高很多"></a>makefile在工程很多时可以用自动编译将效率提高很多</h3><h3 id="在用makefile之前需要安装make-本人是ubuntu系统所以直接"><a href="#在用makefile之前需要安装make-本人是ubuntu系统所以直接" class="headerlink" title="在用makefile之前需要安装make,本人是ubuntu系统所以直接"></a>在用makefile之前需要安装make,本人是ubuntu系统所以直接</h3><p>  <code>sudo apt-get install make  </code></p>
-        
-          <p><a class="excerpt-btn" href="/2023/01/24/Makefile的那些事/"><span>...More</span></a></p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a><a href="/tags/Makefile/">Makefile</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2022/12/27/awk和sed命令/"><span>awk和sed命令</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2022/12/27/awk和sed命令/" rel="bookmark">
-        <time class="entry-date published" datetime="2022-12-27T02:16:46.000Z">
-          2022-12-27
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>在学习awk和sed首先了解一下linux一些常见命令<code>grep &quot;string&quot; /....</code>就是在某个文件或者目录下搜索某个字符串关键字，如果加上-n的话则会显示对应的行数。<br>例如要获取&#x2F;etc&#x2F;passwd中的有root的一行。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -n &quot;root&quot; /etc/passwd</span><br></pre></td></tr></table></figure>
-        
-          <p><a class="excerpt-btn" href="/2022/12/27/awk和sed命令/"><span>...More</span></a></p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a><a href="/tags/shell/">shell</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2022/12/26/shell常见错误/"><span>shell常见易错</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2022/12/26/shell常见错误/" rel="bookmark">
-        <time class="entry-date published" datetime="2022-12-26T14:06:35.000Z">
-          2022-12-26
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h3 id="直接进入正题"><a href="#直接进入正题" class="headerlink" title="直接进入正题"></a>直接进入正题</h3><p>常见的一个错误就是赋值，简单举例子来说</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str1=&quot;This is a sentence.&quot;</span><br></pre></td></tr></table></figure>
-<p>赋值的时候不能带空格。</p>
-<p>在下面这种情况就需要带，不然的话会被当做一个整体字符串来看</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">expr <span class="number">10</span> + <span class="number">2</span></span><br><span class="line"><span class="comment">//这里顺便提一嘴,如果用expr作乘法运算比如: expr 10 * 2，是错误的，在shell中这里的星号会被认为和ls *.sh中的星号作用一样，所以需要加转义字符expr 10  \* 2</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2022/12/26/test/"><span>test</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2022/12/26/test/" rel="bookmark">
-        <time class="entry-date published" datetime="2022-12-26T03:38:46.000Z">
-          2022-12-26
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>this is a test</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-
-<nav class="pagination">
-  
-  
-</nav>
     </main>
 
     <footer class="site-footer">
