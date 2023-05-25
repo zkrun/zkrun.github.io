@@ -79,6 +79,109 @@
 
   
     
+    <h3 class="article-title"><a href="/2023/05/25/网络编程之字节序转换API/"><span>网络编程之字节序转换API</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2023/05/25/网络编程之字节序转换API/" rel="bookmark">
+        <time class="entry-date published" datetime="2023-05-25T11:46:05.000Z">
+          2023-05-25
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h3 id="ip字符串转换网络字节序："><a href="#ip字符串转换网络字节序：" class="headerlink" title="ip字符串转换网络字节序："></a>ip字符串转换网络字节序：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">inet_aton</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *cp, <span class="keyword">struct</span> in_addr *inp)</span>;     [addr to network]</span><br><span class="line">功能:将cp指向的IP字符串转成网络字节inp保存的地址中。 </span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="网络字节序转换IP字符串"><a href="#网络字节序转换IP字符串" class="headerlink" title="网络字节序转换IP字符串"></a>网络字节序转换IP字符串</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *<span class="title function_">inet_ntoa</span><span class="params">(<span class="keyword">struct</span> in_addr in)</span>;   [network to addr]</span><br><span class="line">功能：将IP网络字节序转换成IP字符串</span><br><span class="line">参数:</span><br><span class="line">@in   IP网络字节序 </span><br><span class="line"></span><br><span class="line">返回值:</span><br><span class="line">成功返回IP字符串首地址，失败返回<span class="literal">NULL</span> </span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="主机字节序转换为网络字节序"><a href="#主机字节序转换为网络字节序" class="headerlink" title="主机字节序转换为网络字节序"></a>主机字节序转换为网络字节序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">short</span> <span class="title function_">htons</span><span class="params">(<span class="type">short</span> data)</span>;        [host  to network <span class="type">short</span> ]</span><br><span class="line">功能：将<span class="type">short</span>类型的整数转成网络字节序  </span><br><span class="line">参数： </span><br><span class="line">          @data  序号转换的整数</span><br><span class="line">返回值：得到的网络字节序</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="网络字节序转换为十进制数"><a href="#网络字节序转换为十进制数" class="headerlink" title="网络字节序转换为十进制数"></a>网络字节序转换为十进制数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>  <span class="title function_">atoi</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *nptr)</span>；</span><br><span class="line">功能：把ntpr 所指向的整数字符串转换成整数。</span><br><span class="line">参数：</span><br><span class="line">    @  nptr    字符串</span><br><span class="line">返回值：成功，返回转换后的整数</span><br><span class="line">              失败，返回0</span><br><span class="line">注意：若是只有+，-和整数字符能转换，其他字符返回0</span><br><span class="line"></span><br><span class="line"><span class="type">uint32_t</span> <span class="title function_">ntohs</span><span class="params">(<span class="type">uint32_t</span> netlong)</span>;           [network to host <span class="type">short</span>]</span><br><span class="line">功能：把网络字节序转换为主机端口</span><br><span class="line">参数：</span><br><span class="line">@   netlong    网络字节序</span><br><span class="line">返回值： 返回对应的主机端口</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/嵌入式学习/">嵌入式学习</a>
+    </span>
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2023/02/23/进程/"><span>进程</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2023/02/23/进程/" rel="bookmark">
+        <time class="entry-date published" datetime="2023-02-23T12:35:17.000Z">
+          2023-02-23
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2023/02/02/静态库与动态库/"><span>静态库与动态库</span></a></h3>
     
   
@@ -567,140 +670,11 @@
 
 
 
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2022/10/24/二叉树递归遍历/"><span>二叉树递归遍历</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2022/10/24/二叉树递归遍历/" rel="bookmark">
-        <time class="entry-date published" datetime="2022-10-24T01:56:00.000Z">
-          2022-10-24
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>要想递归遍历二叉树，我们的思路就是</p>
-<p>创建二叉树结点类型<br>二叉树递归创建<br>二叉树遍历<br>创建二叉树结点类型：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bitree</span>&#123;</span></span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    data_type data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bitree</span> *<span class="title">lchild</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bitree</span> *<span class="title">rchild</span>;</span></span><br><span class="line">&#125;<span class="type">bitree_t</span>;</span><br></pre></td></tr></table></figure>
-
-<p>二叉树递归创建:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bitree_t</span> *<span class="title function_">create_binary_tree</span><span class="params">(<span class="type">int</span> n)</span><span class="comment">//这里的n用来从初始编号  </span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">bitree_t</span> *root=<span class="literal">NULL</span>;</span><br><span class="line">    root=(<span class="type">bitree_t</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">bitree_t</span>));</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">NULL</span>==root)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;malloc failed!!!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(root,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="type">bitree_t</span>));</span><br><span class="line">    root-&gt;n=n;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input %d node data\n&quot;</span>,n);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>,&amp;root-&gt;data);</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">2</span>*n&lt;=N)</span><br><span class="line">    &#123;</span><br><span class="line">        root-&gt;lchild=create_binary_tree(<span class="number">2</span>*n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>((<span class="number">2</span>*n+<span class="number">1</span>)&lt;=N)</span><br><span class="line">    &#123;</span><br><span class="line">        root-&gt;rchild=create_binary_tree(<span class="number">2</span>*n+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>二叉树的遍历：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先序遍历:</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">pre_order</span><span class="params">(<span class="type">bitree_t</span> *root)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">NULL</span>==root)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d : %c&quot;</span>,root-&gt;n,root-&gt;data);</span><br><span class="line">    pre_order(root-&gt;lchild);</span><br><span class="line">    pre_order(root-&gt;rchild);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>中序和后序是一样的道理，注意我们创建结点的时候实际上是前序创建的，所以要前序输入。</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/c语言/">c语言</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2022/10/15/校园网/"><span>校园网</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2022/10/15/校园网/" rel="bookmark">
-        <time class="entry-date published" datetime="2022-10-15T01:56:23.000Z">
-          2022-10-15
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>早在之前就想着，为什么要限制学生上网，而且是一个设备一号，不过无所谓了，我认为大学生应该多点自由。<br>学校使用的是某澜，虽然不是用的网页认证，是客户端认证，不过抓包后发现非常简单，核心思想还是通过抓取提交的信息然后提交接口。<br>如果想要自己再做一个客户端类型，或者python或者js或sh的脚本类型，那么就需要对密码加密进行破解，在网页端认证抓取的信息中找到关键信息password就能发现加密的方式，一步一步找下去就能知道规律，不过本人现在是自己用，所以不需要破解加密方式，直接拿加密后的信息提交给接口就行。</p>
-<p><strong>刷好openwrt后ssh进后台，然后curl模拟登录请求，继而模拟登出请求，然后用crontab -e设置定时命令就行，经过搜索发现大概17个小时左右某澜会强制下线一次，那么每隔12小时执行一次sh即可</strong><br><img src="/assets/school1.png" alt="成功示例"><br><img src="/assets/D992C8A7B9889F227F047919E8913087.jpg" alt="成功事例2"></p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/整活/">整活</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/其他/">其他</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
 
 <nav class="pagination">
   
+  
+  <a href="/page/2/" class="pagination-next">Next</a>
   
 </nav>
     </main>
