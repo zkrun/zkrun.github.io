@@ -290,7 +290,7 @@
       
           
         <h3 id="直接进入正题"><a href="#直接进入正题" class="headerlink" title="直接进入正题"></a>直接进入正题</h3><p>常见的一个错误就是赋值，简单举例子来说</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str1=&quot;This is a sentence.&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">str1</span><span class="operator">=</span><span class="string">&quot;This is a sentence.&quot;</span></span><br></pre></td></tr></table></figure>
 <p>赋值的时候不能带空格。</p>
 <p>在下面这种情况就需要带，不然的话会被当做一个整体字符串来看</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">expr <span class="number">10</span> + <span class="number">2</span></span><br><span class="line"><span class="comment">//这里顺便提一嘴,如果用expr作乘法运算比如: expr 10 * 2，是错误的，在shell中这里的星号会被认为和ls *.sh中的星号作用一样，所以需要加转义字符expr 10  \* 2</span></span><br></pre></td></tr></table></figure>
