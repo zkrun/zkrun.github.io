@@ -290,250 +290,52 @@
       
           
         <h4 id="这两天算是踏出了比较重要的一步，你到底是否学会了，怎么验证你学会了，我一直在纠结，但是昨天早上醒来，我觉得我可能迄今为止做错了很多事，比葫芦画瓢？谁都会，靠着自己脑中残留的记忆来照着写，真的是硬实力吗？我不觉得，我认为只有自己写出来了，才算你牛逼。"><a href="#这两天算是踏出了比较重要的一步，你到底是否学会了，怎么验证你学会了，我一直在纠结，但是昨天早上醒来，我觉得我可能迄今为止做错了很多事，比葫芦画瓢？谁都会，靠着自己脑中残留的记忆来照着写，真的是硬实力吗？我不觉得，我认为只有自己写出来了，才算你牛逼。" class="headerlink" title="这两天算是踏出了比较重要的一步，你到底是否学会了，怎么验证你学会了，我一直在纠结，但是昨天早上醒来，我觉得我可能迄今为止做错了很多事，比葫芦画瓢？谁都会，靠着自己脑中残留的记忆来照着写，真的是硬实力吗？我不觉得，我认为只有自己写出来了，才算你牛逼。  "></a><font color=red>这两天算是踏出了比较重要的一步，你到底是否学会了，怎么验证你学会了，我一直在纠结，但是昨天早上醒来，我觉得我可能迄今为止做错了很多事，比葫芦画瓢？谁都会，靠着自己脑中残留的记忆来照着写，真的是硬实力吗？我不觉得，我认为只有自己写出来了，才算你牛逼。  </font></h4><p>这两天虽然只写了不多的代码，但我觉得让我受益匪浅。把遇到的问题即时记录下来则会很有帮助。<br>1.warning的警告要看在哪里警告，警告的提示跟函数参数的出入在哪，我的问题在于编译时提示我recvfrom的参数有问题，仔细一看便知，原函数的参数用的(struct sockaddr *)的指针，而我用的是sockaddr_in，因此需要强制转换。  先看一下client.c的代码 ：  </p>
-<pre><code class="c">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-#include &lt;sys/types.h&gt;
-#include &lt;sys/socket.h&gt;
-#include &lt;netinet/in.h&gt;
-#include &lt;arpa/inet.h&gt;
-#include &lt;unistd.h&gt;
-#define LOGIN_FAILURE 0
-#define LOGIN_SUCCESS 1
-void login_send(int sockfd,struct sockaddr_in *peer_addr,struct sockaddr_in *dest_addr,socklen_t addrlen)
-&#123;
-    char buffer[64]=&#123;0&#125;;
-    int send_number;
-    char login_flag;
-    while(1)
-    &#123;
-        memset(buffer,0,sizeof(buffer));
-        printf(&quot;login:  &quot;);
-        fgets(buffer,64,stdin);
-        buffer[strlen(buffer)-1]=&#39;\0&#39;;
-        send_number=sendto(sockfd,buffer,strlen(buffer),0,(struct sockaddr *)peer_addr,addrlen);	
-        if(send_number==-1)
-        &#123;
-            perror(&quot;[ERROR] sendto() failed!&quot;);
-            exit(EXIT_FAILURE);
-        &#125;
-        recvfrom(sockfd,&amp;login_flag,sizeof(login_flag),0,(struct sockaddr *)dest_addr,&amp;addrlen);
-        if(login_flag==LOGIN_SUCCESS)
-            break;
-        else
-            printf(&quot;password is not true,try again...\n&quot;);
-    
-    
-    &#125;
-
-
-
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;sys/socket.h&gt;</span><br><span class="line">#include &lt;netinet/in.h&gt;</span><br><span class="line">#include &lt;arpa/inet.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#define LOGIN_FAILURE 0</span><br><span class="line">#define LOGIN_SUCCESS 1</span><br><span class="line">void login_send(int sockfd,struct sockaddr_in *peer_addr,struct sockaddr_in *dest_addr,socklen_t addrlen)</span><br><span class="line">&#123;</span><br><span class="line">	char buffer[64]=&#123;0&#125;;</span><br><span class="line">	int send_number;</span><br><span class="line">	char login_flag;</span><br><span class="line">	while(1)</span><br><span class="line">	&#123;</span><br><span class="line">		memset(buffer,0,sizeof(buffer));</span><br><span class="line">		printf(&quot;login:  &quot;);</span><br><span class="line">		fgets(buffer,64,stdin);</span><br><span class="line">		buffer[strlen(buffer)-1]=&#x27;\0&#x27;;</span><br><span class="line">		send_number=sendto(sockfd,buffer,strlen(buffer),0,(struct sockaddr *)peer_addr,addrlen);	</span><br><span class="line">		if(send_number==-1)</span><br><span class="line">		&#123;</span><br><span class="line">			perror(&quot;[ERROR] sendto() failed!&quot;);</span><br><span class="line">			exit(EXIT_FAILURE);</span><br><span class="line">		&#125;</span><br><span class="line">		recvfrom(sockfd,&amp;login_flag,sizeof(login_flag),0,(struct sockaddr *)dest_addr,&amp;addrlen);</span><br><span class="line">		if(login_flag==LOGIN_SUCCESS)</span><br><span class="line">			break;</span><br><span class="line">		else</span><br><span class="line">			printf(&quot;password is not true,try again...\n&quot;);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void send_data(int sockfd,struct sockaddr_in *dest_addr,socklen_t addrlen)</span><br><span class="line">&#123;</span><br><span class="line">	char buffer[64]=&#123;0&#125;;</span><br><span class="line">	int send_number;</span><br><span class="line">	while(1)</span><br><span class="line">	&#123;</span><br><span class="line">		memset(buffer,0,sizeof(buffer));</span><br><span class="line">		printf(&quot;&gt; &quot;);</span><br><span class="line">		fgets(buffer,sizeof(buffer),stdin);</span><br><span class="line">		buffer[strlen(buffer)-1]=&#x27;\0&#x27;;</span><br><span class="line">		send_number=sendto(sockfd,buffer,strlen(buffer),0,(struct sockaddr *)dest_addr,addrlen);</span><br><span class="line">		if(send_number==-1)</span><br><span class="line">		&#123;</span><br><span class="line">			perror(&quot;[ERROR] sendto() failed!&quot;);</span><br><span class="line">			exit(EXIT_FAILURE);</span><br><span class="line">		</span><br><span class="line">		&#125;</span><br><span class="line">		if(strcmp(buffer,&quot;quit&quot;)==0)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;quitted......\n&quot;);</span><br><span class="line">			exit(EXIT_SUCCESS);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">int main(int argc, const char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	if(argc!=3)</span><br><span class="line">	&#123;</span><br><span class="line">		fprintf(stderr,&quot;Parameters wrong!(should contain:ip port)&quot;);</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	int sockfd;</span><br><span class="line">	sockfd=socket(AF_INET,SOCK_DGRAM,0);//创建socket套接字</span><br><span class="line">	if(sockfd==-1)</span><br><span class="line">	&#123;</span><br><span class="line">		perror(&quot;[ERROR] socket() failed!&quot;);</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	//sockaddr_in信息填充</span><br><span class="line">	struct sockaddr_in peer_addr;</span><br><span class="line">	struct sockaddr_in dest_addr;</span><br><span class="line">	memset(&amp;peer_addr,0,sizeof(peer_addr));</span><br><span class="line">	peer_addr.sin_family=AF_INET;</span><br><span class="line">	peer_addr.sin_addr.s_addr=inet_addr(argv[1]);</span><br><span class="line">	peer_addr.sin_port=htons(atoi(argv[2]));</span><br><span class="line">	socklen_t addrlen=sizeof(peer_addr);</span><br><span class="line">	//登录密钥验证</span><br><span class="line">	</span><br><span class="line">	login_send(sockfd,&amp;peer_addr,&amp;dest_addr,addrlen);</span><br><span class="line">	printf(&quot;login success!\n&quot;);</span><br><span class="line">	//数据交互</span><br><span class="line">	send_data(sockfd,&amp;dest_addr,addrlen);</span><br><span class="line">	close(sockfd);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">2.</span><br></pre></td></tr></table></figure>
+<p>struct sockaddr_in peer_addr;<br>    struct sockaddr_in dest_addr;<br>    memset(&amp;peer_addr,0,sizeof(peer_addr));<br>    peer_addr.sin_family&#x3D;AF_INET;<br>    peer_addr.sin_addr.s_addr&#x3D;inet_addr(argv[1]);<br>    peer_addr.sin_port&#x3D;htons(atoi(argv[2]));</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">我写代码的时候只想到了memset初始化，不知道怎的将memset放到赋值后面了，难怪我说为什么一直显示无效的参数...因为没有参数。  </span><br><span class="line">client客户端的代码还是比较简单的，下面来看服务端的代码。  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>#include &lt;stdio.h&gt;<br>#include &lt;stdlib.h&gt;<br>#include &lt;string.h&gt;<br>#include &lt;sys&#x2F;types.h&gt;<br>#include &lt;sys&#x2F;socket.h&gt;<br>#include &lt;netinet&#x2F;in.h&gt;<br>#include &lt;arpa&#x2F;inet.h&gt;<br>#include &lt;unistd.h&gt;<br>#define LOGIN_FAILURE 0<br>#define LOGIN_SUCCESS 1<br>void printf_client_info(struct sockaddr_in *addr,char *buf)<br>{<br>        printf(“&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;\n”);<br>        printf(“user IP : %s\n”,inet_ntoa(addr-&gt;sin_addr));<br>        printf(“user port : %d\n”, ntohs(addr-&gt;sin_port));<br>        printf(“user data : %s\n”,buf);<br>}<br>int init_socket(const char *ip,const char *port)<br>{<br>    int sockfd;<br>    struct sockaddr_in my_addr;<br>    memset(&amp;my_addr,0,sizeof(my_addr));<br>    socklen_t addrlen&#x3D;sizeof(my_addr);<br>    my_addr.sin_family&#x3D;AF_INET;<br>    my_addr.sin_port&#x3D;htons(atoi(port));<br>    my_addr.sin_addr.s_addr&#x3D;inet_addr(ip);<br>    sockfd&#x3D;socket(AF_INET,SOCK_DGRAM,0);<br>    if(sockfd&#x3D;&#x3D;-1)<br>    {<br>        perror(“[ERROR] socket failed!”);<br>        return -1;<br>    }<br>    if(bind(sockfd,(struct sockaddr *)&amp;my_addr,addrlen)&lt;0)<br>    {<br>        perror(“[ERROR] failed to bind “);<br>        return -1;<br>    }<br>    return sockfd;<br>}<br>int login_manage(const char *ip,const char *port)<br>{<br>    int sockfd;<br>    int sockfd_new;<br>    char login_check;<br>    char login_message[64]&#x3D;{0};<br>    struct sockaddr_in client_addr;<br>    socklen_t addrlen&#x3D;sizeof(client_addr);<br>    sockfd&#x3D;init_socket(ip,port);<br>    while(1)<br>    {	<br>                login_check&#x3D;LOGIN_FAILURE;<br>                memset(login_message,0,sizeof(login_message));<br>                recvfrom(sockfd,login_message,sizeof(login_message),0,(struct sockaddr *)&amp;client_addr,&amp;addrlen);<br>                printf(“[DEBUG:] recved login_message\n”);<br>                if(strcmp(login_message,”root”)&#x3D;&#x3D;0)<br>                {<br>                    login_check&#x3D;LOGIN_SUCCESS;<br>                    memset(login_message,0,sizeof(login_message));<br>                    pid_t fpid&#x3D;fork();<br>                    if(fpid&#x3D;&#x3D;-1)<br>                    {<br>                        perror(“[ERROR] fork() failed!”);<br>                        return -1;<br>                    }else if(fpid&#x3D;&#x3D;0)<br>                    {<br>                        close(sockfd);<br>                        sockfd_new&#x3D;init_socket(ip,”0”);<br>                        sendto(sockfd,&amp;login_check,sizeof(login_check),0,(struct sockaddr *)&amp;client_addr,addrlen);	<br>                        break;<br>                	}</p>
+<pre><code>            &#125;else&#123;
+            
+                sendto(sockfd,&amp;login_check,sizeof(login_check),0,(struct sockaddr *)&amp;client_addr,addrlen);
+            &#125;
 
 &#125;
-void send_data(int sockfd,struct sockaddr_in *dest_addr,socklen_t addrlen)
-&#123;
-    char buffer[64]=&#123;0&#125;;
-    int send_number;
-    while(1)
-    &#123;
-        memset(buffer,0,sizeof(buffer));
-        printf(&quot;&gt; &quot;);
-        fgets(buffer,sizeof(buffer),stdin);
-        buffer[strlen(buffer)-1]=&#39;\0&#39;;
-        send_number=sendto(sockfd,buffer,strlen(buffer),0,(struct sockaddr *)dest_addr,addrlen);
-        if(send_number==-1)
-        &#123;
-            perror(&quot;[ERROR] sendto() failed!&quot;);
-            exit(EXIT_FAILURE);
-        
-        &#125;
-        if(strcmp(buffer,&quot;quit&quot;)==0)
-        &#123;
-            printf(&quot;quitted......\n&quot;);
-            exit(EXIT_SUCCESS);
-
-        &#125;
-
-
-
-    &#125;
-
-    
-&#125;
-int main(int argc, const char *argv[])
-&#123;
-    if(argc!=3)
-    &#123;
-        fprintf(stderr,&quot;Parameters wrong!(should contain:ip port)&quot;);
-        return -1;
-    &#125;
-    int sockfd;
-    sockfd=socket(AF_INET,SOCK_DGRAM,0);//创建socket套接字
-    if(sockfd==-1)
-    &#123;
-        perror(&quot;[ERROR] socket() failed!&quot;);
-        return -1;
-    &#125;
-    //sockaddr_in信息填充
-    struct sockaddr_in peer_addr;
-    struct sockaddr_in dest_addr;
-    memset(&amp;peer_addr,0,sizeof(peer_addr));
-    peer_addr.sin_family=AF_INET;
-    peer_addr.sin_addr.s_addr=inet_addr(argv[1]);
-    peer_addr.sin_port=htons(atoi(argv[2]));
-    socklen_t addrlen=sizeof(peer_addr);
-    //登录密钥验证
-    
-    login_send(sockfd,&amp;peer_addr,&amp;dest_addr,addrlen);
-    printf(&quot;login success!\n&quot;);
-    //数据交互
-    send_data(sockfd,&amp;dest_addr,addrlen);
-    close(sockfd);
-    return 0;
-&#125;
+return sockfd_new;
 </code></pre>
-<ol start="2">
-<li></li>
-</ol>
-<pre><code class="c">struct sockaddr_in peer_addr;
-    struct sockaddr_in dest_addr;
-    memset(&amp;peer_addr,0,sizeof(peer_addr));
-    peer_addr.sin_family=AF_INET;
-    peer_addr.sin_addr.s_addr=inet_addr(argv[1]);
-    peer_addr.sin_port=htons(atoi(argv[2]));
-</code></pre>
-<p>我写代码的时候只想到了memset初始化，不知道怎的将memset放到赋值后面了，难怪我说为什么一直显示无效的参数…因为没有参数。<br>client客户端的代码还是比较简单的，下面来看服务端的代码。  </p>
-<pre><code class="c">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-#include &lt;sys/types.h&gt;
-#include &lt;sys/socket.h&gt;
-#include &lt;netinet/in.h&gt;
-#include &lt;arpa/inet.h&gt;
-#include &lt;unistd.h&gt;
-#define LOGIN_FAILURE 0
-#define LOGIN_SUCCESS 1
-void printf_client_info(struct sockaddr_in *addr,char *buf)
+<p>}<br>void recv_data(int sockfd_new)<br>{<br>    int n &#x3D; 0;<br>    char buf[1024] &#x3D; {0};</p>
+<pre><code>struct sockaddr_in client_addr;
+socklen_t len =  sizeof(client_addr);
+printf(&quot;[DEBUG]: enter recv_data:\n&quot;);
+while(1)
 &#123;
-        printf(&quot;===============================\n&quot;);
-        printf(&quot;user IP : %s\n&quot;,inet_ntoa(addr-&gt;sin_addr));
-        printf(&quot;user port : %d\n&quot;, ntohs(addr-&gt;sin_port));
-        printf(&quot;user data : %s\n&quot;,buf);
-&#125;
-int init_socket(const char *ip,const char *port)
-&#123;
-    int sockfd;
-    struct sockaddr_in my_addr;
-    memset(&amp;my_addr,0,sizeof(my_addr));
-    socklen_t addrlen=sizeof(my_addr);
-    my_addr.sin_family=AF_INET;
-    my_addr.sin_port=htons(atoi(port));
-    my_addr.sin_addr.s_addr=inet_addr(ip);
-    sockfd=socket(AF_INET,SOCK_DGRAM,0);
-    if(sockfd==-1)
+    memset(buf,0,sizeof(buf));
+    n = recvfrom(sockfd_new,buf,sizeof(buf),0,(struct sockaddr *)&amp;client_addr,&amp;len);
+    if(n &lt; 0)
     &#123;
-        perror(&quot;[ERROR] socket failed!&quot;);
-        return -1;
-    &#125;
-    if(bind(sockfd,(struct sockaddr *)&amp;my_addr,addrlen)&lt;0)
-    &#123;
-        perror(&quot;[ERROR] failed to bind &quot;);
-        return -1;
-    &#125;
-    return sockfd;
-&#125;
-int login_manage(const char *ip,const char *port)
-&#123;
-    int sockfd;
-    int sockfd_new;
-    char login_check;
-    char login_message[64]=&#123;0&#125;;
-    struct sockaddr_in client_addr;
-    socklen_t addrlen=sizeof(client_addr);
-    sockfd=init_socket(ip,port);
-    while(1)
-    &#123;	
-                login_check=LOGIN_FAILURE;
-                memset(login_message,0,sizeof(login_message));
-                recvfrom(sockfd,login_message,sizeof(login_message),0,(struct sockaddr *)&amp;client_addr,&amp;addrlen);
-                printf(&quot;[DEBUG:] recved login_message\n&quot;);
-                if(strcmp(login_message,&quot;root&quot;)==0)
-                &#123;
-                    login_check=LOGIN_SUCCESS;
-                    memset(login_message,0,sizeof(login_message));
-                    pid_t fpid=fork();
-                    if(fpid==-1)
-                    &#123;
-                        perror(&quot;[ERROR] fork() failed!&quot;);
-                        return -1;
-                    &#125;else if(fpid==0)
-                    &#123;
-                        close(sockfd);
-                        sockfd_new=init_socket(ip,&quot;0&quot;);
-                        sendto(sockfd,&amp;login_check,sizeof(login_check),0,(struct sockaddr *)&amp;client_addr,addrlen);	
-                        break;
-                	&#125;
-
-
-                &#125;else&#123;
-                
-                    sendto(sockfd,&amp;login_check,sizeof(login_check),0,(struct sockaddr *)&amp;client_addr,addrlen);
-                &#125;
-
-    &#125;
-    return sockfd_new;
-&#125;
-void recv_data(int sockfd_new)
-&#123;
-    int n = 0;
-    char buf[1024] = &#123;0&#125;;
-
-    struct sockaddr_in client_addr;
-    socklen_t len =  sizeof(client_addr);
-    printf(&quot;[DEBUG]: enter recv_data:\n&quot;);
-    while(1)
-    &#123;
-        memset(buf,0,sizeof(buf));
-        n = recvfrom(sockfd_new,buf,sizeof(buf),0,(struct sockaddr *)&amp;client_addr,&amp;len);
-        if(n &lt; 0)
-        &#123;
-            perror(&quot;Fail to sendto&quot;);        
-            exit(EXIT_FAILURE);
-        &#125;
-        printf(&quot;[DEBUG] now is up on printf_client_info()...\n&quot;);
-
-        printf_client_info(&amp;client_addr,buf);
-
-        if(strncmp(buf,&quot;quit&quot;,4) == 0)
-                break;
-    &#125;
-
-    close(sockfd_new);
-    exit(EXIT_SUCCESS); //结束当前子进程
-    return ;
-
-&#125;
-int main(int argc,const char *argv[])
-&#123;
-    int sockfd;
-    unsigned char login_flag;
-    if(argc &lt; 3)
-    &#123;
-        fprintf(stderr,&quot;Usage : %s ip port!\n&quot;,argv[0]);
+        perror(&quot;Fail to sendto&quot;);        
         exit(EXIT_FAILURE);
     &#125;
-    sockfd = login_manage(argv[1],argv[2]);
-    printf(&quot;child process recv_data:\n&quot;);
-    //2.接收数据
-    
-    recv_data(sockfd);
+    printf(&quot;[DEBUG] now is up on printf_client_info()...\n&quot;);
 
+    printf_client_info(&amp;client_addr,buf);
 
-
-    return 0;
+    if(strncmp(buf,&quot;quit&quot;,4) == 0)
+            break;
 &#125;
+
+close(sockfd_new);
+exit(EXIT_SUCCESS); //结束当前子进程
+return ;
 </code></pre>
+<p>}<br>int main(int argc,const char *argv[])<br>{<br>    int sockfd;<br>    unsigned char login_flag;<br>    if(argc &lt; 3)<br>    {<br>        fprintf(stderr,”Usage : %s ip port!\n”,argv[0]);<br>        exit(EXIT_FAILURE);<br>    }<br>    sockfd &#x3D; login_manage(argv[1],argv[2]);<br>    printf(“child process recv_data:\n”);<br>    &#x2F;&#x2F;2.接收数据</p>
+<pre><code>recv_data(sockfd);
+
+
+
+return 0;
+</code></pre>
+<p>}</p>
+<p>&#96;&#96;&#96;  </p>
 <p>老实说服务端的代码让我改了很长时间。<br>3.bind的问题，bind的作用是将当前程序和指定端口绑定，如果不绑定端口客户端没办法知道固定的端口。<br>4.就是登录标志login_check，我初始化其为LOGIN_FAILRE,放的位置不太对，应该是:每次重新循环的时候，都要赋初始值为LOGIN_FAILRE。<br>5.就是本次特别需要注意的地方，<font color=red> 父进程的作用就是验证登录密钥，如果正确，则fork子进程进行通信，如果不正确继续在父进程循环</font><br>在上面代码中，在login_manage()函数中，死循环只在本进程中运行，当判断条件真的时候，则fork一个子进程，然后在子进程中，给客户端发登陆成功消息然后跳出循环，因为fork也继承了死循环，这是很重要的一点。子进程中，需要重新创建一个socket套接字，关闭父进程的套接字(因为没什么用)。bind的参数写0分配随机端口，因为子进程发送信息后，客户端可以通过recvfrom保存ip和端口信息，所以可以找到与子进程通信的方法。<br><img src="/images/server.png" alt="success"></p>
 
       
