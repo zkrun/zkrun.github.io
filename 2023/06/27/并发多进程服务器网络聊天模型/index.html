@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>故乡的雪花飘落了</title>
+  <title>并发多进程服务器网络聊天模型 | 故乡的雪花飘落了</title>
 
   
   <meta name="author" content="昆汀">
@@ -14,12 +14,15 @@
   
 
   
+  
+  <meta name="keywords" content="">
+  
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  
+  <meta property="og:title" content="并发多进程服务器网络聊天模型"/>
 
   <meta property="og:site_name" content="故乡的雪花飘落了"/>
 
@@ -74,12 +77,11 @@
 </header>
 
     <main class="site-main posts-loop">
-    
-  <article>
+    <article>
 
   
     
-    <h3 class="article-title"><a href="/2023/06/27/并发多进程服务器网络聊天模型/"><span>并发多进程服务器网络聊天模型</span></a></h3>
+    <h3 class="article-title"><span>并发多进程服务器网络聊天模型</span></h3>
     
   
 
@@ -269,546 +271,34 @@ int main(int argc,const char *argv[])
   </div>
 </article>
 
-
-
-  <article>
-
   
-    
-    <h3 class="article-title"><a href="/2023/05/30/环形队列数据读写实现/"><span>环形队列数据读写实现</span></a></h3>
-    
-  
+	<section id="comment" class="comment">
+		<div id="gitalk-container"></div>
+	</section>
+	<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+	<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+	<script>
+		var gitalk = new Gitalk({
+			clientID: 'bb93b87a14125e3cc588',
+			clientSecret: 'cfd397d929190cc616347ba9037d7667f8e2a0f0',
+			repo: 'blog_comments',
+			owner: 'zkrun',
+			admin: ['zkrun'],
+			id: location.pathname,
+			distractionFreeMode: false
+		})
+		gitalk.render('gitalk-container')
+	</script>
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/05/30/环形队列数据读写实现/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-05-30T07:27:23.000Z">
-          2023-05-30
-        </time>
-      </a>
-    </span>
-  </div>
 
 
-  
 
-  <div class="article-content">
-    <div class="entry">
-      
-        
-      
-    </div>
 
-  </div>
 
-  <div class="article-footer">
-    <div class="article-meta pull-left">
 
-    
 
-    
 
-    </div>
 
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2023/05/25/网络编程之字节序转换API/"><span>网络编程之字节序转换API</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/05/25/网络编程之字节序转换API/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-05-25T11:46:05.000Z">
-          2023-05-25
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h3 id="ip字符串转换网络字节序："><a href="#ip字符串转换网络字节序：" class="headerlink" title="ip字符串转换网络字节序："></a>ip字符串转换网络字节序：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">inet_aton</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *cp, <span class="keyword">struct</span> in_addr *inp)</span>;     [addr to network]</span><br><span class="line">功能:将cp指向的IP字符串转成网络字节inp保存的地址中。 </span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="网络字节序转换IP字符串"><a href="#网络字节序转换IP字符串" class="headerlink" title="网络字节序转换IP字符串"></a>网络字节序转换IP字符串</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *<span class="title function_">inet_ntoa</span><span class="params">(<span class="keyword">struct</span> in_addr in)</span>;   [network to addr]</span><br><span class="line">功能：将IP网络字节序转换成IP字符串</span><br><span class="line">参数:</span><br><span class="line">@in   IP网络字节序 </span><br><span class="line"></span><br><span class="line">返回值:</span><br><span class="line">成功返回IP字符串首地址，失败返回<span class="literal">NULL</span> </span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="主机字节序转换为网络字节序"><a href="#主机字节序转换为网络字节序" class="headerlink" title="主机字节序转换为网络字节序"></a>主机字节序转换为网络字节序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">short</span> <span class="title function_">htons</span><span class="params">(<span class="type">short</span> data)</span>;        [host  to network <span class="type">short</span> ]</span><br><span class="line">功能：将<span class="type">short</span>类型的整数转成网络字节序  </span><br><span class="line">参数： </span><br><span class="line">          @data  序号转换的整数</span><br><span class="line">返回值：得到的网络字节序</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="网络字节序转换为十进制数"><a href="#网络字节序转换为十进制数" class="headerlink" title="网络字节序转换为十进制数"></a>网络字节序转换为十进制数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>  <span class="title function_">atoi</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *nptr)</span>；</span><br><span class="line">功能：把ntpr 所指向的整数字符串转换成整数。</span><br><span class="line">参数：</span><br><span class="line">    @  nptr    字符串</span><br><span class="line">返回值：成功，返回转换后的整数</span><br><span class="line">              失败，返回0</span><br><span class="line">注意：若是只有+，-和整数字符能转换，其他字符返回0</span><br><span class="line"></span><br><span class="line"><span class="type">uint32_t</span> <span class="title function_">ntohs</span><span class="params">(<span class="type">uint32_t</span> netlong)</span>;           [network to host <span class="type">short</span>]</span><br><span class="line">功能：把网络字节序转换为主机端口</span><br><span class="line">参数：</span><br><span class="line">@   netlong    网络字节序</span><br><span class="line">返回值： 返回对应的主机端口</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2023/02/23/进程/"><span>进程</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/02/23/进程/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-02-23T12:35:17.000Z">
-          2023-02-23
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2023/02/02/静态库与动态库/"><span>静态库与动态库</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/02/02/静态库与动态库/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-02-02T07:55:44.000Z">
-          2023-02-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h3 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a><strong>静态库</strong></h3><p>在与文件链接形成可执行文件后，会绑定在一起，所以<strong>优点也就是在执行的时候不需要加载，可以直接运行，缺点相同的就是重复的占用会导致内存开销过大</strong><br>静态库在linux以.a结尾,在windows中以.lib结尾。  </p>
-<h4 id="静态库的制作："><a href="#静态库的制作：" class="headerlink" title="静态库的制作："></a><strong>静态库的制作：</strong></h4><p>首先需要把file.c编译成file.o:<br><code>gcc -c file.c -o file.o</code><br>然后把.o文件生成静态库:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ar -rs file.a file.o</span><br></pre></td></tr></table></figure>
-
-<p>生成静态库之后我们需要把main.c与静态库链接起来生成可执行文件：<br><code>gcc -I&lt;头文件路径&gt; -L&lt;库的路径&gt; main.c -l&lt;静态库的名字&gt; -o &lt;可执行文件名&gt;</code><br>gcc 编译器默认搜索头文件与库文件的路径<br>&#x2F;usr&#x2F;include 为头文件默认路径<br>&#x2F;usr&#x2F;lib 与 &#x2F;lib 为库的默认路径.<br>假如你已经把头文件，库拷到了默认路径那么就不需要加上上两个参数。</p>
-<hr>
-<p><strong>动态库</strong><br>与静态库相比显然有着不同的特性，动态库加载速度偏慢，但在一般情况对内存的占用要比静态库更少。<br>在windows中以.dll文件结尾，十分常见，在linux中以.so文件结尾.<br><strong>当可执行文件调用动态库中的函数时，则需要加载动态库到内存中</strong><br><em>动态库的制作:</em>  </p>
-<pre><code>gcc -c file.c -o file.o
-</code></pre>
-<p>然后生成动态库<br><code>gcc -shared file.o -o file.so</code><br>链接的命令则和静态库的一样，然后我们如果只这样执行可执行文件是会报错的：</p>
-<pre><code class="c">error while loading shared libraries: libadd.so: cannot open shared object file: No such file or directory
-</code></pre>
-<p>这是因为我们没有将动态库加载到内存中，默认动态库的位置是&#x2F;usr&#x2F;lib，如果我们的动态库在当下目录，我们可以<br><code>export LD_LIBRARY_PATH=.</code></p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2023/02/01/二进制数据输入输出/"><span>二进制数据输入输出</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/02/01/二进制数据输入输出/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-02-01T14:40:33.000Z">
-          2023-02-01
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h3 id="在标准-I-x2F-O-中-用于进行二进制文件进行读写时需要调用-fread-与-fwrite"><a href="#在标准-I-x2F-O-中-用于进行二进制文件进行读写时需要调用-fread-与-fwrite" class="headerlink" title="在标准 I&#x2F;O 中,用于进行二进制文件进行读写时需要调用　fread 与 fwrite"></a><strong>在标准 I&#x2F;O 中,用于进行二进制文件进行读写时需要调用　fread 与 fwrite</strong></h3><p>比如常见的图片或者音频文件。<br>简单介绍一下两个函数，实际用处可以通过查阅编程手册来获取详情信息。<br><strong>fread:</strong></p>
-        
-          <p><a class="excerpt-btn" href="/2023/02/01/二进制数据输入输出/"><span>...More</span></a></p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2023/01/31/linux标准io/"><span>linux标准io</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/01/31/linux标准io/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-01-31T13:45:08.000Z">
-          2023-01-31
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>标准io是另一套io接口，但底层还是依赖于文件io，优点就是自带缓冲区以及效率更快，而且标准io是跨平台的，文件io操作只能在linux进行。</p>
-        
-          <p><a class="excerpt-btn" href="/2023/01/31/linux标准io/"><span>...More</span></a></p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2023/01/27/linux文件io/"><span>linux文件io</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/01/27/linux文件io/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-01-27T03:57:13.000Z">
-          2023-01-27
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h3 id="踏入了阶段四"><a href="#踏入了阶段四" class="headerlink" title="踏入了阶段四"></a><strong>踏入了阶段四</strong></h3><p>在 Linux 系统下,用于对文件操作的库函数叫做 文件 I&#x2F;O<br>主要包括 open()&#x2F;close()&#x2F;read()&#x2F;write() &#x2F;lseek()相应的系统调用(准确说法是对系统调用的封装的库函数)</p>
-        
-          <p><a class="excerpt-btn" href="/2023/01/27/linux文件io/"><span>...More</span></a></p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a><a href="/tags/io/">io</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2023/01/24/Makefile的那些事/"><span>Makefile的那些事</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2023/01/24/Makefile的那些事/" rel="bookmark">
-        <time class="entry-date published" datetime="2023-01-24T10:53:51.000Z">
-          2023-01-24
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h3 id="阶段三就要完成了，下面的课程将是我更所期待的"><a href="#阶段三就要完成了，下面的课程将是我更所期待的" class="headerlink" title="阶段三就要完成了，下面的课程将是我更所期待的"></a>阶段三就要完成了，下面的课程将是我更所期待的</h3><h3 id="makefile在工程很多时可以用自动编译将效率提高很多"><a href="#makefile在工程很多时可以用自动编译将效率提高很多" class="headerlink" title="makefile在工程很多时可以用自动编译将效率提高很多"></a>makefile在工程很多时可以用自动编译将效率提高很多</h3><h3 id="在用makefile之前需要安装make-本人是ubuntu系统所以直接"><a href="#在用makefile之前需要安装make-本人是ubuntu系统所以直接" class="headerlink" title="在用makefile之前需要安装make,本人是ubuntu系统所以直接"></a>在用makefile之前需要安装make,本人是ubuntu系统所以直接</h3><p>  <code>sudo apt-get install make  </code></p>
-        
-          <p><a class="excerpt-btn" href="/2023/01/24/Makefile的那些事/"><span>...More</span></a></p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a><a href="/tags/Makefile/">Makefile</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2022/12/27/awk和sed命令/"><span>awk和sed命令</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2022/12/27/awk和sed命令/" rel="bookmark">
-        <time class="entry-date published" datetime="2022-12-27T02:16:46.000Z">
-          2022-12-27
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>在学习awk和sed首先了解一下linux一些常见命令<code>grep &quot;string&quot; /....</code>就是在某个文件或者目录下搜索某个字符串关键字，如果加上-n的话则会显示对应的行数。<br>例如要获取&#x2F;etc&#x2F;passwd中的有root的一行。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -n &quot;root&quot; /etc/passwd</span><br></pre></td></tr></table></figure>
-        
-          <p><a class="excerpt-btn" href="/2022/12/27/awk和sed命令/"><span>...More</span></a></p>
-        
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/嵌入式学习/">嵌入式学习</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/linux/">linux</a><a href="/tags/shell/">shell</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-
-<nav class="pagination">
-  
-  
-  <a href="/page/2/" class="pagination-next">Next</a>
-  
-</nav>
     </main>
 
     <footer class="site-footer">
