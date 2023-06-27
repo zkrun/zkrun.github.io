@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="昆汀" />
+
+
+
+<meta name="description" content="踏入了阶段四在 Linux 系统下,用于对文件操作的库函数叫做 文件 I&#x2F;O主要包括 open()&#x2F;close()&#x2F;read()&#x2F;write() &#x2F;lseek()相应的系统调用(准确说法是对系统调用的封装的库函数)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux文件io">
+<meta property="og:url" content="https://zkrun.github.io/2023/01/27/linux%E6%96%87%E4%BB%B6io/index.html">
+<meta property="og:site_name" content="故乡的雪花飘落了">
+<meta property="og:description" content="踏入了阶段四在 Linux 系统下,用于对文件操作的库函数叫做 文件 I&#x2F;O主要包括 open()&#x2F;close()&#x2F;read()&#x2F;write() &#x2F;lseek()相应的系统调用(准确说法是对系统调用的封装的库函数)">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-27T03:57:13.000Z">
+<meta property="article:modified_time" content="2023-01-27T04:47:51.138Z">
+<meta property="article:author" content="昆汀">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="io">
+<meta name="twitter:card" content="summary">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="故乡的雪花飘落了" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>linux文件io | 故乡的雪花飘落了</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: 
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/450465245@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Makefile/" rel="tag">Makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/io/" rel="tag">io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/450465245@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-linux文件io" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/01/27/linux%E6%96%87%E4%BB%B6io/" class="article-date">
+      <time datetime="2023-01-27T03:57:13.000Z" itemprop="datePublished">2023-01-27</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      linux文件io
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/io/" rel="tag">io</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="踏入了阶段四"><a href="#踏入了阶段四" class="headerlink" title="踏入了阶段四"></a><strong>踏入了阶段四</strong></h3><p>在 Linux 系统下,用于对文件操作的库函数叫做 文件 I&#x2F;O<br>主要包括 open()&#x2F;close()&#x2F;read()&#x2F;write() &#x2F;lseek()相应的系统调用(准确说法是对系统调用的封装的库函数)</p>
+<span id="more"></span>
+<h3 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a><strong>文件描述符</strong></h3><p>文件描述符(file descriptor)是一个非负整数，当打开或者创建一个文件时内核向进程返回一个文件描述符。<br>每个程序运行后,操作系统会默认打开三个文件 标准输入 标准输出 标准错误输出,文件描述符分别为 0 , 1 , 2  </p>
+<h4 id="open函数"><a href="#open函数" class="headerlink" title="open函数"></a><strong>open函数</strong></h4><p><code>int open(const char *pathname, int flags, mode_t mode);</code><br>open函数的返回值就是打开该文件的fd，<strong>pathname就是文件路径名</strong><br><strong>flags</strong> : 打开标志<br>O_RDONLY:只读方式打开文件<br>O_WRONLY:可写方式打开文件<br>O_RDWR:读写方式打开文件<br>O_CREAT:如果该文件不存在就创建一个新的文件，并用第三的参数为其设置权限<br>O_EXCL:如果使用O_CRATE时文件存在,open()报错<br>O_TRUNC:如果文件已经存在，并且以读&#x2F;写或只写成功打开,并清零<br>O_APPEND: 以添加的方式打开文件，在打开文件的同时，文件指针指向文件末尾<br><font color=purple>注意:比如我要以只写的方式打开文件,如果不存在则创建,如果文件存在则截短，那么我可以用到位运算O_WRONLY|O_CREAT|O_TRUNC</font><br><strong>mode</strong> :<br>指定创建新的文件的默认权限</p>
+<p>像上文说到如果成功的话返回fd，如果失败的话返回 -1,并将错误编码保存到 errno。<br><strong>errno 是 Linux 操作系统中用于存储错误编码的全局变量</strong>但是用编码来看不方便，我们可以将错误信息打印：<br><strong>错误信息打印主要使用 perror() 函数</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void perror(const char *s)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="close-函数"><a href="#close-函数" class="headerlink" title="close 函数"></a><strong>close 函数</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int close(int fd);</span><br></pre></td></tr></table></figure>
+
+<p>作用: <strong>close 函数用于关闭文件，在 io 操作结束后需要关闭文件，释放相关资源</strong><br>成功 : 返回 0</p>
+<p>失败 : 返回 -1</p>
+<p>打开后用完记得要关闭.  </p>
+<hr>
+<h4 id="read函数"><a href="#read函数" class="headerlink" title="read函数"></a><strong>read函数</strong></h4><p><code>ssize_t read(int fd, void *buf, size_t count);</code></p>
+<p>参数buf是指定的缓冲区，count是能够读取的最大字节数。一般定义缓冲区的时候以32，64，128大小定义,比如<code>char buf[64]</code><br><strong>返回值:</strong><br>成功 : 返回实际读取的字节数</p>
+<p>失败 : -1,并将错误编码设置到 errno 中  </p>
+<hr>
+<h4 id="write函数"><a href="#write函数" class="headerlink" title="write函数"></a><strong>write函数</strong></h4><p><code>ssize_t write(int fd, const void *buf, size_t count);</code></p>
+<p><strong>返回值:</strong><br>成功 : 返回实际读取的字节数</p>
+<p>失败 : -1,并将错误编码设置到 errno 中  </p>
+<p><strong>写入的话记得不要多写，不然可能会出现问题</strong></p>
+<hr>
+<h4 id="lseek函数"><a href="#lseek函数" class="headerlink" title="lseek函数"></a><strong>lseek函数</strong></h4><p>当我们在open一个文件后write写入，然后read读取，会发现读取的不是我们想要的write内容，这是因为所有打开的文件都有一个当前文件偏移量（current file offset）。cfo 通常是一个非负整数，用于表明文件开始处到文件当前位置的字节数。<br>读写操作通常开始于 cfo，并且使 cfo 增大，增量为读写的字节数。  </p>
+<p><code>off_t lseek(int fd, off_t offset, int whence);</code> </p>
+<p><strong>返回值:</strong><br>成功: 返回 0<br>失败 : 返回 -1,并设置 errno<br><strong>函数参数</strong><br>fd : 文件描述符<br>offset :偏移量,可以为正数或者负数<br>whence :偏移相对位置<br>SEEK_CUR : 相对于文件当前偏移<br>SEEK_SET : 相对于文件开始位置<br>SEEK_END : 相对于文件尾偏移  </p>
+<p>如果要把写入的东西读取出来要</p>
+<p><code>lseek(fd,0,SEEK_SET);</code>  </p>
+<hr>
+<p><strong>练习</strong> : 使用 Linux 文件 io 接口实现 文件复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;sys/stat.h&gt;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">int main(int argc,char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	ssize_t rdbytes;</span><br><span class="line">	ssize_t wrbytes;</span><br><span class="line">	int fd,fd_dest;</span><br><span class="line">	//打开要读取的文件</span><br><span class="line">	fd=open(argv[1],O_RDONLY);</span><br><span class="line">	//打开要写入的文件dest.txt</span><br><span class="line">	fd_dest=open(argv[2],O_RDWR);</span><br><span class="line">	//建立缓冲区</span><br><span class="line">	char R_buffer[64]=&#123;0&#125;;</span><br><span class="line">	if(fd==-1)</span><br><span class="line">	&#123;</span><br><span class="line">		perror(&quot;open():&quot;);</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	while(rdbytes!=0)</span><br><span class="line">	&#123;</span><br><span class="line">		rdbytes=read(fd,R_buffer,1);</span><br><span class="line">		if(rdbytes==-1)</span><br><span class="line">		&#123;</span><br><span class="line">			perror(&quot;read():&quot;);</span><br><span class="line">			return -2;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		//写入</span><br><span class="line">		wrbytes=write(fd_dest,R_buffer,strlen(R_buffer));</span><br><span class="line">		if(wrbytes==-1)</span><br><span class="line">		&#123;</span><br><span class="line">			perror(&quot;write();&quot;);</span><br><span class="line">			return -3;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	close(fd);</span><br><span class="line">	close(fd_dest);</span><br><span class="line">	return 0;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2023/01/27/linux%E6%96%87%E4%BB%B6io/">linux文件io</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
+        <p><span>Created:</span>2023-01-27, 11:57:13</p>
+        <p><span>Updated:</span>2023-01-27, 12:47:51</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2023/01/27/linux%E6%96%87%E4%BB%B6io/" title="linux文件io">https://zkrun.github.io/2023/01/27/linux%E6%96%87%E4%BB%B6io/</a>
+            <span class="copy-path" data-clipboard-text="From https://zkrun.github.io/2023/01/27/linux%E6%96%87%E4%BB%B6io/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2023/01/31/linux%E6%A0%87%E5%87%86io/">
+                    linux标准io
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2023/01/24/Makefile%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">
+                    Makefile的那些事
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B8%8F%E5%85%A5%E4%BA%86%E9%98%B6%E6%AE%B5%E5%9B%9B"><span class="toc-number">1.</span> <span class="toc-text">踏入了阶段四</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-number">2.</span> <span class="toc-text">文件描述符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#open%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">open函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#close-%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">close 函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#read%E5%87%BD%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text">read函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#write%E5%87%BD%E6%95%B0"><span class="toc-number">2.4.</span> <span class="toc-text">write函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lseek%E5%87%BD%E6%95%B0"><span class="toc-number">2.5.</span> <span class="toc-text">lseek函数</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"linux文件io　| 故乡的雪花飘落了　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2023/01/31/linux%E6%A0%87%E5%87%86io/" title="Pre: linux标准io">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2023/01/24/Makefile%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/" title="Next: Makefile的那些事">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/06/27/%E5%B9%B6%E5%8F%91%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C%E8%81%8A%E5%A4%A9%E6%A8%A1%E5%9E%8B/">并发多进程服务器网络聊天模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/30/%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%86%99%E5%AE%9E%E7%8E%B0/">环形队列数据读写实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/25/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%AD%97%E8%8A%82%E5%BA%8F%E8%BD%AC%E6%8D%A2API/">网络编程之字节序转换API</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/02/23/%E8%BF%9B%E7%A8%8B/">进程</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/02/02/%E9%9D%99%E6%80%81%E5%BA%93%E4%B8%8E%E5%8A%A8%E6%80%81%E5%BA%93/">静态库与动态库</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/02/01/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">二进制数据输入输出</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/01/31/linux%E6%A0%87%E5%87%86io/">linux标准io</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/01/27/linux%E6%96%87%E4%BB%B6io/">linux文件io</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/01/24/Makefile%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">Makefile的那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/12/27/awk%E5%92%8Csed%E5%91%BD%E4%BB%A4/">awk和sed命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">shell常见易错</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/12/26/test/">test</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/24/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86/">二叉树递归遍历</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/15/%E6%A0%A1%E5%9B%AD%E7%BD%91/">校园网</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2023 昆汀
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
