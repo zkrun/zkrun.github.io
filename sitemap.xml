@@ -171,14 +171,21 @@
   </url>
   
   <url>
-    <loc>https://zkrun.github.io/tags/io/</loc>
+    <loc>https://zkrun.github.io/tags/shell/</loc>
     <lastmod>2023-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://zkrun.github.io/tags/shell/</loc>
+    <loc>https://zkrun.github.io/tags/Makefile/</loc>
+    <lastmod>2023-06-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zkrun.github.io/tags/io/</loc>
     <lastmod>2023-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -193,13 +200,6 @@
   
   <url>
     <loc>https://zkrun.github.io/tags/%E5%85%B6%E4%BB%96/</loc>
-    <lastmod>2023-06-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zkrun.github.io/tags/Makefile/</loc>
     <lastmod>2023-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
