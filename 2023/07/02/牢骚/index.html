@@ -15,17 +15,16 @@
 
 
 
-<meta name="description" content="直接进入正题常见的一个错误就是赋值，简单举例子来说 1str1&#x3D;&quot;This is a sentence.&quot; 赋值的时候不能带空格。 在下面这种情况就需要带，不然的话会被当做一个整体字符串来看 12expr 10 + 2&#x2F;&#x2F;这里顺便提一嘴,如果用expr作乘法运算比如: expr 10 * 2，是错误的，在shell中这里的星号会被认为和ls *.sh中的星号作用一样，所以需要加">
+<meta name="description" content="真的不喜欢数据结构啊啊 链表什么的真讨厌啊啊啊啊 made真的恶心，各种结构体，遍历真的无趣T_T   还是先学着后面的吧，udp的局域网聊天先放一放，本来想着能实现也是很不错的，但是代码也不完整，等以后回头了，把这块和学生管理系统那块再统一看看T_T">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell常见易错">
-<meta property="og:url" content="https://zkrun.github.io/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/index.html">
+<meta property="og:title" content="牢骚">
+<meta property="og:url" content="https://zkrun.github.io/2023/07/02/%E7%89%A2%E9%AA%9A/index.html">
 <meta property="og:site_name" content="故乡的雪花飘落了">
-<meta property="og:description" content="直接进入正题常见的一个错误就是赋值，简单举例子来说 1str1&#x3D;&quot;This is a sentence.&quot; 赋值的时候不能带空格。 在下面这种情况就需要带，不然的话会被当做一个整体字符串来看 12expr 10 + 2&#x2F;&#x2F;这里顺便提一嘴,如果用expr作乘法运算比如: expr 10 * 2，是错误的，在shell中这里的星号会被认为和ls *.sh中的星号作用一样，所以需要加">
+<meta property="og:description" content="真的不喜欢数据结构啊啊 链表什么的真讨厌啊啊啊啊 made真的恶心，各种结构体，遍历真的无趣T_T   还是先学着后面的吧，udp的局域网聊天先放一放，本来想着能实现也是很不错的，但是代码也不完整，等以后回头了，把这块和学生管理系统那块再统一看看T_T">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-12-26T14:06:35.000Z">
-<meta property="article:modified_time" content="2022-12-27T02:12:13.429Z">
+<meta property="article:published_time" content="2023-07-02T02:52:32.000Z">
+<meta property="article:modified_time" content="2023-07-02T02:56:02.520Z">
 <meta property="article:author" content="昆汀">
-<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -60,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>shell常见易错 | 故乡的雪花飘落了</title>
+<title>牢骚 | 故乡的雪花飘落了</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -256,11 +255,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-shell常见错误" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-牢骚" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" class="article-date">
-      <time datetime="2022-12-26T14:06:35.000Z" itemprop="datePublished">2022-12-26</time>
+      <a href="/2023/07/02/%E7%89%A2%E9%AA%9A/" class="article-date">
+      <time datetime="2023-07-02T02:52:32.000Z" itemprop="datePublished">2023-07-02</time>
 </a>
 
 
@@ -275,7 +274,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      shell常见易错
+      牢骚
     </h1>
   
 
@@ -283,16 +282,8 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
-    </div>
-
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -300,11 +291,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="直接进入正题"><a href="#直接进入正题" class="headerlink" title="直接进入正题"></a>直接进入正题</h3><p>常见的一个错误就是赋值，简单举例子来说</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">str1</span><span class="operator">=</span><span class="string">&quot;This is a sentence.&quot;</span></span><br></pre></td></tr></table></figure>
-<p>赋值的时候不能带空格。</p>
-<p>在下面这种情况就需要带，不然的话会被当做一个整体字符串来看</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">expr <span class="number">10</span> + <span class="number">2</span></span><br><span class="line"><span class="comment">//这里顺便提一嘴,如果用expr作乘法运算比如: expr 10 * 2，是错误的，在shell中这里的星号会被认为和ls *.sh中的星号作用一样，所以需要加转义字符expr 10  \* 2</span></span><br></pre></td></tr></table></figure>
+        <p>真的不喜欢数据结构啊啊 链表什么的真讨厌啊啊啊啊 made真的恶心，各种结构体，遍历真的无趣T_T  </p>
+<p>还是先学着后面的吧，udp的局域网聊天先放一放，本来想着能实现也是很不错的，但是代码也不完整，等以后回头了，把这块和学生管理系统那块再统一看看T_T</p>
+
       
     </div>
     
@@ -312,13 +301,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">shell常见易错</a></p>
+        <p><span>Title:</span><a href="/2023/07/02/%E7%89%A2%E9%AA%9A/">牢骚</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-12-26, 22:06:35</p>
-        <p><span>Updated:</span>2022-12-27, 10:12:13</p>
+        <p><span>Created:</span>2023-07-02, 10:52:32</p>
+        <p><span>Updated:</span>2023-07-02, 10:56:02</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" title="shell常见易错">https://zkrun.github.io/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/</a>
-            <span class="copy-path" data-clipboard-text="From https://zkrun.github.io/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2023/07/02/%E7%89%A2%E9%AA%9A/" title="牢骚">https://zkrun.github.io/2023/07/02/%E7%89%A2%E9%AA%9A/</a>
+            <span class="copy-path" data-clipboard-text="From https://zkrun.github.io/2023/07/02/%E7%89%A2%E9%AA%9A/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -330,16 +319,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/12/27/awk%E5%92%8Csed%E5%91%BD%E4%BB%A4/">
-                    awk和sed命令
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/12/26/test/">
-                    test
+                <a href="/2023/06/27/%E5%B9%B6%E5%8F%91%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C%E8%81%8A%E5%A4%A9%E6%A8%A1%E5%9E%8B/">
+                    并发多进程服务器网络聊天模型
                 </a>
             </div>
         
@@ -351,7 +334,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E8%BF%9B%E5%85%A5%E6%AD%A3%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">直接进入正题</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -387,7 +370,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"shell常见易错　| 故乡的雪花飘落了　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"牢骚　| 故乡的雪花飘落了　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -407,15 +390,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/12/27/awk%E5%92%8Csed%E5%91%BD%E4%BB%A4/" title="Pre: awk和sed命令">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/12/26/test/" title="Next: test">
+            <a href="/2023/06/27/%E5%B9%B6%E5%8F%91%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C%E8%81%8A%E5%A4%A9%E6%A8%A1%E5%9E%8B/" title="Next: 并发多进程服务器网络聊天模型">
                 <i class="fa fa-angle-right"></i>
             </a>
         
