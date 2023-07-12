@@ -260,6 +260,66 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-运算符重载" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/07/12/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="article-date">
+      <time datetime="2023-07-12T02:25:20.000Z" itemprop="datePublished">2023-07-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/07/12/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/">运算符重载</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>有些棘手，脑子有点懵比，缓几天再看</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-const用法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -786,82 +846,6 @@
       
 
       
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-静态库与动态库" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/02/02/%E9%9D%99%E6%80%81%E5%BA%93%E4%B8%8E%E5%8A%A8%E6%80%81%E5%BA%93/" class="article-date">
-      <time datetime="2023-02-02T07:55:44.000Z" itemprop="datePublished">2023-02-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/02/%E9%9D%99%E6%80%81%E5%BA%93%E4%B8%8E%E5%8A%A8%E6%80%81%E5%BA%93/">静态库与动态库</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a><strong>静态库</strong></h3><p>在与文件链接形成可执行文件后，会绑定在一起，所以<strong>优点也就是在执行的时候不需要加载，可以直接运行，缺点相同的就是重复的占用会导致内存开销过大</strong><br>静态库在linux以.a结尾,在windows中以.lib结尾。  </p>
-<h4 id="静态库的制作："><a href="#静态库的制作：" class="headerlink" title="静态库的制作："></a><strong>静态库的制作：</strong></h4><p>首先需要把file.c编译成file.o:<br><code>gcc -c file.c -o file.o</code><br>然后把.o文件生成静态库:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ar -rs file.a file.o</span><br></pre></td></tr></table></figure>
-
-<p>生成静态库之后我们需要把main.c与静态库链接起来生成可执行文件：<br><code>gcc -I&lt;头文件路径&gt; -L&lt;库的路径&gt; main.c -l&lt;静态库的名字&gt; -o &lt;可执行文件名&gt;</code><br>gcc 编译器默认搜索头文件与库文件的路径<br>&#x2F;usr&#x2F;include 为头文件默认路径<br>&#x2F;usr&#x2F;lib 与 &#x2F;lib 为库的默认路径.<br>假如你已经把头文件，库拷到了默认路径那么就不需要加上上两个参数。</p>
-<hr>
-<p><strong>动态库</strong><br>与静态库相比显然有着不同的特性，动态库加载速度偏慢，但在一般情况对内存的占用要比静态库更少。<br>在windows中以.dll文件结尾，十分常见，在linux中以.so文件结尾.<br><strong>当可执行文件调用动态库中的函数时，则需要加载动态库到内存中</strong><br><em>动态库的制作:</em>  </p>
-<pre><code>gcc -c file.c -o file.o
-</code></pre>
-<p>然后生成动态库<br><code>gcc -shared file.o -o file.so</code><br>链接的命令则和静态库的一样，然后我们如果只这样执行可执行文件是会报错的：</p>
-<pre><code class="c">error while loading shared libraries: libadd.so: cannot open shared object file: No such file or directory
-</code></pre>
-<p>这是因为我们没有将动态库加载到内存中，默认动态库的位置是&#x2F;usr&#x2F;lib，如果我们的动态库在当下目录，我们可以<br><code>export LD_LIBRARY_PATH=.</code></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-    </div>
-
       
       <div class="clearfix"></div>
     </div>
