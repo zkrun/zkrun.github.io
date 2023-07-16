@@ -260,6 +260,69 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-vector容器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/07/16/vector%E5%AE%B9%E5%99%A8/" class="article-date">
+      <time datetime="2023-07-16T05:21:20.000Z" itemprop="datePublished">2023-07-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/07/16/vector%E5%AE%B9%E5%99%A8/">顺序容器</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>vector有多个构造函数，默认的构造函数是构造一个初始长度为0的内存空间，且分配的内存空间是以2的倍数动态增长的，在push_back的过程中，若发现分配的内存空间不足，则重新分配一段连续的内存空间，其大小是现在连续空间的2倍，在将原先空间中的元素复制到新的空间中，性能消耗较大。<br>vector在尾端增添数据拥有比较好的性能。<br>vector内部实现实际上是动态数组。分配好了一块内存空间。</p>
+<p>如果你需要高效的随机存取，而不在乎插入和删除的效率，使用vector  </p>
+<p>如果你需要大量的插入和删除，而不关心随机存取，则应使用list  </p>
+<p>如果你需要随机存取，而且关心两端数据的插入和删除，则应使用deque</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-非类型参数" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -796,72 +859,6 @@
 
 
       
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-c-函数增强部分" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/07/09/c-%E5%87%BD%E6%95%B0%E5%A2%9E%E5%BC%BA%E9%83%A8%E5%88%86/" class="article-date">
-      <time datetime="2023-07-09T10:56:13.000Z" itemprop="datePublished">2023-07-09</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/09/c-%E5%87%BD%E6%95%B0%E5%A2%9E%E5%BC%BA%E9%83%A8%E5%88%86/">c++函数增强部分</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>c++的函数在声明的时候可以定义默认值参数，有几个注意事项：<br>1.当函数的定义和声明分开时，默认值参数只能在声明处定义<br>2.如果某个参数时默认参数，那么它后面的参数都必须是默认参数。  </p>
-<hr>
-<p>在同一目录下同时建立a.c和b.c，而且同时声明了相同函数名的函数，如果用c语言在main.c中想调用这两个文件中的相同函数，是很难办到的，即使你在某个文件中使用了static关键字表示作用域范围，也是很不方便的。在C++中的命名空间就很好的解决了这点。  </p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/C/">C++</a>
-    </div>
-
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2023/07/09/c-%E5%87%BD%E6%95%B0%E5%A2%9E%E5%BC%BA%E9%83%A8%E5%88%86/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
