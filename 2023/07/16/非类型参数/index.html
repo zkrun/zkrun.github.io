@@ -15,15 +15,15 @@
 
 
 
-<meta name="description" content="static修饰局部变量时，用来延长生命周期。修饰全局变量或者函数时，用来限制作用域修饰静态成员变量的时候，所有的类对象共享此资源。访问此资源时，既可以用类访问，也可以用对象访问。记得要在类外初始化static修饰静态成员函数的时候，静态成员函数没有this指针，也就不能访问非静态资源。Q:什么时候使用静态成员函数？当不需要实例化，不需要访问非静态资源，就有的确定行为static语句放在publi">
+<meta name="description" content="非类型参数只能是整数、枚举类型、指向外部链接的指针   非类型参数不能是一个浮点类型和类类型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="static用法">
-<meta property="og:url" content="https://zkrun.github.io/2023/07/10/static%E7%94%A8%E6%B3%95/index.html">
+<meta property="og:title" content="非类型参数">
+<meta property="og:url" content="https://zkrun.github.io/2023/07/16/%E9%9D%9E%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0/index.html">
 <meta property="og:site_name" content="故乡的雪花飘落了">
-<meta property="og:description" content="static修饰局部变量时，用来延长生命周期。修饰全局变量或者函数时，用来限制作用域修饰静态成员变量的时候，所有的类对象共享此资源。访问此资源时，既可以用类访问，也可以用对象访问。记得要在类外初始化static修饰静态成员函数的时候，静态成员函数没有this指针，也就不能访问非静态资源。Q:什么时候使用静态成员函数？当不需要实例化，不需要访问非静态资源，就有的确定行为static语句放在publi">
+<meta property="og:description" content="非类型参数只能是整数、枚举类型、指向外部链接的指针   非类型参数不能是一个浮点类型和类类型">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-10T08:04:53.000Z">
-<meta property="article:modified_time" content="2023-07-13T11:33:55.175Z">
+<meta property="article:published_time" content="2023-07-16T04:22:35.000Z">
+<meta property="article:modified_time" content="2023-07-16T04:22:51.767Z">
 <meta property="article:author" content="昆汀">
 <meta name="twitter:card" content="summary">
 
@@ -59,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>static用法 | 故乡的雪花飘落了</title>
+<title>非类型参数 | 故乡的雪花飘落了</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -255,11 +255,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-static用法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-非类型参数" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2023/07/10/static%E7%94%A8%E6%B3%95/" class="article-date">
-      <time datetime="2023-07-10T08:04:53.000Z" itemprop="datePublished">2023-07-10</time>
+      <a href="/2023/07/16/%E9%9D%9E%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0/" class="article-date">
+      <time datetime="2023-07-16T04:22:35.000Z" itemprop="datePublished">2023-07-16</time>
 </a>
 
 
@@ -274,7 +274,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      static用法
+      非类型参数
     </h1>
   
 
@@ -295,7 +295,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <dl><dt>static修饰局部变量时，用来延长生命周期。<br>修饰全局变量或者函数时，用来限制作用域<br>修饰静态成员变量的时候，所有的类对象共享此资源。<br>访问此资源时，既可以用类访问，也可以用对象访问。<br><font color="red">记得要在类外初始化</font><br>static修饰静态成员函数的时候，静态成员函数没有this指针，也就不能访问非静态资源。<br>Q:什么时候使用静态成员函数？</dt><dd>当不需要实例化，不需要访问非静态资源，就有的确定行为<br>static语句放在public和private中是等效的</dd></dl>
+        <p>非类型参数只能是整数、枚举类型、指向外部链接的指针  </p>
+<p>非类型参数不能是一个浮点类型和类类型</p>
+
       
     </div>
     
@@ -303,13 +305,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2023/07/10/static%E7%94%A8%E6%B3%95/">static用法</a></p>
+        <p><span>Title:</span><a href="/2023/07/16/%E9%9D%9E%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0/">非类型参数</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2023-07-10, 16:04:53</p>
-        <p><span>Updated:</span>2023-07-13, 19:33:55</p>
+        <p><span>Created:</span>2023-07-16, 12:22:35</p>
+        <p><span>Updated:</span>2023-07-16, 12:22:51</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2023/07/10/static%E7%94%A8%E6%B3%95/" title="static用法">https://zkrun.github.io/2023/07/10/static%E7%94%A8%E6%B3%95/</a>
-            <span class="copy-path" data-clipboard-text="From https://zkrun.github.io/2023/07/10/static%E7%94%A8%E6%B3%95/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2023/07/16/%E9%9D%9E%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0/" title="非类型参数">https://zkrun.github.io/2023/07/16/%E9%9D%9E%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0/</a>
+            <span class="copy-path" data-clipboard-text="From https://zkrun.github.io/2023/07/16/%E9%9D%9E%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -321,16 +323,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2023/07/10/const%E7%94%A8%E6%B3%95/">
-                    const用法
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2023/07/09/c-%E5%87%BD%E6%95%B0%E5%A2%9E%E5%BC%BA%E9%83%A8%E5%88%86/">
-                    c++函数增强部分
+                <a href="/2023/07/14/%E6%8A%BD%E8%B1%A1%E7%B1%BB/">
+                    抽象类
                 </a>
             </div>
         
@@ -378,7 +374,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"static用法　| 故乡的雪花飘落了　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"非类型参数　| 故乡的雪花飘落了　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -398,15 +394,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2023/07/10/const%E7%94%A8%E6%B3%95/" title="Pre: const用法">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2023/07/09/c-%E5%87%BD%E6%95%B0%E5%A2%9E%E5%BC%BA%E9%83%A8%E5%88%86/" title="Next: c++函数增强部分">
+            <a href="/2023/07/14/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" title="Next: 抽象类">
                 <i class="fa fa-angle-right"></i>
             </a>
         
