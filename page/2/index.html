@@ -260,6 +260,125 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-const用法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/07/10/const%E7%94%A8%E6%B3%95/" class="article-date">
+      <time datetime="2023-07-10T11:19:36.000Z" itemprop="datePublished">2023-07-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/07/10/const%E7%94%A8%E6%B3%95/">const用法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>const 修饰的成员变量只能在构造函数的参数列表中初始化。<br>const 修饰的成员函数不能改变成员变量的值。<br>定义:<br><code>void function(void) const</code><br>const 修饰的对象只能调用常成员函数，不能调用非 常成员函数</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-static用法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/07/10/static%E7%94%A8%E6%B3%95/" class="article-date">
+      <time datetime="2023-07-10T08:04:53.000Z" itemprop="datePublished">2023-07-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/07/10/static%E7%94%A8%E6%B3%95/">static用法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <dl><dt>static修饰局部变量时，用来延长生命周期。<br>修饰全局变量或者函数时，用来限制作用域<br>修饰静态成员变量的时候，所有的类对象共享此资源。<br>访问此资源时，既可以用类访问，也可以用对象访问。<br><font color="red">记得要在类外初始化</font><br>static修饰静态成员函数的时候，静态成员函数没有this指针，也就不能访问非静态资源。<br>Q:什么时候使用静态成员函数？</dt><dd>当不需要实例化，不需要访问非静态资源，就有的确定行为<br>static语句放在public和private中是等效的</dd></dl>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-c-函数增强部分" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -538,13 +657,23 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <p>在此项目中，创建了一个信号量集合并包含了三个信号量.  </p>
+<p>使用一个信号量   (SEM_MUTEX) 用于共享内存的互斥.<br>使用两个信号量（SEM_EMPTY 与 SEM_FULL）用于环形队列的同步   </p>
+<hr>
+<p>SEM_EMPTY &#x3D; 0,表示目前队列只有0个数据为空（本人倾向于记SEM_CURRENT&#x3D;0,更方便记忆。）  </p>
+<p>当 SEM_FULL &#x3D; 0 时,表示目前队列剩余0为满,则生产者进程阻塞。（本人倾向于记SEM_REST&#x3D;0,更方便记忆）</p>
+<hr>
+
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
+    </div>
+
 
       
       
@@ -629,6 +758,66 @@
 
 
   
+    <article id="post-网络编程之字节符转换API" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/05/25/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%AD%97%E8%8A%82%E7%AC%A6%E8%BD%AC%E6%8D%A2API/" class="article-date">
+      <time datetime="2023-05-25T11:46:05.000Z" itemprop="datePublished">2023-05-25</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/25/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%AD%97%E8%8A%82%E7%AC%A6%E8%BD%AC%E6%8D%A2API/">网络编程之字节符转换API</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>IP字节符转换为网络</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-进程" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -667,218 +856,6 @@
       
 
       
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-静态库与动态库" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/02/02/%E9%9D%99%E6%80%81%E5%BA%93%E4%B8%8E%E5%8A%A8%E6%80%81%E5%BA%93/" class="article-date">
-      <time datetime="2023-02-02T07:55:44.000Z" itemprop="datePublished">2023-02-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/02/%E9%9D%99%E6%80%81%E5%BA%93%E4%B8%8E%E5%8A%A8%E6%80%81%E5%BA%93/">静态库与动态库</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a><strong>静态库</strong></h3><p>在与文件链接形成可执行文件后，会绑定在一起，所以<strong>优点也就是在执行的时候不需要加载，可以直接运行，缺点相同的就是重复的占用会导致内存开销过大</strong><br>静态库在linux以.a结尾,在windows中以.lib结尾。  </p>
-<h4 id="静态库的制作："><a href="#静态库的制作：" class="headerlink" title="静态库的制作："></a><strong>静态库的制作：</strong></h4><p>首先需要把file.c编译成file.o:<br><code>gcc -c file.c -o file.o</code><br>然后把.o文件生成静态库:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ar -rs file.a file.o</span><br></pre></td></tr></table></figure>
-
-<p>生成静态库之后我们需要把main.c与静态库链接起来生成可执行文件：<br><code>gcc -I&lt;头文件路径&gt; -L&lt;库的路径&gt; main.c -l&lt;静态库的名字&gt; -o &lt;可执行文件名&gt;</code><br>gcc 编译器默认搜索头文件与库文件的路径<br>&#x2F;usr&#x2F;include 为头文件默认路径<br>&#x2F;usr&#x2F;lib 与 &#x2F;lib 为库的默认路径.<br>假如你已经把头文件，库拷到了默认路径那么就不需要加上上两个参数。</p>
-<hr>
-<p><strong>动态库</strong><br>与静态库相比显然有着不同的特性，动态库加载速度偏慢，但在一般情况对内存的占用要比静态库更少。<br>在windows中以.dll文件结尾，十分常见，在linux中以.so文件结尾.<br><strong>当可执行文件调用动态库中的函数时，则需要加载动态库到内存中</strong><br><em>动态库的制作:</em>  </p>
-<pre><code>gcc -c file.c -o file.o
-</code></pre>
-<p>然后生成动态库<br><code>gcc -shared file.o -o file.so</code><br>链接的命令则和静态库的一样，然后我们如果只这样执行可执行文件是会报错的：</p>
-<pre><code class="c">error while loading shared libraries: libadd.so: cannot open shared object file: No such file or directory
-</code></pre>
-<p>这是因为我们没有将动态库加载到内存中，默认动态库的位置是&#x2F;usr&#x2F;lib，如果我们的动态库在当下目录，我们可以<br><code>export LD_LIBRARY_PATH=.</code></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-二进制数据输入输出" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/02/01/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="article-date">
-      <time datetime="2023-02-01T14:40:33.000Z" itemprop="datePublished">2023-02-01</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/01/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">二进制数据输入输出</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="在标准-I-x2F-O-中-用于进行二进制文件进行读写时需要调用-fread-与-fwrite"><a href="#在标准-I-x2F-O-中-用于进行二进制文件进行读写时需要调用-fread-与-fwrite" class="headerlink" title="在标准 I&#x2F;O 中,用于进行二进制文件进行读写时需要调用　fread 与 fwrite"></a><strong>在标准 I&#x2F;O 中,用于进行二进制文件进行读写时需要调用　fread 与 fwrite</strong></h3><p>比如常见的图片或者音频文件。<br>简单介绍一下两个函数，实际用处可以通过查阅编程手册来获取详情信息。<br><strong>fread:</strong></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2023/02/01/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-linux标准io" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/01/31/linux%E6%A0%87%E5%87%86io/" class="article-date">
-      <time datetime="2023-01-31T13:45:08.000Z" itemprop="datePublished">2023-01-31</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/31/linux%E6%A0%87%E5%87%86io/">linux标准io</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>标准io是另一套io接口，但底层还是依赖于文件io，优点就是自带缓冲区以及效率更快，而且标准io是跨平台的，文件io操作只能在linux进行。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2023/01/31/linux%E6%A0%87%E5%87%86io/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
