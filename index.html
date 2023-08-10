@@ -260,6 +260,71 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-QString的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/08/10/QString%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+      <time datetime="2023-08-10T09:42:29.000Z" itemprop="datePublished">2023-08-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/08/10/QString%E7%9A%84%E4%BD%BF%E7%94%A8/">QString的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><p>QString对于很多运算符做了重载，可以直接用+号，或者.append方法，有时候想要用占位符替代的话，需要以下这种形式：  </p>
+<pre><code class="c++">QString str1 = QString(&quot;%1---------------%2&quot;).arg(&quot;hello&quot;).arg(&quot; world!&quot;);
+</code></pre>
+<p>这样输出str1的内容就是hello world!。  </p>
+<h3 id="字符串长度计算"><a href="#字符串长度计算" class="headerlink" title="字符串长度计算"></a>字符串长度计算</h3><p>str1.size() &#x2F; str1.count()  &#x2F;  str1.length()  都可以，一个中文算一个字符。  </p>
+<h3 id="字符串判断为空"><a href="#字符串判断为空" class="headerlink" title="字符串判断为空"></a>字符串判断为空</h3><p>.isNull()  只有当未被赋值的时候才为真，若 QString str1 &#x3D; “”;  返回false<br>如果是.isEmpty()  返回真   ，若未被赋值,  .isEmpty()也返回真</p>
+<h3 id="字符串提取子字符串"><a href="#字符串提取子字符串" class="headerlink" title="字符串提取子字符串"></a>字符串提取子字符串</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">QString str;</span><br><span class="line">QString csv = <span class="string">&quot;forename,middlename,surname,phone&quot;</span>;</span><br><span class="line">QString path = <span class="string">&quot;/usr/local/bin/myapp&quot;</span>; <span class="comment">// First field is empty</span></span><br><span class="line">QString::SectionFlag flag = QString::SectionSkipEmpty;</span><br><span class="line"></span><br><span class="line">str = csv.<span class="built_in">section</span>(<span class="string">&#x27;,&#x27;</span>, <span class="number">2</span>, <span class="number">2</span>);   <span class="comment">// str == &quot;surname&quot;</span></span><br><span class="line">str = path.<span class="built_in">section</span>(<span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>, <span class="number">4</span>);  <span class="comment">// str == &quot;bin/myapp&quot;</span></span><br><span class="line">str = path.<span class="built_in">section</span>(<span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>, <span class="number">3</span>, flag); <span class="comment">// str == &quot;myapp&quot;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/qt/">qt</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-qt-事件过滤器" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -817,69 +882,9 @@
 
 
   
-    <article id="post-运算符重载" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/07/12/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="article-date">
-      <time datetime="2023-07-12T02:25:20.000Z" itemprop="datePublished">2023-07-12</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/12/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/">运算符重载</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>有些棘手，脑子有点懵比，缓几天再看</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 </div>
