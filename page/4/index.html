@@ -260,6 +260,80 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-二叉树递归遍历" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/10/24/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86/" class="article-date">
+      <time datetime="2022-10-24T01:56:00.000Z" itemprop="datePublished">2022-10-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/24/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86/">二叉树递归遍历</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>要想递归遍历二叉树，我们的思路就是</p>
+<p>创建二叉树结点类型<br>二叉树递归创建<br>二叉树遍历<br>创建二叉树结点类型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bitree</span>&#123;</span></span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    data_type data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bitree</span> *<span class="title">lchild</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bitree</span> *<span class="title">rchild</span>;</span></span><br><span class="line">&#125;<span class="type">bitree_t</span>;</span><br></pre></td></tr></table></figure>
+
+<p>二叉树递归创建:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bitree_t</span> *<span class="title function_">create_binary_tree</span><span class="params">(<span class="type">int</span> n)</span><span class="comment">//这里的n用来从初始编号  </span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">bitree_t</span> *root=<span class="literal">NULL</span>;</span><br><span class="line">    root=(<span class="type">bitree_t</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">bitree_t</span>));</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">NULL</span>==root)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;malloc failed!!!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(root,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="type">bitree_t</span>));</span><br><span class="line">    root-&gt;n=n;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input %d node data\n&quot;</span>,n);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>,&amp;root-&gt;data);</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">2</span>*n&lt;=N)</span><br><span class="line">    &#123;</span><br><span class="line">        root-&gt;lchild=create_binary_tree(<span class="number">2</span>*n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>((<span class="number">2</span>*n+<span class="number">1</span>)&lt;=N)</span><br><span class="line">    &#123;</span><br><span class="line">        root-&gt;rchild=create_binary_tree(<span class="number">2</span>*n+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>二叉树的遍历：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先序遍历:</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">pre_order</span><span class="params">(<span class="type">bitree_t</span> *root)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">NULL</span>==root)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d : %c&quot;</span>,root-&gt;n,root-&gt;data);</span><br><span class="line">    pre_order(root-&gt;lchild);</span><br><span class="line">    pre_order(root-&gt;rchild);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>中序和后序是一样的道理，注意我们创建结点的时候实际上是前序创建的，所以要前序输入。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-校园网" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

@@ -260,6 +260,70 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-继承和组合" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/07/12/%E7%BB%A7%E6%89%BF%E5%92%8C%E7%BB%84%E5%90%88/" class="article-date">
+      <time datetime="2023-07-12T03:02:10.000Z" itemprop="datePublished">2023-07-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/07/12/%E7%BB%A7%E6%89%BF%E5%92%8C%E7%BB%84%E5%90%88/">继承和组合</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="继承格式"><a href="#继承格式" class="headerlink" title="继承格式"></a><strong>继承格式</strong></h3><p><code>class 派生类名:继承方式  基类名1，继承方式  基类名2，.... &#123;     派生类类体 &#125;;   </code><br>  继承方式有:public , protected,private  </p>
+<p>基类构造函数的调用，必须在<strong>派生类的初始化列表中</strong>指定传递参数。如果没有指定，则默认调用基类无参数的构造函数。  </p>
+<p><strong>派生类对象仍无法直接访问基类的private成员变量</strong>  </p>
+<p>构造函数调用顺序:<br>先按照继承时的顺序挨个调用基类的构造函数，然后调用派生类的构造函数。  </p>
+<p>析构函数调用顺序和构造函数调用顺序相反</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-运算符重载" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -789,66 +853,6 @@
 <h3 id="主机字节序转换为网络字节序"><a href="#主机字节序转换为网络字节序" class="headerlink" title="主机字节序转换为网络字节序"></a>主机字节序转换为网络字节序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">short</span> <span class="title function_">htons</span><span class="params">(<span class="type">short</span> data)</span>;        [host  to network <span class="type">short</span> ]</span><br><span class="line">功能：将<span class="type">short</span>类型的整数转成网络字节序  </span><br><span class="line">参数： </span><br><span class="line">          @data  序号转换的整数</span><br><span class="line">返回值：得到的网络字节序</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="网络字节序转换为十进制数"><a href="#网络字节序转换为十进制数" class="headerlink" title="网络字节序转换为十进制数"></a>网络字节序转换为十进制数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>  <span class="title function_">atoi</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *nptr)</span>；</span><br><span class="line">功能：把ntpr 所指向的整数字符串转换成整数。</span><br><span class="line">参数：</span><br><span class="line">    @  nptr    字符串</span><br><span class="line">返回值：成功，返回转换后的整数</span><br><span class="line">              失败，返回0</span><br><span class="line">注意：若是只有+，-和整数字符能转换，其他字符返回0</span><br><span class="line"></span><br><span class="line"><span class="type">uint32_t</span> <span class="title function_">ntohs</span><span class="params">(<span class="type">uint32_t</span> netlong)</span>;           [network to host <span class="type">short</span>]</span><br><span class="line">功能：把网络字节序转换为主机端口</span><br><span class="line">参数：</span><br><span class="line">@   netlong    网络字节序</span><br><span class="line">返回值： 返回对应的主机端口</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-网络编程之字节符转换API" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/05/25/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%AD%97%E8%8A%82%E7%AC%A6%E8%BD%AC%E6%8D%A2API/" class="article-date">
-      <time datetime="2023-05-25T11:46:05.000Z" itemprop="datePublished">2023-05-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/25/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%AD%97%E8%8A%82%E7%AC%A6%E8%BD%AC%E6%8D%A2API/">网络编程之字节符转换API</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>IP字节符转换为网络</p>
-
       
     </div>
     

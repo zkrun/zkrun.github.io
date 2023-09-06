@@ -260,6 +260,69 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-QTextStream文本流" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/09/06/QTextStream%E6%96%87%E6%9C%AC%E6%B5%81/" class="article-date">
+      <time datetime="2023-09-06T14:42:15.000Z" itemprop="datePublished">2023-09-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/09/06/QTextStream%E6%96%87%E6%9C%AC%E6%B5%81/">QTextStream文本流</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">QTextStream</span>()  </span><br><span class="line"><span class="built_in">QTextStream</span>(QIODevice *device)  </span><br><span class="line"><span class="built_in">QTextStream</span>(FILE *fileHandle, </span><br><span class="line">            QIODevice::OpenMode openMode = QIODevice::ReadWrite)  </span><br><span class="line"><span class="built_in">QTextStream</span>(QString *string, </span><br><span class="line">            QIODevice::OpenMode openMode = QIODevice::ReadWrite)  </span><br><span class="line"><span class="built_in">QTextStream</span>(QByteArray *array,</span><br><span class="line">            QIODevice::OpenMode openMode = QIODevice::ReadWrite)  </span><br><span class="line"><span class="built_in">QTextStream</span>(<span class="type">const</span> QByteArray &amp;array,</span><br><span class="line">            QIODevice::OpenMode openMode = QIODevice::ReadOnly)  </span><br></pre></td></tr></table></figure>  
+
+<p>例子：  </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">QFile <span class="title">data</span><span class="params">(<span class="string">&quot;output.txt&quot;</span>)</span></span>;</span><br><span class="line"><span class="keyword">if</span> (data.<span class="built_in">open</span>(QFile::WriteOnly | QFile::Truncate)) &#123;</span><br><span class="line">    <span class="function">QTextStream <span class="title">out</span><span class="params">(&amp;data)</span></span>;</span><br><span class="line">    out &lt;&lt; <span class="string">&quot;Result: &quot;</span> &lt;&lt; <span class="built_in">qSetFieldWidth</span>(<span class="number">10</span>) &lt;&lt; left &lt;&lt; <span class="number">3.14</span> &lt;&lt; <span class="number">2.7</span>;</span><br><span class="line">    <span class="comment">// writes &quot;Result: 3.14      2.7       &quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/qt/">qt</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-QString的使用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -788,70 +851,6 @@
 <p>动态多态是<strong>在程序运行时</strong> <strong>根据基类的引用</strong>指向的对象来确定自己具体该调用哪一个类的虚函数。  </p>
 <p>动态多态：虚函数  </p>
 <p>作用:把不同的子类对象都当作父类来看，可以屏蔽不同子类对象之间的差异，写出通用的代码，做出通用的编程，以适应需求的不断变化。多态是设计模式的基础，多态是框架的基础。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-继承和组合" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/07/12/%E7%BB%A7%E6%89%BF%E5%92%8C%E7%BB%84%E5%90%88/" class="article-date">
-      <time datetime="2023-07-12T03:02:10.000Z" itemprop="datePublished">2023-07-12</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/12/%E7%BB%A7%E6%89%BF%E5%92%8C%E7%BB%84%E5%90%88/">继承和组合</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="继承格式"><a href="#继承格式" class="headerlink" title="继承格式"></a><strong>继承格式</strong></h3><p><code>class 派生类名:继承方式  基类名1，继承方式  基类名2，.... &#123;     派生类类体 &#125;;   </code><br>  继承方式有:public , protected,private  </p>
-<p>基类构造函数的调用，必须在<strong>派生类的初始化列表中</strong>指定传递参数。如果没有指定，则默认调用基类无参数的构造函数。  </p>
-<p><strong>派生类对象仍无法直接访问基类的private成员变量</strong>  </p>
-<p>构造函数调用顺序:<br>先按照继承时的顺序挨个调用基类的构造函数，然后调用派生类的构造函数。  </p>
-<p>析构函数调用顺序和构造函数调用顺序相反</p>
 
       
     </div>
