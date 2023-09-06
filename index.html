@@ -260,6 +260,68 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-QDataStream数据流" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/09/06/QDataStream%E6%95%B0%E6%8D%AE%E6%B5%81/" class="article-date">
+      <time datetime="2023-09-06T15:23:30.000Z" itemprop="datePublished">2023-09-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/09/06/QDataStream%E6%95%B0%E6%8D%AE%E6%B5%81/">QDataStream数据流</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>QDataStream类用于将任意常见类型的数据以二进制写入到指定的目标中，同时也可以按写入的顺序从目标中读取这些类型的数据,实现数据的序列化。</p>
+<p>这个操作在通信中很有用，例如:我需要将一个学生对象传递给对方，我只需通过QDataStream把学生对象序列化成一个二进制数据发送给对方，对方通过QDataStream反序列化就可以得到这个学生对象的数据。 </p>
+<h3 id="数据流写入"><a href="#数据流写入" class="headerlink" title="数据流写入"></a>数据流写入</h3><p>当使用运算符重载&lt;&lt;或者使用writeBytes函数时写入QString QByteArray,QPicture,const char *类型的数据时，qt会自动在数据前面添加4个字节的长度信息。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/qt/">qt</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-QTextStream文本流" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -293,6 +355,8 @@
 
 <p>例子：  </p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">QFile <span class="title">data</span><span class="params">(<span class="string">&quot;output.txt&quot;</span>)</span></span>;</span><br><span class="line"><span class="keyword">if</span> (data.<span class="built_in">open</span>(QFile::WriteOnly | QFile::Truncate)) &#123;</span><br><span class="line">    <span class="function">QTextStream <span class="title">out</span><span class="params">(&amp;data)</span></span>;</span><br><span class="line">    out &lt;&lt; <span class="string">&quot;Result: &quot;</span> &lt;&lt; <span class="built_in">qSetFieldWidth</span>(<span class="number">10</span>) &lt;&lt; left &lt;&lt; <span class="number">3.14</span> &lt;&lt; <span class="number">2.7</span>;</span><br><span class="line">    <span class="comment">// writes &quot;Result: 3.14      2.7       &quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要格外注意的是，如果使用了运算符重载&lt;&lt;进行数据写入，需要用.flush()方法来刷新缓存才能成功写入。</p>
 
       
     </div>
@@ -783,74 +847,6 @@
       
           
         <p>当子类继承基类时，若函数名相同，参数名不同，此时基类有没有virtual关键字，函数都将被隐藏<br>当子类继承基类时，若函数名相同，参数相同，基类没有virtual关键字，此时基类函数将被隐藏</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-多态总结" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/07/13/%E5%A4%9A%E6%80%81%E6%80%BB%E7%BB%93/" class="article-date">
-      <time datetime="2023-07-13T11:23:49.000Z" itemprop="datePublished">2023-07-13</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/13/%E5%A4%9A%E6%80%81%E6%80%BB%E7%BB%93/">多态总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><font color="red">1.基类(父类)里面的方法是用virtual关键字修饰，变成虚函数   </font></p>
-<p>2.子类继承父类重写父类里面的方法  </p>
-<p>3.用父类的指针或引用指向子类对象  </p>
-<p>4.通过父类指针或引用调用子类重写的父类方法   </p>
-<p>静态多态是编译器在编译期间完成的，编译器会根据实参类型来选择调用合适的函数，如果有合适的函数就调用，没有的话就会发出警告或者报错； </p>
-<p>静态多态:函数重载，泛型编程  </p>
-<p>动态多态是<strong>在程序运行时</strong> <strong>根据基类的引用</strong>指向的对象来确定自己具体该调用哪一个类的虚函数。  </p>
-<p>动态多态：虚函数  </p>
-<p>作用:把不同的子类对象都当作父类来看，可以屏蔽不同子类对象之间的差异，写出通用的代码，做出通用的编程，以适应需求的不断变化。多态是设计模式的基础，多态是框架的基础。</p>
 
       
     </div>

@@ -260,6 +260,74 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-多态总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/07/13/%E5%A4%9A%E6%80%81%E6%80%BB%E7%BB%93/" class="article-date">
+      <time datetime="2023-07-13T11:23:49.000Z" itemprop="datePublished">2023-07-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/07/13/%E5%A4%9A%E6%80%81%E6%80%BB%E7%BB%93/">多态总结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><font color="red">1.基类(父类)里面的方法是用virtual关键字修饰，变成虚函数   </font></p>
+<p>2.子类继承父类重写父类里面的方法  </p>
+<p>3.用父类的指针或引用指向子类对象  </p>
+<p>4.通过父类指针或引用调用子类重写的父类方法   </p>
+<p>静态多态是编译器在编译期间完成的，编译器会根据实参类型来选择调用合适的函数，如果有合适的函数就调用，没有的话就会发出警告或者报错； </p>
+<p>静态多态:函数重载，泛型编程  </p>
+<p>动态多态是<strong>在程序运行时</strong> <strong>根据基类的引用</strong>指向的对象来确定自己具体该调用哪一个类的虚函数。  </p>
+<p>动态多态：虚函数  </p>
+<p>作用:把不同的子类对象都当作父类来看，可以屏蔽不同子类对象之间的差异，写出通用的代码，做出通用的编程，以适应需求的不断变化。多态是设计模式的基础，多态是框架的基础。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-继承和组合" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -788,71 +856,6 @@
 <p>当 SEM_FULL &#x3D; 0 时,表示目前队列剩余0为满,则生产者进程阻塞。（本人倾向于记SEM_REST&#x3D;0,更方便记忆）</p>
 <hr>
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-网络编程之字节序转换API" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/05/25/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%AD%97%E8%8A%82%E5%BA%8F%E8%BD%AC%E6%8D%A2API/" class="article-date">
-      <time datetime="2023-05-25T11:46:05.000Z" itemprop="datePublished">2023-05-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/25/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%AD%97%E8%8A%82%E5%BA%8F%E8%BD%AC%E6%8D%A2API/">网络编程之字节序转换API</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="ip字符串转换网络字节序："><a href="#ip字符串转换网络字节序：" class="headerlink" title="ip字符串转换网络字节序："></a>ip字符串转换网络字节序：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">inet_aton</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *cp, <span class="keyword">struct</span> in_addr *inp)</span>;     [addr to network]</span><br><span class="line">功能:将cp指向的IP字符串转成网络字节inp保存的地址中。 </span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="网络字节序转换IP字符串"><a href="#网络字节序转换IP字符串" class="headerlink" title="网络字节序转换IP字符串"></a>网络字节序转换IP字符串</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *<span class="title function_">inet_ntoa</span><span class="params">(<span class="keyword">struct</span> in_addr in)</span>;   [network to addr]</span><br><span class="line">功能：将IP网络字节序转换成IP字符串</span><br><span class="line">参数:</span><br><span class="line">@in   IP网络字节序 </span><br><span class="line"></span><br><span class="line">返回值:</span><br><span class="line">成功返回IP字符串首地址，失败返回<span class="literal">NULL</span> </span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="主机字节序转换为网络字节序"><a href="#主机字节序转换为网络字节序" class="headerlink" title="主机字节序转换为网络字节序"></a>主机字节序转换为网络字节序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">short</span> <span class="title function_">htons</span><span class="params">(<span class="type">short</span> data)</span>;        [host  to network <span class="type">short</span> ]</span><br><span class="line">功能：将<span class="type">short</span>类型的整数转成网络字节序  </span><br><span class="line">参数： </span><br><span class="line">          @data  序号转换的整数</span><br><span class="line">返回值：得到的网络字节序</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="网络字节序转换为十进制数"><a href="#网络字节序转换为十进制数" class="headerlink" title="网络字节序转换为十进制数"></a>网络字节序转换为十进制数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>  <span class="title function_">atoi</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *nptr)</span>；</span><br><span class="line">功能：把ntpr 所指向的整数字符串转换成整数。</span><br><span class="line">参数：</span><br><span class="line">    @  nptr    字符串</span><br><span class="line">返回值：成功，返回转换后的整数</span><br><span class="line">              失败，返回0</span><br><span class="line">注意：若是只有+，-和整数字符能转换，其他字符返回0</span><br><span class="line"></span><br><span class="line"><span class="type">uint32_t</span> <span class="title function_">ntohs</span><span class="params">(<span class="type">uint32_t</span> netlong)</span>;           [network to host <span class="type">short</span>]</span><br><span class="line">功能：把网络字节序转换为主机端口</span><br><span class="line">参数：</span><br><span class="line">@   netlong    网络字节序</span><br><span class="line">返回值： 返回对应的主机端口</span><br></pre></td></tr></table></figure>
       
     </div>
     
