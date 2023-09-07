@@ -260,6 +260,71 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-环形队列数据读写实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/05/30/%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%86%99%E5%AE%9E%E7%8E%B0/" class="article-date">
+      <time datetime="2023-05-30T07:27:23.000Z" itemprop="datePublished">2023-05-30</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/30/%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%86%99%E5%AE%9E%E7%8E%B0/">环形队列数据读写实现</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>在此项目中，创建了一个信号量集合并包含了三个信号量.  </p>
+<p>使用一个信号量   (SEM_MUTEX) 用于共享内存的互斥.<br>使用两个信号量（SEM_EMPTY 与 SEM_FULL）用于环形队列的同步   </p>
+<hr>
+<p>SEM_EMPTY &#x3D; 0,表示目前队列只有0个数据为空（本人倾向于记SEM_CURRENT&#x3D;0,更方便记忆。）  </p>
+<p>当 SEM_FULL &#x3D; 0 时,表示目前队列剩余0为满,则生产者进程阻塞。（本人倾向于记SEM_REST&#x3D;0,更方便记忆）</p>
+<hr>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-网络编程之字节序转换API" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -840,73 +905,6 @@
         <p class="article-more-link">
           <a href="/2022/12/27/awk%E5%92%8Csed%E5%91%BD%E4%BB%A4/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-shell常见错误" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" class="article-date">
-      <time datetime="2022-12-26T14:06:35.000Z" itemprop="datePublished">2022-12-26</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">shell常见易错</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="直接进入正题"><a href="#直接进入正题" class="headerlink" title="直接进入正题"></a>直接进入正题</h3><p>常见的一个错误就是赋值，简单举例子来说</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">str1</span><span class="operator">=</span><span class="string">&quot;This is a sentence.&quot;</span></span><br></pre></td></tr></table></figure>
-<p>赋值的时候不能带空格。</p>
-<p>在下面这种情况就需要带，不然的话会被当做一个整体字符串来看</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">expr <span class="number">10</span> + <span class="number">2</span></span><br><span class="line"><span class="comment">//这里顺便提一嘴,如果用expr作乘法运算比如: expr 10 * 2，是错误的，在shell中这里的星号会被认为和ls *.sh中的星号作用一样，所以需要加转义字符expr 10  \* 2</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-    </div>
-
       
       <div class="clearfix"></div>
     </div>

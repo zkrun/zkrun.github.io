@@ -260,6 +260,70 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-QThread" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/09/07/QThread/" class="article-date">
+      <time datetime="2023-09-07T13:01:03.000Z" itemprop="datePublished">2023-09-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/09/07/QThread/">QThread</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>关于继承QThread线程对象在哪个线程中的判断，挺简单，只要记住对象在哪个线程中被创建存在，自身实例对象就在哪个线程中。<br>在Qt中一个对象的槽函数在被信号触发调用的时候，槽函数在那个线程中执行取决于它的对象属于那个线程中     </p>
+<p><font color="red">默认情况一下我们在代码中创建的对象都属于主线程，这个对象的槽函数在调用的时候，占用的都是主线程的时间，我们也可以将一个QObject类型的对象或子类对象通过moveToThread移动到子线程中去，这样当这个对象的槽函数被信号触发调用的时候，槽函数占用的就是子线程的时间。 </font><br>这个方法会更改此对象及其子对象的线程关联性。如果对象有父对象，则不能移动该对象。  </p>
+<p>槽函数可以跟任意线程的任意信号建立连接  </p>
+<p>在Qt中，QThread类用于创建和管理线程。QThread类提供了一个run()方法，该方法定义了线程要执行的任务。然而，直接调用run()方法并不会在一个单独的线程中执行，而是在当前线程中执行。这是因为QThread的run()方法实际上是一个普通的成员函数，而不是开启一个新的线程。</p>
+<p>为了在一个单独的线程中执行任务，应该调用QThread的start()方法。start()方法会在一个新的线程中执行run()方法，从而实现并发执行。这是因为start()方法会在内部创建一个新的系统线程，并将run()方法在该线程中执行。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/qt/">qt</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-QDataStream数据流" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -787,66 +851,6 @@
           
         <p>若子类继承基类，两者析构函数不加virtual关键字，此时调用函数 参数为基类指针指向子类对象 删除对象，那么只会执行基类构造函数，此时对于编译器而言，你传进去的基类指针，在函数体已经静态编译好为基类的构造函数。</p>
 <p>如果在基类的析构函数前加上virtual关键字，此时对于子类的析构函数，也会自动加上virtual关键字，从而加入到虚函数表中，再调用上面的函数，会首先寻找调用子类的析构函数，此时在子类的析构函数最后面，编译器会自动执行基类的析构函数</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-隐藏" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/07/14/%E9%9A%90%E8%97%8F/" class="article-date">
-      <time datetime="2023-07-14T01:44:35.000Z" itemprop="datePublished">2023-07-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/14/%E9%9A%90%E8%97%8F/">隐藏</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>当子类继承基类时，若函数名相同，参数名不同，此时基类有没有virtual关键字，函数都将被隐藏<br>当子类继承基类时，若函数名相同，参数相同，基类没有virtual关键字，此时基类函数将被隐藏</p>
 
       
     </div>
