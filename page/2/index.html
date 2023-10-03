@@ -260,6 +260,67 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-虚析构函数" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/07/14/%E8%99%9A%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/" class="article-date">
+      <time datetime="2023-07-14T02:05:22.000Z" itemprop="datePublished">2023-07-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/07/14/%E8%99%9A%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/">虚析构函数</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>若子类继承基类，两者析构函数不加virtual关键字，此时调用函数 参数为基类指针指向子类对象 删除对象，那么只会执行基类构造函数，此时对于编译器而言，你传进去的基类指针，在函数体已经静态编译好为基类的构造函数。</p>
+<p>如果在基类的析构函数前加上virtual关键字，此时对于子类的析构函数，也会自动加上virtual关键字，从而加入到虚函数表中，再调用上面的函数，会首先寻找调用子类的析构函数，此时在子类的析构函数最后面，编译器会自动执行基类的析构函数</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-隐藏" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -799,70 +860,6 @@
       
 
       
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-并发多进程服务器网络聊天模型" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/06/27/%E5%B9%B6%E5%8F%91%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C%E8%81%8A%E5%A4%A9%E6%A8%A1%E5%9E%8B/" class="article-date">
-      <time datetime="2023-06-27T12:20:19.000Z" itemprop="datePublished">2023-06-27</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/06/27/%E5%B9%B6%E5%8F%91%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C%E8%81%8A%E5%A4%A9%E6%A8%A1%E5%9E%8B/">并发多进程服务器网络聊天模型</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h4 id="这两天在想，到底是否学会了，怎么验证你学会了，我一直在纠结，但是昨天早上醒来，我觉得我可能迄今为止做错了很多事，比葫芦画瓢？谁都会，靠着自己脑中残留的记忆来照着写，真的是硬实力吗？我不觉得，我认为只有自己写出来了，才算你牛逼。"><a href="#这两天在想，到底是否学会了，怎么验证你学会了，我一直在纠结，但是昨天早上醒来，我觉得我可能迄今为止做错了很多事，比葫芦画瓢？谁都会，靠着自己脑中残留的记忆来照着写，真的是硬实力吗？我不觉得，我认为只有自己写出来了，才算你牛逼。" class="headerlink" title="这两天在想，到底是否学会了，怎么验证你学会了，我一直在纠结，但是昨天早上醒来，我觉得我可能迄今为止做错了很多事，比葫芦画瓢？谁都会，靠着自己脑中残留的记忆来照着写，真的是硬实力吗？我不觉得，我认为只有自己写出来了，才算你牛逼。  "></a><font color="red">这两天在想，到底是否学会了，怎么验证你学会了，我一直在纠结，但是昨天早上醒来，我觉得我可能迄今为止做错了很多事，比葫芦画瓢？谁都会，靠着自己脑中残留的记忆来照着写，真的是硬实力吗？我不觉得，我认为只有自己写出来了，才算你牛逼。  </font></h4><p>这两天虽然只写了不多的代码，但我觉得让我受益匪浅。把遇到的问题即时记录下来则会很有帮助。<br>1.warning的警告要看在哪里警告，警告的提示跟函数参数的出入在哪，我的问题在于编译时提示我recvfrom的参数有问题，</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
-    </div>
-
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2023/06/27/%E5%B9%B6%E5%8F%91%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C%E8%81%8A%E5%A4%A9%E6%A8%A1%E5%9E%8B/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>

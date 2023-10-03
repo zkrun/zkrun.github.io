@@ -260,6 +260,61 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-不更啦" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/10/03/%E4%B8%8D%E6%9B%B4%E5%95%A6/" class="article-date">
+      <time datetime="2023-10-03T03:09:16.000Z" itemprop="datePublished">2023-10-03</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/03/%E4%B8%8D%E6%9B%B4%E5%95%A6/">不更啦</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="不更啦，准备考研了，再见"><a href="#不更啦，准备考研了，再见" class="headerlink" title="不更啦，准备考研了，再见"></a>不更啦，准备考研了，再见</h3>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-QThread" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -790,67 +845,6 @@
       
           
         <p>包含有纯虚函数的类称作抽象类<br><strong>纯虚函数</strong>：<br>‘virtual void Test(void)&#x3D;0;’<br>基类不需要实现函数，提供模板为子类使用。<br>抽象类不能创建对象，因为纯虚函数没有实现功能。<br>可以作为引用或者指针的类型。<br>子类继承抽象类时必须实现抽象类里面的全部纯虚函数，否则子类也为抽象类</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-虚析构函数" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/07/14/%E8%99%9A%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/" class="article-date">
-      <time datetime="2023-07-14T02:05:22.000Z" itemprop="datePublished">2023-07-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/07/14/%E8%99%9A%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/">虚析构函数</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>若子类继承基类，两者析构函数不加virtual关键字，此时调用函数 参数为基类指针指向子类对象 删除对象，那么只会执行基类构造函数，此时对于编译器而言，你传进去的基类指针，在函数体已经静态编译好为基类的构造函数。</p>
-<p>如果在基类的析构函数前加上virtual关键字，此时对于子类的析构函数，也会自动加上virtual关键字，从而加入到虚函数表中，再调用上面的函数，会首先寻找调用子类的析构函数，此时在子类的析构函数最后面，编译器会自动执行基类的析构函数</p>
 
       
     </div>
