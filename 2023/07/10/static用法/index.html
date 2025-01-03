@@ -1,514 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="昆汀" />
-
-
-
-<meta name="description" content="static修饰局部变量时，用来延长生命周期。修饰全局变量或者函数时，用来限制作用域修饰静态成员变量的时候，所有的类对象共享此资源。访问此资源时，既可以用类访问，也可以用对象访问。记得要在类外初始化static修饰静态成员函数的时候，静态成员函数没有this指针，也就不能访问非静态资源。Q:什么时候使用静态成员函数？当不需要实例化，不需要访问非静态资源，就有的确定行为static语句放在publi">
-<meta property="og:type" content="article">
-<meta property="og:title" content="static用法">
-<meta property="og:url" content="https://zkrun.github.io/2023/07/10/static%E7%94%A8%E6%B3%95/index.html">
-<meta property="og:site_name" content="故乡的雪花飘落了">
-<meta property="og:description" content="static修饰局部变量时，用来延长生命周期。修饰全局变量或者函数时，用来限制作用域修饰静态成员变量的时候，所有的类对象共享此资源。访问此资源时，既可以用类访问，也可以用对象访问。记得要在类外初始化static修饰静态成员函数的时候，静态成员函数没有this指针，也就不能访问非静态资源。Q:什么时候使用静态成员函数？当不需要实例化，不需要访问非静态资源，就有的确定行为static语句放在publi">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-10T08:04:53.000Z">
-<meta property="article:modified_time" content="2023-07-13T11:33:55.175Z">
-<meta property="article:author" content="昆汀">
-<meta name="twitter:card" content="summary">
-
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
-
-
-    <link rel="alternate" href="/atom.xml" title="故乡的雪花飘落了" type="application/atom+xml">
-
-
-
-    <link rel="shortcut icon" href="/favicon.png">
-
-
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
-
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>static用法 | 故乡的雪花飘落了</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: false,
-        isPost: true,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: false
-    }
-</script>
-
-
-    <script> yiliaConfig.jquery_ui = [false]; </script>
-
-
-
-    <script> yiliaConfig.rootUrl = "\/";</script>
-
-
-
-
-
-
-<meta name="generator" content="Hexo 6.3.0"></head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/"></a></h1>
-        </hgroup>
-
-        
-
-        
-
-
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
-                        
-                        <li>Friends</li>
-                        
-                        
-                        <li>About Me</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa GitHub" target="_blank" rel="noopener" href="https://github.com/zkrun/" title="GitHub"></a>
-                            
-                                <a class="fa bilibili" target="_blank" rel="noopener" href="https://space.bilibili.com/1931090829" title="bilibili"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Makefile/" rel="tag">Makefile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/io/" rel="tag">io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">某个不知名的平凡大学生</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
-            </hgroup>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa GitHub" target="_blank" href="https://github.com/zkrun/" title="GitHub"></a>
-                            
-                                <a class="fa bilibili" target="_blank" href="https://space.bilibili.com/1931090829" title="bilibili"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
-</nav>
-      <div class="body-wrap"><article id="post-static用法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/07/10/static%E7%94%A8%E6%B3%95/" class="article-date">
-      <time datetime="2023-07-10T08:04:53.000Z" itemprop="datePublished">2023-07-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      static用法
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-
-        
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <dl><dt>static修饰局部变量时，用来延长生命周期。<br>修饰全局变量或者函数时，用来限制作用域<br>修饰静态成员变量的时候，所有的类对象共享此资源。<br>访问此资源时，既可以用类访问，也可以用对象访问。<br><font color="red">记得要在类外初始化</font><br>static修饰静态成员函数的时候，静态成员函数没有this指针，也就不能访问非静态资源。<br>Q:什么时候使用静态成员函数？</dt><dd>当不需要实例化，不需要访问非静态资源，就有的确定行为<br>static语句放在public和private中是等效的</dd></dl>
-      
-    </div>
-    
-  </div>
-  
-    
-    <div class="copyright">
-        <p><span>Title:</span><a href="/2023/07/10/static%E7%94%A8%E6%B3%95/">static用法</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2023-07-10, 16:04:53</p>
-        <p><span>Updated:</span>2023-07-13, 19:33:55</p>
-        <p>
-            <span>Full URL:</span><a class="post-url" href="/2023/07/10/static%E7%94%A8%E6%B3%95/" title="static用法">https://zkrun.github.io/2023/07/10/static%E7%94%A8%E6%B3%95/</a>
-            <span class="copy-path" data-clipboard-text="From https://zkrun.github.io/2023/07/10/static%E7%94%A8%E6%B3%95/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
-        </p>
-    </div>
-
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2023/07/10/const%E7%94%A8%E6%B3%95/">
-                    const用法
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2023/07/09/c-%E5%87%BD%E6%95%B0%E5%A2%9E%E5%BC%BA%E9%83%A8%E5%88%86/">
-                    c++函数增强部分
-                </a>
-            </div>
-        
-    </nav>
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-            
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
-
-    <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
-    </script>
-
-
-
-    
-<div class="share">
-    
-        <div class="bdsharebuttonbox">
-            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
-            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
-            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
-        </div>
-        <script>
-            window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"static用法　| 故乡的雪花飘落了　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
-    
-
-    
-</div>
-
-
-
-
-
-
-
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2023/07/10/const%E7%94%A8%E6%B3%95/" title="Pre: const用法">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2023/07/09/c-%E5%87%BD%E6%95%B0%E5%A2%9E%E5%BC%BA%E9%83%A8%E5%88%86/" title="Next: c++函数增强部分">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/10/03/%E4%B8%8D%E6%9B%B4%E5%95%A6/">不更啦</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/07/QThread/">QThread</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/06/QDataStream%E6%95%B0%E6%8D%AE%E6%B5%81/">QDataStream数据流</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/06/QTextStream%E6%96%87%E6%9C%AC%E6%B5%81/">QTextStream文本流</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/08/10/QString%E7%9A%84%E4%BD%BF%E7%94%A8/">QString的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/08/08/qt-%E4%BA%8B%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%99%A8/">qt-事件过滤器</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/08/01/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E6%A1%8C%E9%9D%A2%E6%94%B6%E9%9F%B3%E6%9C%BA/">从零开始的桌面收音机</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/16/vector%E5%AE%B9%E5%99%A8/">顺序容器</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/16/%E9%9D%9E%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0/">非类型参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/14/%E6%8A%BD%E8%B1%A1%E7%B1%BB/">抽象类</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/14/%E8%99%9A%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/">虚析构函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/14/%E9%9A%90%E8%97%8F/">隐藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/13/%E5%A4%9A%E6%80%81%E6%80%BB%E7%BB%93/">多态总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/12/%E7%BB%A7%E6%89%BF%E5%92%8C%E7%BB%84%E5%90%88/">继承和组合</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/12/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/">运算符重载</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/10/const%E7%94%A8%E6%B3%95/">const用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/10/static%E7%94%A8%E6%B3%95/">static用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/09/c-%E5%87%BD%E6%95%B0%E5%A2%9E%E5%BC%BA%E9%83%A8%E5%88%86/">c++函数增强部分</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/04/tcp%E7%B2%98%E5%8C%85%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">tcp粘包解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/02/%E7%89%A2%E9%AA%9A/">牢骚</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/27/%E5%B9%B6%E5%8F%91%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C%E8%81%8A%E5%A4%A9%E6%A8%A1%E5%9E%8B/">并发多进程服务器网络聊天模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/30/%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%86%99%E5%AE%9E%E7%8E%B0/">环形队列数据读写实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/25/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%AD%97%E8%8A%82%E5%BA%8F%E8%BD%AC%E6%8D%A2API/">网络编程之字节序转换API</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/25/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%AD%97%E8%8A%82%E7%AC%A6%E8%BD%AC%E6%8D%A2API/">网络编程之字节符转换API</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/02/23/%E8%BF%9B%E7%A8%8B/">进程</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/02/02/%E9%9D%99%E6%80%81%E5%BA%93%E4%B8%8E%E5%8A%A8%E6%80%81%E5%BA%93/">静态库与动态库</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/02/01/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">二进制数据输入输出</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/01/31/linux%E6%A0%87%E5%87%86io/">linux标准io</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/01/27/linux%E6%96%87%E4%BB%B6io/">linux文件io</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/01/24/Makefile%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/">Makefile的那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/12/27/awk%E5%92%8Csed%E5%91%BD%E4%BB%A4/">awk和sed命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">shell常见易错</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/12/26/test/">test</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/24/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86/">二叉树递归遍历</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/15/%E6%A0%A1%E5%9B%AD%E7%BD%91/">校园网</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2023 昆汀
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
-            </div>
-        </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>| </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
-    </div>
-</footer>
-
-
-
-    </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
-
-
-
-
-
-<div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
-</div>
-<script>
-    // Open in New Window
-    
-        var oOpenInNew = {
-            
-            
-            
-            
-            
-            
-             archives: ".archive-article-title", 
-             miniArchives: "a.post-list-link", 
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
-    
-</script>
-
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-  </div>
-</body>
-</html>
+extends base
+
+block title
+  title= page.title + ' | ' + config.title
+
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta= page.date.format(config.date_format)
+      if page.categories.length > 0
+        span= ' | '
+        span.category
+          for category in page.categories.toArray()
+            a(href=url_for(category.path))= category.name
+      if theme.busuanzi == true
+        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        span#busuanzi_container_page_pv= ' | '
+          span#busuanzi_value_page_pv
+          span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
+    if theme.disqus.enable == true
+      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
+    if theme.changyan
+      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
+        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span= ' ' + __('Comment')
+      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
+    if theme.valine.enable == true
+      a.disqus-comment-count(href=url_for(page.path) + '#vcomment')
+        span.valine-comment-count(data-xid=url_for(page.path))
+        span= ' ' + __('Comment')
+    if theme.waline.enable == true
+      a.disqus-comment-count(href=url_for(page.path) + '#waline')
+        span.waline-comment-count(id=url_for(page.path))
+        span= ' ' + __('Comment')
+    if page.toc
+      .clear
+        #toc.toc-article
+          .toc-title= __('contents')
+          != toc(page.content, {list_number: theme.toc_number})
+    .post-content
+      != page.content
+    if theme.donate.enable == true && page.donate != false
+      include _widget/donate.pug
+
+    if theme.post_copyright.enable == true && page.copyright != false
+      include _widget/copyright.pug
+
+    if theme.shareto == true
+      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
+      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+
+    include _partial/tag.pug
+    include _partial/post_nav.pug
+
+    if page.comments
+      include _partial/comments.pug
