@@ -1,58 +1,199 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>并发多进程服务器网络聊天模型 | 故乡的雪花飘落了</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="这两天在想，到底是否学会了，怎么验证你学会了，我一直在纠结，但是昨天早上醒来，我觉得我可能迄今为止做错了很多事，比葫芦画瓢？谁都会，靠着自己脑中残留的记忆来照着写，真的是硬实力吗？我不觉得，我认为只有自己写出来了，才算你牛逼。  
+这两天虽然只写了不多的代码，但我觉得让我受益匪浅。把遇到的问题即时记录下来则会很有帮助。
+1.warning的警告要看在哪里警告，警告的提示跟函数参数的出入在哪，我的问题在于编译时提示我recvfrom的参数有问题，">
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css">
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-block title
-  title= page.title + ' | ' + config.title
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="/" id="logo">故乡的雪花飘落了</a>
+  </h1>
+  
+</div>
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format(config.date_format)
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus.enable == true
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable == true
-      a.disqus-comment-count(href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if theme.waline.enable == true
-      a.disqus-comment-count(href=url_for(page.path) + '#waline')
-        span.waline-comment-count(id=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      .clear
-        #toc.toc-article
-          .toc-title= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true && page.donate != false
-      include _widget/donate.pug
+      <div id="content" class="outer">
+        <section id="main"><article id="post-并发多进程服务器网络聊天模型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/06/27/%E5%B9%B6%E5%8F%91%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C%E8%81%8A%E5%A4%A9%E6%A8%A1%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2023-06-27T12:20:19.000Z" itemprop="datePublished">2023-06-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
+  </div>
 
-    if theme.post_copyright.enable == true && page.copyright != false
-      include _widget/copyright.pug
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      并发多进程服务器网络聊天模型
+    </h1>
+  
 
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="&lt;font-color=red&gt;这两天在想&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;，&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;到底是否学会了&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;，&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;怎么验证你学会了&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;，&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;我一直在纠结&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;，&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;但是昨天早上醒来&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;，&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;我觉得我可能迄今为止做错了很多事&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;，&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;比葫芦画瓢&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;？&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;谁都会&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;，&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;靠着自己脑中残留的记忆来照着写&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;，&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;真的是硬实力吗&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;？&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;我不觉得&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;，&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;我认为只有自己写出来了&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;，&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;才算你牛逼&lt;span class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;。&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;  &lt;/font&gt;"><font color="red">这两天在想<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>到底是否学会了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>怎么验证你学会了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我一直在纠结<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但是昨天早上醒来<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我觉得我可能迄今为止做错了很多事<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>比葫芦画瓢<span class="bd-box"><h-char class="bd bd-beg"><h-inner>？</h-inner></h-char></span>谁都会<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>靠着自己脑中残留的记忆来照着写<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>真的是硬实力吗<span class="bd-box"><h-char class="bd bd-beg"><h-inner>？</h-inner></h-char></span>我不觉得<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我认为只有自己写出来了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>才算你牛逼<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>  </font></h4>
+<p>这两天虽然只写了不多的代码<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但我觉得让我受益匪浅<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>把遇到的问题即时记录下来则会很有帮助<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+1.warning的警告要看在哪里警告<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>警告的提示跟函数参数的出入在哪<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我的问题在于编译时提示我recvfrom的参数有问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span></p>
+<span id="more"></span>仔细一看便知<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>原函数的参数用的(struct sockaddr *)的指针<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而我用的是sockaddr_in<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因此需要强制转换<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>  先看一下client.c的代码 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>  
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LOGIN_FAILURE 0</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LOGIN_SUCCESS 1</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">login_send</span><span class="params">(<span class="type">int</span> sockfd,<span class="keyword">struct</span> sockaddr_in *peer_addr,<span class="keyword">struct</span> sockaddr_in *dest_addr,<span class="type">socklen_t</span> addrlen)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> buffer[<span class="number">64</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="type">int</span> send_number;</span><br><span class="line">	<span class="type">char</span> login_flag;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">memset</span>(buffer,<span class="number">0</span>,<span class="keyword">sizeof</span>(buffer));</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;login:  &quot;</span>);</span><br><span class="line">		fgets(buffer,<span class="number">64</span>,<span class="built_in">stdin</span>);</span><br><span class="line">		buffer[<span class="built_in">strlen</span>(buffer)<span class="number">-1</span>]=<span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">		send_number=sendto(sockfd,buffer,<span class="built_in">strlen</span>(buffer),<span class="number">0</span>,(<span class="keyword">struct</span> sockaddr *)peer_addr,addrlen);	</span><br><span class="line">		<span class="keyword">if</span>(send_number==<span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			perror(<span class="string">&quot;[ERROR] sendto() failed!&quot;</span>);</span><br><span class="line">			<span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">		&#125;</span><br><span class="line">		recvfrom(sockfd,&amp;login_flag,<span class="keyword">sizeof</span>(login_flag),<span class="number">0</span>,(<span class="keyword">struct</span> sockaddr *)dest_addr,&amp;addrlen);</span><br><span class="line">		<span class="keyword">if</span>(login_flag==LOGIN_SUCCESS)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;password is not true,try again...\n&quot;</span>);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">send_data</span><span class="params">(<span class="type">int</span> sockfd,<span class="keyword">struct</span> sockaddr_in *dest_addr,<span class="type">socklen_t</span> addrlen)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> buffer[<span class="number">64</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="type">int</span> send_number;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">memset</span>(buffer,<span class="number">0</span>,<span class="keyword">sizeof</span>(buffer));</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;&gt; &quot;</span>);</span><br><span class="line">		fgets(buffer,<span class="keyword">sizeof</span>(buffer),<span class="built_in">stdin</span>);</span><br><span class="line">		buffer[<span class="built_in">strlen</span>(buffer)<span class="number">-1</span>]=<span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">		send_number=sendto(sockfd,buffer,<span class="built_in">strlen</span>(buffer),<span class="number">0</span>,(<span class="keyword">struct</span> sockaddr *)dest_addr,addrlen);</span><br><span class="line">		<span class="keyword">if</span>(send_number==<span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			perror(<span class="string">&quot;[ERROR] sendto() failed!&quot;</span>);</span><br><span class="line">			<span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">		</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">strcmp</span>(buffer,<span class="string">&quot;quit&quot;</span>)==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;quitted......\n&quot;</span>);</span><br><span class="line">			<span class="built_in">exit</span>(EXIT_SUCCESS);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(argc!=<span class="number">3</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">&quot;Parameters wrong!(should contain:ip port)&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> sockfd;</span><br><span class="line">	sockfd=socket(AF_INET,SOCK_DGRAM,<span class="number">0</span>);<span class="comment">//创建socket套接字</span></span><br><span class="line">	<span class="keyword">if</span>(sockfd==<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		perror(<span class="string">&quot;[ERROR] socket() failed!&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//sockaddr_in信息填充</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">peer_addr</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">dest_addr</span>;</span></span><br><span class="line">	<span class="built_in">memset</span>(&amp;peer_addr,<span class="number">0</span>,<span class="keyword">sizeof</span>(peer_addr));</span><br><span class="line">	peer_addr.sin_family=AF_INET;</span><br><span class="line">	peer_addr.sin_addr.s_addr=inet_addr(argv[<span class="number">1</span>]);</span><br><span class="line">	peer_addr.sin_port=htons(atoi(argv[<span class="number">2</span>]));</span><br><span class="line">	<span class="type">socklen_t</span> addrlen=<span class="keyword">sizeof</span>(peer_addr);</span><br><span class="line">	<span class="comment">//登录密钥验证</span></span><br><span class="line">	</span><br><span class="line">	login_send(sockfd,&amp;peer_addr,&amp;dest_addr,addrlen);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;login success!\n&quot;</span>);</span><br><span class="line">	<span class="comment">//数据交互</span></span><br><span class="line">	send_data(sockfd,&amp;dest_addr,addrlen);</span><br><span class="line">	close(sockfd);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">peer_addr</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">dest_addr</span>;</span></span><br><span class="line">	<span class="built_in">memset</span>(&amp;peer_addr,<span class="number">0</span>,<span class="keyword">sizeof</span>(peer_addr));</span><br><span class="line">	peer_addr.sin_family=AF_INET;</span><br><span class="line">	peer_addr.sin_addr.s_addr=inet_addr(argv[<span class="number">1</span>]);</span><br><span class="line">	peer_addr.sin_port=htons(atoi(argv[<span class="number">2</span>]));</span><br></pre></td></tr></table></figure>
+<p>我写代码的时候只想到了memset初始化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不知道怎的将memset放到赋值后面了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>难怪我说为什么一直显示无效的参数…因为没有参数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+client客户端的代码还是比较简单的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>下面来看服务端的代码<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LOGIN_FAILURE 0</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LOGIN_SUCCESS 1</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">printf_client_info</span><span class="params">(<span class="keyword">struct</span> sockaddr_in *addr,<span class="type">char</span> *buf)</span></span><br><span class="line">&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;===============================\n&quot;</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;user IP : %s\n&quot;</span>,inet_ntoa(addr-&gt;sin_addr));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;user port : %d\n&quot;</span>, ntohs(addr-&gt;sin_port));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;user data : %s\n&quot;</span>,buf);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">init_socket</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *ip,<span class="type">const</span> <span class="type">char</span> *port)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> sockfd;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">my_addr</span>;</span></span><br><span class="line">	<span class="built_in">memset</span>(&amp;my_addr,<span class="number">0</span>,<span class="keyword">sizeof</span>(my_addr));</span><br><span class="line">	<span class="type">socklen_t</span> addrlen=<span class="keyword">sizeof</span>(my_addr);</span><br><span class="line">	my_addr.sin_family=AF_INET;</span><br><span class="line">	my_addr.sin_port=htons(atoi(port));</span><br><span class="line">	my_addr.sin_addr.s_addr=inet_addr(ip);</span><br><span class="line">	sockfd=socket(AF_INET,SOCK_DGRAM,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span>(sockfd==<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		perror(<span class="string">&quot;[ERROR] socket failed!&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(bind(sockfd,(<span class="keyword">struct</span> sockaddr *)&amp;my_addr,addrlen)&lt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		perror(<span class="string">&quot;[ERROR] failed to bind &quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sockfd;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">login_manage</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *ip,<span class="type">const</span> <span class="type">char</span> *port)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> sockfd;</span><br><span class="line">	<span class="type">int</span> sockfd_new;</span><br><span class="line">	<span class="type">char</span> login_check;</span><br><span class="line">	<span class="type">char</span> login_message[<span class="number">64</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">client_addr</span>;</span></span><br><span class="line">	<span class="type">socklen_t</span> addrlen=<span class="keyword">sizeof</span>(client_addr);</span><br><span class="line">	sockfd=init_socket(ip,port);</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;	</span><br><span class="line">				login_check=LOGIN_FAILURE;</span><br><span class="line">				<span class="built_in">memset</span>(login_message,<span class="number">0</span>,<span class="keyword">sizeof</span>(login_message));</span><br><span class="line">				recvfrom(sockfd,login_message,<span class="keyword">sizeof</span>(login_message),<span class="number">0</span>,(<span class="keyword">struct</span> sockaddr *)&amp;client_addr,&amp;addrlen);</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;[DEBUG:] recved login_message\n&quot;</span>);</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">strcmp</span>(login_message,<span class="string">&quot;root&quot;</span>)==<span class="number">0</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					login_check=LOGIN_SUCCESS;</span><br><span class="line">					<span class="built_in">memset</span>(login_message,<span class="number">0</span>,<span class="keyword">sizeof</span>(login_message));</span><br><span class="line">					<span class="type">pid_t</span> fpid=fork();</span><br><span class="line">					<span class="keyword">if</span>(fpid==<span class="number">-1</span>)</span><br><span class="line">					&#123;</span><br><span class="line">						perror(<span class="string">&quot;[ERROR] fork() failed!&quot;</span>);</span><br><span class="line">						<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">					&#125;<span class="keyword">else</span> <span class="keyword">if</span>(fpid==<span class="number">0</span>)</span><br><span class="line">					&#123;</span><br><span class="line">						close(sockfd);</span><br><span class="line">						sockfd_new=init_socket(ip,<span class="string">&quot;0&quot;</span>);</span><br><span class="line">						sendto(sockfd,&amp;login_check,<span class="keyword">sizeof</span>(login_check),<span class="number">0</span>,(<span class="keyword">struct</span> sockaddr *)&amp;client_addr,addrlen);	</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">			    	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				</span><br><span class="line">					sendto(sockfd,&amp;login_check,<span class="keyword">sizeof</span>(login_check),<span class="number">0</span>,(<span class="keyword">struct</span> sockaddr *)&amp;client_addr,addrlen);</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sockfd_new;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">recv_data</span><span class="params">(<span class="type">int</span> sockfd_new)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> n = <span class="number">0</span>;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">1024</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">client_addr</span>;</span></span><br><span class="line">    <span class="type">socklen_t</span> len =  <span class="keyword">sizeof</span>(client_addr);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;[DEBUG]: enter recv_data:\n&quot;</span>);</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(buf,<span class="number">0</span>,<span class="keyword">sizeof</span>(buf));</span><br><span class="line">        n = recvfrom(sockfd_new,buf,<span class="keyword">sizeof</span>(buf),<span class="number">0</span>,(<span class="keyword">struct</span> sockaddr *)&amp;client_addr,&amp;len);</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            perror(<span class="string">&quot;Fail to sendto&quot;</span>);        </span><br><span class="line">            <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[DEBUG] now is up on printf_client_info()...\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">        printf_client_info(&amp;client_addr,buf);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strncmp</span>(buf,<span class="string">&quot;quit&quot;</span>,<span class="number">4</span>) == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    close(sockfd_new);</span><br><span class="line">    <span class="built_in">exit</span>(EXIT_SUCCESS); <span class="comment">//结束当前子进程</span></span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">const</span> <span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> sockfd;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> login_flag;</span><br><span class="line">    <span class="keyword">if</span>(argc &lt; <span class="number">3</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">&quot;Usage : %s ip port!\n&quot;</span>,argv[<span class="number">0</span>]);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line">	sockfd = login_manage(argv[<span class="number">1</span>],argv[<span class="number">2</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;child process recv_data:\n&quot;</span>);</span><br><span class="line">    <span class="comment">//2.接收数据</span></span><br><span class="line">	</span><br><span class="line">    recv_data(sockfd);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>老实说服务端的代码让我改了很长时间<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+3.bind的问题<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>bind的作用是将当前程序和指定端口绑定<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果不绑定端口客户端没办法知道固定的端口<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+4.就是登录标志login_check<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我初始化其为LOGIN_FAILRE,放的位置不太对<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>应该是:每次重新循环的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>都要赋初始值为LOGIN_FAILRE<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+5.就是本次特别需要注意的地方<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><font color="red"> 父进程的作用就是验证登录密钥<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果正确<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则fork子进程进行通信<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果不正确继续在父进程循环</font><br>
+在上面代码中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在login_manage()函数中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>死循环只在本进程中运行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当判断条件真的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则fork一个子进程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后在子进程中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>给客户端发登陆成功消息然后跳出循环<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为fork也继承了死循环<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这是很重要的一点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>子进程中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要重新创建一个socket套接字<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>关闭父进程的套接字(因为没什么用)<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>bind的参数写0分配随机端口<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为子进程发送信息后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>客户端可以通过recvfrom保存ip和端口信息<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以找到与子进程通信的方法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+<img src="/2023/06/27/%E5%B9%B6%E5%8F%91%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C%E8%81%8A%E5%A4%A9%E6%A8%A1%E5%9E%8B/server.png" alt="success_png"></p>
 
-    include _partial/tag.pug
-    include _partial/post_nav.pug
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/07/02/%E7%89%A2%E9%AA%9A/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          牢骚
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/05/30/%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%86%99%E5%AE%9E%E7%8E%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          环形队列数据读写实现
+        
+      </div>
+    </a>
+  
+</nav>
 
-    if page.comments
-      include _partial/comments.pug
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 昆汀<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+
+<script src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="/mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+  </div>
+</body>
+</html>

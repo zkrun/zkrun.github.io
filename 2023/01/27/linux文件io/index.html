@@ -1,58 +1,248 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>linux文件io | 故乡的雪花飘落了</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="踏入了阶段四
+在 Linux 系统下,用于对文件操作的库函数叫做 文件 I/O
+主要包括 open()/close()/read()/write() /lseek()相应的系统调用(准确说法是对系统调用的封装的库函数)">
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css">
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-block title
-  title= page.title + ' | ' + config.title
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="/" id="logo">故乡的雪花飘落了</a>
+  </h1>
+  
+</div>
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format(config.date_format)
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus.enable == true
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable == true
-      a.disqus-comment-count(href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if theme.waline.enable == true
-      a.disqus-comment-count(href=url_for(page.path) + '#waline')
-        span.waline-comment-count(id=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      .clear
-        #toc.toc-article
-          .toc-title= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true && page.donate != false
-      include _widget/donate.pug
+      <div id="content" class="outer">
+        <section id="main"><article id="post-linux文件io" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/27/linux%E6%96%87%E4%BB%B6io/" class="article-date">
+  <time class="dt-published" datetime="2023-01-27T03:57:13.000Z" itemprop="datePublished">2023-01-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
+  </div>
 
-    if theme.post_copyright.enable == true && page.copyright != false
-      include _widget/copyright.pug
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      linux文件io
+    </h1>
+  
 
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="**踏入了阶段四**"><strong>踏入了阶段四</strong></h3>
+<p>在 Linux 系统下,用于对文件操作的库函数叫做 文件 I/O<br>
+主要包括 open()/close()/read()/write() /lseek()相应的系统调用(准确说法是对系统调用的封装的库函数)</p>
+<span id="more"></span>
+<h3 id="**文件描述符**"><strong>文件描述符</strong></h3>
+<p>文件描述符(file descriptor)是一个非负整数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当打开或者创建一个文件时内核向进程返回一个文件描述符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+每个程序运行后,操作系统会默认打开三个文件 标准输入 标准输出 标准错误输出,文件描述符分别为 0 , 1 , 2</p>
+<h4 id="**open函数**"><strong>open函数</strong></h4>
+<p><code>int open(const char *pathname, int flags, mode_t mode);</code><br>
+open函数的返回值就是打开该文件的fd<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><strong>pathname就是文件路径名</strong><br>
+<strong>flags</strong> : 打开标志<br>
+O_RDONLY:只读方式打开文件<br>
+O_WRONLY:可写方式打开文件<br>
+O_RDWR:读写方式打开文件<br>
+O_CREAT:如果该文件不存在就创建一个新的文件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并用第三的参数为其设置权限<br>
+O_EXCL:如果使用O_CRATE时文件存在,open()报错<br>
+O_TRUNC:如果文件已经存在<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且以读/写或只写成功打开,并清零<br>
+O_APPEND: 以添加的方式打开文件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在打开文件的同时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>文件指针指向文件末尾<br>
+<font color="purple">注意:比如我要以只写的方式打开文件,如果不存在则创建,如果文件存在则截短<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么我可以用到位运算O_WRONLY|O_CREAT|O_TRUNC</font><br>
+<strong>mode</strong> :<br>
+指定创建新的文件的默认权限</p>
+<p>像上文说到如果成功的话返回fd<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果失败的话返回 -1,并将错误编码保存到 errno<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+<strong>errno 是 Linux 操作系统中用于存储错误编码的全局变量</strong>但是用编码来看不方便<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以将错误信息打印<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
+<strong>错误信息打印主要使用 perror() 函数</strong></p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">perror</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *s)</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="**close-函数**"><strong>close 函数</strong></h4>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">close</span><span class="params">(<span class="type">int</span> fd)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>作用: <strong>close 函数用于关闭文件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在 io 操作结束后需要关闭文件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>释放相关资源</strong><br>
+成功 : 返回 0</p>
+<p>失败 : 返回 -1</p>
+<p>打开后用完记得要关闭.</p>
+<hr>
+<h4 id="**read函数**"><strong>read函数</strong></h4>
+<p><code>ssize_t read(int fd, void *buf, size_t count);</code></p>
+<p>参数buf是指定的缓冲区<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>count是能够读取的最大字节数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>一般定义缓冲区的时候以32<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>64<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>128大小定义,比如<code>char buf[64]</code><br>
+<strong>返回值:</strong><br>
+成功 : 返回实际读取的字节数</p>
+<p>失败 : -1,并将错误编码设置到 errno 中</p>
+<hr>
+<h4 id="**write函数**"><strong>write函数</strong></h4>
+<p><code>ssize_t write(int fd, const void *buf, size_t count);</code></p>
+<p><strong>返回值:</strong><br>
+成功 : 返回实际读取的字节数</p>
+<p>失败 : -1,并将错误编码设置到 errno 中</p>
+<p><strong>写入的话记得不要多写<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不然可能会出现问题</strong></p>
+<hr>
+<h4 id="**lseek函数**"><strong>lseek函数</strong></h4>
+<p>当我们在open一个文件后write写入<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后read读取<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>会发现读取的不是我们想要的write内容<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这是因为所有打开的文件都有一个当前文件偏移量<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>current file offset<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>cfo 通常是一个非负整数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>用于表明文件开始处到文件当前位置的字节数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+读写操作通常开始于 cfo<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且使 cfo 增大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>增量为读写的字节数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p><code>off_t lseek(int fd, off_t offset, int whence);</code></p>
+<p><strong>返回值:</strong><br>
+成功: 返回 0<br>
+失败 : 返回 -1,并设置 errno<br>
+<strong>函数参数</strong><br>
+fd : 文件描述符<br>
+offset :偏移量,可以为正数或者负数<br>
+whence :偏移相对位置<br>
+SEEK_CUR : 相对于文件当前偏移<br>
+SEEK_SET : 相对于文件开始位置<br>
+SEEK_END : 相对于文件尾偏移</p>
+<p>如果要把写入的东西读取出来要</p>
+<p><code>lseek(fd,0,SEEK_SET);</code></p>
+<hr>
+<p><strong>练习</strong> : 使用 Linux 文件 io 接口实现 文件复制</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">ssize_t</span> rdbytes;</span><br><span class="line">	<span class="type">ssize_t</span> wrbytes;</span><br><span class="line">	<span class="type">int</span> fd,fd_dest;</span><br><span class="line">	<span class="comment">//打开要读取的文件</span></span><br><span class="line">	fd=<span class="built_in">open</span>(argv[<span class="number">1</span>],O_RDONLY);</span><br><span class="line">	<span class="comment">//打开要写入的文件dest.txt</span></span><br><span class="line">	fd_dest=<span class="built_in">open</span>(argv[<span class="number">2</span>],O_RDWR);</span><br><span class="line">	<span class="comment">//建立缓冲区</span></span><br><span class="line">	<span class="type">char</span> R_buffer[<span class="number">64</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">if</span>(fd==<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">perror</span>(<span class="string">&quot;open():&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(rdbytes!=<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		rdbytes=<span class="built_in">read</span>(fd,R_buffer,<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">if</span>(rdbytes==<span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">perror</span>(<span class="string">&quot;read():&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="number">-2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//写入</span></span><br><span class="line">		wrbytes=<span class="built_in">write</span>(fd_dest,R_buffer,<span class="built_in">strlen</span>(R_buffer));</span><br><span class="line">		<span class="keyword">if</span>(wrbytes==<span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">perror</span>(<span class="string">&quot;write();&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="number">-3</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">close</span>(fd);</span><br><span class="line">	<span class="built_in">close</span>(fd_dest);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/io/" rel="tag">io</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
-    include _partial/tag.pug
-    include _partial/post_nav.pug
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/01/31/linux%E6%A0%87%E5%87%86io/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          linux标准io
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/01/24/Makefile%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          Makefile的那些事
+        
+      </div>
+    </a>
+  
+</nav>
 
-    if page.comments
-      include _partial/comments.pug
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 昆汀<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+
+<script src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="/mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+  </div>
+</body>
+</html>

@@ -1,58 +1,228 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Makefile的那些事 | 故乡的雪花飘落了</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="阶段三就要完成了，下面的课程将是我更所期待的
+makefile在工程很多时可以用自动编译将效率提高很多
+在用makefile之前需要安装make,本人是ubuntu系统所以直接
+sudo apt-get install make  ">
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css">
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-block title
-  title= page.title + ' | ' + config.title
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="/" id="logo">故乡的雪花飘落了</a>
+  </h1>
+  
+</div>
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format(config.date_format)
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus.enable == true
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable == true
-      a.disqus-comment-count(href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if theme.waline.enable == true
-      a.disqus-comment-count(href=url_for(page.path) + '#waline')
-        span.waline-comment-count(id=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      .clear
-        #toc.toc-article
-          .toc-title= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true && page.donate != false
-      include _widget/donate.pug
+      <div id="content" class="outer">
+        <section id="main"><article id="post-Makefile的那些事" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/01/24/Makefile%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/" class="article-date">
+  <time class="dt-published" datetime="2023-01-24T10:53:51.000Z" itemprop="datePublished">2023-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
+  </div>
 
-    if theme.post_copyright.enable == true && page.copyright != false
-      include _widget/copyright.pug
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Makefile的那些事
+    </h1>
+  
 
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="阶段三就要完成了&lt;span-class=&quot;bd-box&quot;&gt;&lt;h-char class=&quot;bd bd-beg&quot;&gt;&lt;h-inner&gt;，&lt;/h-inner&gt;&lt;/h-char&gt;&lt;/span&gt;下面的课程将是我更所期待的">阶段三就要完成了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>下面的课程将是我更所期待的</h3>
+<h3 id="makefile在工程很多时可以用自动编译将效率提高很多">makefile在工程很多时可以用自动编译将效率提高很多</h3>
+<h3 id="在用makefile之前需要安装make,本人是ubuntu系统所以直接">在用makefile之前需要安装make,本人是ubuntu系统所以直接</h3>
+<p><code>sudo apt-get install make  </code></p>
+<span id="more"></span>
+<p>Makefile的本质是一个文件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要配合make命令进行自动化编译<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>文件名常首字母大写<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+在Makefile中的格式为:<br>
+&lt;目标&gt; : &lt;依赖&gt;<br>
+<em><font color="red">一个TAB</font></em>&lt;命令&gt;<br>
+Makefile的 = 赋值的话有个易错点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就是变量按照最后一次赋的值而进行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>具体的意思就是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">OBJ1 = A</span><br><span class="line">OBJ2 = $(OBJ1A) B</span><br><span class="line">OBJ1 = AA</span><br><span class="line">all : </span><br><span class="line">    @echo $&#123;OBJ2&#125;</span><br><span class="line"><span class="comment">//经过上面的赋值后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>OBJ2的值为 AA B </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<p><span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span>:=<span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char></span> 表示直接赋值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>赋予当前位置的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+像上面的例子<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最终结果就是A B</p>
+<hr>
+<h2 id="自动变量">自动变量</h2>
+<p><strong>$@</strong> 在我个人定义中这个就是匹配当前的目标</p>
+<p><strong>$&lt;</strong>	依赖文件集合中的第一个文件.</p>
+<p><strong>$^</strong>  	所有依赖文件的集合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>使用空格分开<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果在依赖文件中有多个重复的文件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>会去除重复的依赖文件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>只保留一份<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<hr>
+<h2 id="例如说">例如说</h2>
+<p>我创建了一个fun.h,fun.c以及main.c我一般编译的话直接gcc *.c就行了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>从而创建出可执行的a.out<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>我如果要用makefile的话:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cc := gcc</span><br><span class="line">TARGET := main_exec<span class="comment">#目标</span></span><br><span class="line">OBJECT := main.o fun.o<span class="comment">#可执行文件依赖</span></span><br><span class="line">$&#123;TARGET&#125; : $&#123;OBJECT&#125;</span><br><span class="line"><span class="meta">    @$&#123;cc&#125; $^ -o $@</span></span><br><span class="line">%.o : %.c</span><br><span class="line"><span class="meta">    @$(<span class="params">CC</span>) -c $&lt; -o $@</span></span><br><span class="line"><span class="comment">#特别解释一下%,这里的%是匹配规则<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>和*是不同的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>上面的%.c代表匹配到的.c文件逐一进行命令<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>*仅仅代表所有的.c文件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></span></span><br><span class="line"><span class="comment">#因为我们的依赖文件有两个<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以相当于执行了两次</span></span><br><span class="line">clean :</span><br><span class="line">        rm -rf *.o main_exec</span><br></pre></td></tr></table></figure>
+<hr>
+<p>疑惑点:<br>
+<font color="red">为什么OBJECT可以被赋多个值</font><br>
+答: Makefile中的变量赋值类似与c语言中的宏<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以理解为直接替换<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<hr>
+<h3 id="makefile**静态模式**">Makefile<strong>静态模式</strong></h3>
+<p>Makefile的静态模式指的是一种自动编译模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在这种模式下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以很容易的定义&quot;多目标&quot;规则<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>语法如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;targets ...&gt; : &lt;target-pattern&gt; : &lt;prereq-patterns...&gt;</span><br><span class="line">    &lt;command&gt;</span><br><span class="line"><span class="comment">// target 定义了一系列目标<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>也就是多个目标<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>可以是通配符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>也可以是多个目标的集合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></span></span><br><span class="line"><span class="comment">//target-pattern 是targets的模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>也就是目标集模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>浅显点在上文可以理解为%.o</span></span><br><span class="line"><span class="comment">//prereq-patterns 则是目标的<span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span>依赖<span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char></span>元素</span></span><br></pre></td></tr></table></figure>
+<h3 id="**示例:**"><strong>示例:</strong></h3>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(OBJS) : %.o : %.c</span><br><span class="line">gcc -c $&lt; -o $@</span><br><span class="line"><span class="comment">//$(OBJS<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>是多个.o文件的集合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>例如: fun.o glob.o main.o</span></span><br></pre></td></tr></table></figure>
+<h3 id="**伪目标phony:**"><strong>伪目标.PHONY:</strong></h3>
+<p>当makefile目录下有一个和目标相同的文件时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>例如clean文件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>我们在执行make命令的时候会出现错误<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>伪目标就是用于解决此种错误而产生<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>伪目标只是一个标签<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.PHONY <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span> clean</span><br><span class="line">CC := gcc</span><br><span class="line"></span><br><span class="line">TARGET : exec_main</span><br><span class="line">OBJECT : main.o fun.o </span><br><span class="line"></span><br><span class="line"><span class="variable">$(TARGET)</span> : <span class="variable">$(OBJECT)</span></span><br><span class="line">    <span class="variable">$(CC)</span> -O <span class="variable">$@</span> <span class="variable">$^</span></span><br><span class="line">    </span><br><span class="line"><span class="section">%.o:%.c</span></span><br><span class="line">    <span class="variable">$(CC)</span> -O -C <span class="variable">$@</span> <span class="variable">$&lt;</span></span><br><span class="line">    </span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">    rm -rf *.o exec_main</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="**指定头文件:**"><strong>指定头文件:</strong></h3>
+<p>linux中一般通过&quot;-I&quot; <span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>大写i)来指定头文件,形式如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+  <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-I  <span class="regexp">/home/</span>linux/<span class="keyword">include</span></span><br></pre></td></tr></table></figure>
+<p><strong>Makefile中常见写法:</strong></p>
+ <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> CFLAGS = -I <span class="regexp">/home/</span>linux/<span class="keyword">include</span></span><br><span class="line"></span><br><span class="line">myapp: *.c</span><br><span class="line">   gcc $(CFLAGS) -o myapp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="**指定库文件路径:**"><strong>指定库文件路径:</strong></h3>
+<p>linux中一般通过&quot;-L&quot; <span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>大写l)来指定库文件的路径,形式如下:</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">LDFLAGS</span> <span class="operator">=</span> -L /usr/lib</span><br></pre></td></tr></table></figure>
 
-    include _partial/tag.pug
-    include _partial/post_nav.pug
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Makefile/" rel="tag">Makefile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
-    if page.comments
-      include _partial/comments.pug
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/01/27/linux%E6%96%87%E4%BB%B6io/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          linux文件io
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/12/27/awk%E5%92%8Csed%E5%91%BD%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          awk和sed命令
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 昆汀<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+
+<script src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="/mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+  </div>
+</body>
+</html>

@@ -1,58 +1,238 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>awk和sed命令 | 故乡的雪花飘落了</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="在学习awk和sed首先了解一下linux一些常见命令grep &amp;quot;string&amp;quot; /....就是在某个文件或者目录下搜索某个字符串关键字，如果加上-n的话则会显示对应的行数。
+例如要获取/etc/passwd中的有root的一行。
+1grep -n &amp;quot;root&amp;quot; /etc/passwd">
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css">
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-block title
-  title= page.title + ' | ' + config.title
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="/" id="logo">故乡的雪花飘落了</a>
+  </h1>
+  
+</div>
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format(config.date_format)
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus.enable == true
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable == true
-      a.disqus-comment-count(href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if theme.waline.enable == true
-      a.disqus-comment-count(href=url_for(page.path) + '#waline')
-        span.waline-comment-count(id=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      .clear
-        #toc.toc-article
-          .toc-title= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true && page.donate != false
-      include _widget/donate.pug
+      <div id="content" class="outer">
+        <section id="main"><article id="post-awk和sed命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/27/awk%E5%92%8Csed%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2022-12-27T02:16:46.000Z" itemprop="datePublished">2022-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
+  </div>
 
-    if theme.post_copyright.enable == true && page.copyright != false
-      include _widget/copyright.pug
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      awk和sed命令
+    </h1>
+  
 
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在学习awk和sed首先了解一下linux一些常见命令<code>grep &quot;string&quot; /....</code>就是在某个文件或者目录下搜索某个字符串关键字<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果加上-n的话则会显示对应的行数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+例如要获取/etc/passwd中的有root的一行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grep</span> -n <span class="string">&quot;root&quot;</span> <span class="regexp">/etc/</span>passwd</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>如果我要在某个目录中以及子目录中寻找某个关键字<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么可以用</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grep</span> -nR <span class="string">&quot;string&quot;</span> *</span><br></pre></td></tr></table></figure>
+<hr>
+<p>cut命令:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cut  <span class="literal">-d</span> <span class="string">&quot;分割字符&quot;</span>  <span class="operator">-f</span>  字段</span><br><span class="line">参数:</span><br><span class="line"><span class="literal">-d</span>    指定我们的分割字符</span><br><span class="line"><span class="operator">-f</span>    指定我们显示的区域</span><br></pre></td></tr></table></figure>
+<p>获得root用户在 /etc/passwd中以&quot;:&quot;分割的1<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>3<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>4列的信息:<br>
+<font color="red">grep -n “root” /etc/passwd | cut -d “:” -f 1,3,4</font></p>
+<hr>
+<p>sed:<strong>在sed处理数据之前<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要预先提供一组规则<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>sed 会按照此规则来编辑数据<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></strong><br>
+特点:<br>
+每次仅读取一行内容<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span><br>
+根据提供的规则命令匹配并修改数据<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>注意<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>sed 默认不会直接修改源文件数据<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而是会将数据复制到缓冲区中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>修改也仅限于缓冲区中的数据<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span><br>
+将执行结果输出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+<img src="/2022/12/27/awk%E5%92%8Csed%E5%91%BD%E4%BB%A4/632d8fc708f2d8ec07540198.jpg" alt="演示sed的工作模式"><br>
+格式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="comment">[options]</span> &#x27;&#123;command&#125;<span class="comment">[flags]</span>&#x27; <span class="comment">[filename]</span></span><br></pre></td></tr></table></figure>
+<p>options选项:<br>
+-e  脚本命令  该选项会将其后面的脚本命令添加到已有的命令中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+-f  脚本文件  该选项会将其文件中的脚本命令添加到已有的命令中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+-n           只显示匹配的行<br>
+-i           直接对原文件进行操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>会修改原文件内容<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>sed命令默认不修改文件</p>
+<p>sed内部常见命令:<br>
+<font color="grey">i  <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>insert<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在指定匹配到的行前面添加新行内容为 string<br>
+a  <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>append<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在指定或匹配到的行后面追加新行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>内容为 string<br>
+d  <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>delete<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>删除符合地址定界条件的的行<br>
+p  <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>print<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>默认 sed 对模式空间内的处理完毕后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将输出的结果输出在标准输出<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><br>
+添加 p 命令<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>相当于输出了原文<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>又一次输出了模式匹配处理后的内容<br>
+s  : 查找并替换<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>默认只替换每行中第一次被模式匹配到的字符串 <span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果修饰符为 g,<br>
+则为全部替换<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></font><br>
+flags:<br>
+<font color="grey"><br>
+n :  1~512之间的数字 表示指定要替换的字符串出现第几次时才进行替换<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+例如<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>一行中有 3 个 A<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但用户只想替换第二个 A<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这是就用到这个标记<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span><br>
+g :  对数据中所有匹配到的内容进行替换<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果没有 g<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则只会在第一次匹配成功时做替换操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+例如<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>一行数据中有 3 个 A<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则只会替换第一个 A<span class="bd-box"><h-char class="bd bd-beg"><h-inner>；</h-inner></h-char></span><br>
+p :  会打印与替换命令中指定的模式匹配的行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>此标记通常与 -n 选项一起使用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> </font><br>
+这些内容都不是用来死记硬背的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>用到哪里不会的话就来查查<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<hr>
+<h3 id="例">例</h3>
+<p><strong>显示 /etc/passwd第三行的信息:</strong><br>
+<font color="red">sed -n “3p” /etc/passwd</font><br>
+<strong>在/etc/passwd中第一行前添加一行内容为<span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char></span>Good Good Study&quot;:</strong><br>
+<font color="red">sed “1iGood good study” /etc/passwd</font><br>
+<strong>把/etc/passwd中所有名字为root的字符串改为class<br>
+格式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></strong><br>
+<font color="red">sed “s/root/class/g” /etc/passwd</font><br>
+以上这些对passwd的操作并没有修改源文件内容<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果要修改源文件内容就用-i<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<hr>
+<p>awk:<strong>awk更倾向于把一行分为多个&quot;字段&quot;然后进行处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></strong><br>
+语法格式:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">awk [<span class="keyword">options</span>] <span class="string">&#x27;pattern &#123;action&#125;&#x27;</span> filename  </span><br><span class="line"></span><br><span class="line"><span class="keyword">options</span> : 可选参数</span><br><span class="line">            -F : 指明输入时用到的字段分隔符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>默认分隔符为空格或tab键</span><br><span class="line">            -v (var=VALUE) : 自定义变量</span><br><span class="line">            </span><br><span class="line">pattern <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>匹配规则</span><br><span class="line">action  <span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>某些计算操作<span class="regexp">/格式化数据/</span>流控制语句</span><br><span class="line">filename<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>文件名</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line">awk -F <span class="string">&quot;:&quot;</span> <span class="string">&#x27;&#123;print $1&#125;&#x27;</span> <span class="regexp">/etc/</span>passwd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-    include _partial/tag.pug
-    include _partial/post_nav.pug
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/" rel="tag">shell</a></li></ul>
 
-    if page.comments
-      include _partial/comments.pug
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/01/24/Makefile%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Makefile的那些事
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          shell常见易错
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 昆汀<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+
+<script src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="/mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+  </div>
+</body>
+</html>

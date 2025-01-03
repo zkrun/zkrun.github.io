@@ -1,58 +1,180 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>校园网 | 故乡的雪花飘落了</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="早在之前就想着，为什么要限制学生上网，而且是一个设备一号，不过无所谓了，我认为大学生应该多点自由。
+学校使用的是某澜，虽然不是用的网页认证，是客户端认证，不过抓包后发现非常简单，核心思想还是通过抓取提交的信息然后提交接口。
+如果想要自己再做一个客户端类型，或者python或者js或sh的脚本类型，那">
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css">
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-block title
-  title= page.title + ' | ' + config.title
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="/" id="logo">故乡的雪花飘落了</a>
+  </h1>
+  
+</div>
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format(config.date_format)
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus.enable == true
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable == true
-      a.disqus-comment-count(href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if theme.waline.enable == true
-      a.disqus-comment-count(href=url_for(page.path) + '#waline')
-        span.waline-comment-count(id=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      .clear
-        #toc.toc-article
-          .toc-title= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true && page.donate != false
-      include _widget/donate.pug
+      <div id="content" class="outer">
+        <section id="main"><article id="post-校园网" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/15/%E6%A0%A1%E5%9B%AD%E7%BD%91/" class="article-date">
+  <time class="dt-published" datetime="2022-10-15T01:56:23.000Z" itemprop="datePublished">2022-10-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B4%E6%B4%BB/">整活</a>
+  </div>
 
-    if theme.post_copyright.enable == true && page.copyright != false
-      include _widget/copyright.pug
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      校园网
+    </h1>
+  
 
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>早在之前就想着<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>为什么要限制学生上网<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而且是一个设备一号<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不过无所谓了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我认为大学生应该多点自由<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+学校使用的是某澜<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>虽然不是用的网页认证<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>是客户端认证<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不过抓包后发现非常简单<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>核心思想还是通过抓取提交的信息然后提交接口<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+如果想要自己再做一个客户端类型<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>或者python或者js或sh的脚本类型<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么就需要对密码加密进行破解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在网页端认证抓取的信息中找到关键信息password就能发现加密的方式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>一步一步找下去就能知道规律<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不过本人现在是自己用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以不需要破解加密方式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接拿加密后的信息提交给接口就行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p><strong>刷好openwrt后ssh进后台<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后curl模拟登录请求<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>继而模拟登出请求<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后用crontab -e设置定时命令就行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>经过搜索发现大概17个小时左右某澜会强制下线一次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么每隔12小时执行一次sh即可</strong><br>
+<img src="/2022/10/15/%E6%A0%A1%E5%9B%AD%E7%BD%91/school1.png" alt="成功示例"><br>
+<img src="/2022/10/15/%E6%A0%A1%E5%9B%AD%E7%BD%91/D992C8A7B9889F227F047919E8913087.jpg" alt="成功事例2"></p>
 
-    include _partial/tag.pug
-    include _partial/post_nav.pug
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
 
-    if page.comments
-      include _partial/comments.pug
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/10/24/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          二叉树递归遍历
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 昆汀<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+
+<script src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="/mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+  </div>
+</body>
+</html>

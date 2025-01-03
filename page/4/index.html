@@ -1,48 +1,367 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>故乡的雪花飘落了</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="某人曾留下来的东西">
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css">
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-block title
-  if config.subtitle
-    title= config.title + ' | ' + config.subtitle
-  else
-    title= config.title
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="/" id="logo">故乡的雪花飘落了</a>
+  </h1>
+  
+</div>
 
-block content
-  for post in page.posts.toArray()
-    .post
-      h1.post-title
-        if post.sticky
-          span(class="top-post")= __('Sticky')
-        include _partial/helpers.pug
-        a(href=url_for(post.path))
-          +title(post)
-      .post-meta= post.date.format(config.date_format)
-      if theme.disqus.enable == true
-        a.disqus-comment-count(data-disqus-identifier=post.path, href=url_for(post.path) + '#disqus_thread')
-      if theme.changyan
-        a.ds-thread-count(href=url_for(post.path) + '#SOHUCS')
-          span.cy_cmt_count(id='sourceId::' + post.date.valueOf() style='margin: 0 3px 0 1px;') 0
-          span= ' ' + __('Comment')
-      if post.description
-        .post-content
-          != post.description
-      else if post.excerpt
-        .post-content
-          != post.excerpt
-      else if post.content
-        - const content = strip_html(post.content)
-        - let expert = content.substring(0,theme.post_content_length)
-        - content.length > theme.post_content_length ? expert += '...' : ''
-        .post-content
-          != expert
-      p.readmore
-        a(href=url_for(post.path))= __('Readmore')
+      <div id="content" class="outer">
+        <section id="main">
+  
+    <article id="post-awk和sed命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/27/awk%E5%92%8Csed%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2022-12-27T02:16:46.000Z" itemprop="datePublished">2022-12-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
+  </div>
 
-  include _partial/paginator.pug
-  if theme.disqus.enable == true
-    script#dsq-count-scr(src='//'+ theme.disqus.shortname + '.disqus.com/count.js', async)
-  if theme.changyan
-    script#cy_cmt_num(src='https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=' + theme.changyan, async)
-  if config.mathjax
-    include _partial/mathjax.pug
-  if config.mathjax2
-    include _partial/mathjax2.pug
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/12/27/awk%E5%92%8Csed%E5%91%BD%E4%BB%A4/">awk和sed命令</a>
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在学习awk和sed首先了解一下linux一些常见命令<code>grep &quot;string&quot; /....</code>就是在某个文件或者目录下搜索某个字符串关键字<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果加上-n的话则会显示对应的行数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+例如要获取/etc/passwd中的有root的一行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grep</span> -n <span class="string">&quot;root&quot;</span> <span class="regexp">/etc/</span>passwd</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2022/12/27/awk%E5%92%8Csed%E5%91%BD%E4%BB%A4/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/" rel="tag">shell</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-shell常见错误" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" class="article-date">
+  <time class="dt-published" datetime="2022-12-26T14:06:35.000Z" itemprop="datePublished">2022-12-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/12/26/shell%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">shell常见易错</a>
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="直接进入正题">直接进入正题</h3>
+<p>常见的一个错误就是赋值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>简单举例子来说</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">str1</span><span class="operator">=</span><span class="string">&quot;This is a sentence.&quot;</span></span><br></pre></td></tr></table></figure>
+<p>赋值的时候不能带空格<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p>在下面这种情况就需要带<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不然的话会被当做一个整体字符串来看</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">expr <span class="number">10</span> + <span class="number">2</span></span><br><span class="line"><span class="comment">//这里顺便提一嘴,如果用expr作乘法运算比如: expr 10 * 2<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>是错误的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在shell中这里的星号会被认为和ls *.sh中的星号作用一样<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以需要加转义字符expr 10  \* 2</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/26/test/" class="article-date">
+  <time class="dt-published" datetime="2022-12-26T03:38:46.000Z" itemprop="datePublished">2022-12-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/12/26/test/">test</a>
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>this is a test</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-二叉树递归遍历" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/24/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86/" class="article-date">
+  <time class="dt-published" datetime="2022-10-24T01:56:00.000Z" itemprop="datePublished">2022-10-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/24/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86/">二叉树递归遍历</a>
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>要想递归遍历二叉树<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们的思路就是</p>
+<p>创建二叉树结点类型<br>
+二叉树递归创建<br>
+二叉树遍历<br>
+创建二叉树结点类型<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bitree</span>&#123;</span></span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    data_type data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bitree</span> *<span class="title">lchild</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bitree</span> *<span class="title">rchild</span>;</span></span><br><span class="line">&#125;<span class="type">bitree_t</span>;</span><br></pre></td></tr></table></figure>
+<p>二叉树递归创建:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bitree_t</span> *<span class="title function_">create_binary_tree</span><span class="params">(<span class="type">int</span> n)</span><span class="comment">//这里的n用来从初始编号  </span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">bitree_t</span> *root=<span class="literal">NULL</span>;</span><br><span class="line">    root=(<span class="type">bitree_t</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">bitree_t</span>));</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">NULL</span>==root)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;malloc failed!!!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(root,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="type">bitree_t</span>));</span><br><span class="line">    root-&gt;n=n;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;please input %d node data\n&quot;</span>,n);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>,&amp;root-&gt;data);</span><br><span class="line">    <span class="keyword">if</span>(<span class="number">2</span>*n&lt;=N)</span><br><span class="line">    &#123;</span><br><span class="line">        root-&gt;lchild=create_binary_tree(<span class="number">2</span>*n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>((<span class="number">2</span>*n+<span class="number">1</span>)&lt;=N)</span><br><span class="line">    &#123;</span><br><span class="line">        root-&gt;rchild=create_binary_tree(<span class="number">2</span>*n+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>二叉树的遍历<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先序遍历:</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">pre_order</span><span class="params">(<span class="type">bitree_t</span> *root)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">NULL</span>==root)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d : %c&quot;</span>,root-&gt;n,root-&gt;data);</span><br><span class="line">    pre_order(root-&gt;lchild);</span><br><span class="line">    pre_order(root-&gt;rchild);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>中序和后序是一样的道理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>注意我们创建结点的时候实际上是前序创建的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以要前序输入<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-校园网" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/15/%E6%A0%A1%E5%9B%AD%E7%BD%91/" class="article-date">
+  <time class="dt-published" datetime="2022-10-15T01:56:23.000Z" itemprop="datePublished">2022-10-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B4%E6%B4%BB/">整活</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/15/%E6%A0%A1%E5%9B%AD%E7%BD%91/">校园网</a>
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>早在之前就想着<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>为什么要限制学生上网<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而且是一个设备一号<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不过无所谓了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我认为大学生应该多点自由<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+学校使用的是某澜<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>虽然不是用的网页认证<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>是客户端认证<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不过抓包后发现非常简单<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>核心思想还是通过抓取提交的信息然后提交接口<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+如果想要自己再做一个客户端类型<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>或者python或者js或sh的脚本类型<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么就需要对密码加密进行破解<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在网页端认证抓取的信息中找到关键信息password就能发现加密的方式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>一步一步找下去就能知道规律<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不过本人现在是自己用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以不需要破解加密方式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>直接拿加密后的信息提交给接口就行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p><strong>刷好openwrt后ssh进后台<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后curl模拟登录请求<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>继而模拟登出请求<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后用crontab -e设置定时命令就行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>经过搜索发现大概17个小时左右某澜会强制下线一次<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么每隔12小时执行一次sh即可</strong><br>
+<img src="/2022/10/15/%E6%A0%A1%E5%9B%AD%E7%BD%91/school1.png" alt="成功示例"><br>
+<img src="/2022/10/15/%E6%A0%A1%E5%9B%AD%E7%BD%91/D992C8A7B9889F227F047919E8913087.jpg" alt="成功事例2"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 昆汀<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+
+<script src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="/mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+  </div>
+</body>
+</html>
