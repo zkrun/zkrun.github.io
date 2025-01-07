@@ -384,7 +384,52 @@ heap用来存储动态申请的内存<br>
 <li>僵尸态(进程已经结束但是资源未被释放)</li>
 </ul>
 <hr>
-<p><strong>进程之间的通信</strong></p>
+<p><strong>进程之间的通信</strong><br>
+进程之间的通信方式有:<em>管道,信号,消息队列,共享内存,网络</em></p>
+<hr>
+<p>1.<strong>管道</strong><br>
+管道</p>
+<ul>
+<li><font color="blue">无名管道</font><br>
+无名管道用于<strong>父子</strong>进程之间通讯<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而且属于<strong>单向通讯</strong><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+无名管道读端与写端抽象成两个文件进行操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在无名管道创建成功之后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则会返回读端与写端的文件描述符.<br>
+<img src="/2023/02/23/%E8%BF%9B%E7%A8%8B/1.png" alt><br>
+<em>创建无名管道</em><br>
+<code>int pipe(int pipefd[2]);</code><br>
+<strong>特点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></strong><br>
+1.当管道为空时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>读管道会阻塞读进程<br>
+2.当管道的写端被关闭了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>从管道中读取剩余数据后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>read 函数返回 0<br>
+3.管道的大小是有限的,不能让父／子进程同时对管道进行读／写操作</li>
+<li><font color="blue">有名管道</font><br>
+有名管道是在 文件系统中可见的文件,但是不占用磁盘空间,仍然在内存中,可以通过 mkfifo 命令创建有名管道<br>
+有名管道用于 任意进程之间的通讯,当管道为空时,读进程会阻塞.<br>
+<em>创建有名管道</em><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">mkfifo</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *pathname, <span class="type">mode_t</span> mode)</span>;</span><br><span class="line"><span class="comment">//pathname : 有名管道路径名</span></span><br><span class="line"><span class="comment">//mode : 有名管道文件访问权限</span></span><br></pre></td></tr></table></figure>
+<strong>优缺点</strong><br>
+优点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>可以实现任意进程间通信<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>操作起来和文件操作一样<br>
+缺点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
+1.打开的时候需要读写一起进行否则就会阻塞<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>管道大小是 4096个字节<br>
+2.<strong>半双工</strong>的工作模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果和多个进程通信则需要创建多个管道</li>
+</ul>
+<hr>
+<p>2.<strong>信号</strong><br>
+定义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<blockquote>
+<p>信号是在软件层次上 是一种通知机制,对中断机制的一种模拟<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>是一种异步通信方式</p>
+</blockquote>
+<p><font color="blue">信号的种类</font><span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
+信号的种类有很多<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在linux下可以根据 kill -l命令查看<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于命令很多就不在此列举了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>常用的一个信号是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><strong>SIGKILL 该信号用来立即结束程序的运行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且不能被阻塞<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>处理和忽略<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></strong> 它在操作系统中的定义如下:<br>
+<code>#define SIGKILL 9</code><br>
+所以我们想杀死进程可以用<br>
+<code>kill -9 someprocess</code><br>
+<font color="blue">信号的处理流程</font><span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
+1.信号的发送<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>由进程发出<br>
+2.信号的投递和处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>进程发出的信号由内核接受<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后投递给具体的进程处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+<img src="/2023/02/23/%E8%BF%9B%E7%A8%8B/2.jpg" alt><br>
+如图中所示<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>处理方式有三种<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li>忽略(除SIGKILL及SIGSTOP)</li>
+<li>根据</li>
+</ul>
 
       
     </div>
