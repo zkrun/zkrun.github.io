@@ -18,7 +18,7 @@
 互斥：即同一时间只能有一个进程访问资源
 同步：在互斥的基础上增加不同进程对资源的访问顺序
 实现以上的手段便是信号量
-">
+信号量是">
   
   
   
@@ -81,7 +81,19 @@
 <strong>同步与互斥</strong><br>
 互斥<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>即同一时间只能有一个进程访问资源<br>
 同步<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>在互斥的基础上增加不同进程对资源的访问顺序<br>
-实现以上的手段便是<strong>信号量</strong></p>
+实现以上的手段便是<strong>信号量</strong><br>
+信号量是什么<span class="bd-box"><h-char class="bd bd-beg"><h-inner>？</h-inner></h-char></span><br>
+信号量: 由内核维护的整数,其值被限制为大于或等于0</p>
+<hr>
+<p><strong>信号量集合的创建</strong></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/types.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/ipc.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/sem.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">semget</span><span class="hljs-params">(<span class="hljs-keyword">key_t</span> key, <span class="hljs-keyword">int</span> nsems, <span class="hljs-keyword">int</span> semflg)</span></span>;  
+</code></pre></div>
+<p><strong>初始化信号量</strong></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">semctl</span><span class="hljs-params">(<span class="hljs-keyword">int</span> semid, <span class="hljs-keyword">int</span> semnum, <span class="hljs-keyword">int</span> cmd, …)</span></span>;  
+</code></pre></div>
 
       
     </div>
