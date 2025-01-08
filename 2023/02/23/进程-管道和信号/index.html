@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>进程-管道和信号 | 故乡的雪花飘落了</title>
+  <title>进程 | 故乡的雪花飘落了</title>
   <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
   <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
   <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
@@ -54,9 +54,9 @@
 </div>
 
       <div id="content" class="outer">
-        <section id="main"><article id="post-进程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-进程-管道和信号" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/02/23/%E8%BF%9B%E7%A8%8B/" class="article-date">
+    <a href="/2023/02/23/%E8%BF%9B%E7%A8%8B-%E7%AE%A1%E9%81%93%E5%92%8C%E4%BF%A1%E5%8F%B7/" class="article-date">
   <time class="dt-published" datetime="2023-02-23T12:35:17.000Z" itemprop="datePublished">2023-02-23</time>
 </a>
     
@@ -68,7 +68,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      进程-管道和信号
+      进程
     </h1>
   
 
@@ -122,7 +122,7 @@ heap用来存储动态申请的内存<br>
 <li><font color="blue">无名管道</font><br>
 无名管道用于<strong>父子</strong>进程之间通讯<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而且属于<strong>单向通讯</strong><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
 无名管道读端与写端抽象成两个文件进行操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在无名管道创建成功之后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则会返回读端与写端的文件描述符.<br>
-<img src="/2023/02/23/%E8%BF%9B%E7%A8%8B/1.png" alt><br>
+<img src="/2023/02/23/%E8%BF%9B%E7%A8%8B-%E7%AE%A1%E9%81%93%E5%92%8C%E4%BF%A1%E5%8F%B7/1.png" alt><br>
 <em>创建无名管道</em><br>
 <code>int pipe(int pipefd[2]);</code><br>
 <strong>特点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></strong><br>
@@ -153,7 +153,7 @@ heap用来存储动态申请的内存<br>
 <font color="blue">信号的处理流程</font><span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
 1.信号的发送<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>由进程发出<br>
 2.信号的投递和处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>进程发出的信号由内核接受<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后投递给具体的进程处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-<img src="/2023/02/23/%E8%BF%9B%E7%A8%8B/2.jpg" alt><br>
+<img src="/2023/02/23/%E8%BF%9B%E7%A8%8B-%E7%AE%A1%E9%81%93%E5%92%8C%E4%BF%A1%E5%8F%B7/2.jpg" alt><br>
 如图中所示<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>处理方式有三种<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
 <ul>
 <li>忽略(除SIGKILL及SIGSTOP)</li>
@@ -194,21 +194,21 @@ heap用来存储动态申请的内存<br>
     
 <nav id="article-nav">
   
-    <a href="/2023/05/25/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%AD%97%E8%8A%82%E7%AC%A6%E8%BD%AC%E6%8D%A2API/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/02/23/%E8%BF%9B%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          网络编程之字节符转换API
+          进程-管道和信号
         
       </div>
     </a>
   
   
-    <a href="/2023/02/23/%E8%BF%9B%E7%A8%8B-%E7%AE%A1%E9%81%93%E5%92%8C%E4%BF%A1%E5%8F%B7/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2023/02/02/%E9%9D%99%E6%80%81%E5%BA%93%E4%B8%8E%E5%8A%A8%E6%80%81%E5%BA%93/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">
         
-          进程
+          静态库与动态库
         
       </div>
     </a>
