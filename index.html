@@ -47,6 +47,44 @@
       <div id="content" class="outer">
         <section id="main">
   
+    <article id="post-进程-消息队列与共享内存" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/08/%E8%BF%9B%E7%A8%8B-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8E%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98/" class="article-date">
+  <time class="dt-published" datetime="2025-01-08T04:40:09.000Z" itemprop="datePublished">2025-01-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/08/%E8%BF%9B%E7%A8%8B-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E4%B8%8E%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98/">进程-消息队列与共享内存</a>
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-freertos学习之路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/01/05/freertos%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/" class="article-date">
@@ -467,54 +505,6 @@ uint8_t类型的变量以uc为前缀<span class="bd-box"><h-char class="bd bd-be
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>核心MCU选用的是ESP32 C3<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>LNA_IN(射频输入和输出)串联0欧姆电阻防止信号被干扰<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>原因似乎是防止阻抗不匹配<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-vector容器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/16/vector%E5%AE%B9%E5%99%A8/" class="article-date">
-  <time class="dt-published" datetime="2023-07-16T05:21:20.000Z" itemprop="datePublished">2023-07-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/c/">c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/07/16/vector%E5%AE%B9%E5%99%A8/">顺序容器</a>
-    </h1>
-  
-
-      </header>
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>vector有多个构造函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>默认的构造函数是构造一个初始长度为0的内存空间<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>且分配的内存空间是以2的倍数动态增长的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在push_back的过程中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若发现分配的内存空间不足<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则重新分配一段连续的内存空间<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>其大小是现在连续空间的2倍<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在将原先空间中的元素复制到新的空间中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>性能消耗较大<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-vector在尾端增添数据拥有比较好的性能<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-vector内部实现实际上是动态数组<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>分配好了一块内存空间<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>如果你需要高效的随机存取<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而不在乎插入和删除的效率<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>使用vector</p>
-<p>如果你需要大量的插入和删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而不关心随机存取<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则应使用list</p>
-<p>如果你需要随机存取<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而且关心两端数据的插入和删除<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则应使用deque</p>
 
       
     </div>
