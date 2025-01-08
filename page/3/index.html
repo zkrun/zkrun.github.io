@@ -47,6 +47,57 @@
       <div id="content" class="outer">
         <section id="main">
   
+    <article id="post-static用法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/10/static%E7%94%A8%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2023-07-10T08:04:53.000Z" itemprop="datePublished">2023-07-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/c/">c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/10/static%E7%94%A8%E6%B3%95/">static用法</a>
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>static修饰局部变量时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>用来延长生命周期<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+修饰全局变量或者函数时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>用来限制作用域<br>
+修饰静态成员变量的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所有的类对象共享此资源<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+访问此资源时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>既可以用类访问<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>也可以用对象访问<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+<font color="red">记得要在类外初始化</font><br>
+static修饰静态成员函数的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>静态成员函数没有this指针<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>也就不能访问非静态资源<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+Q:什么时候使用静态成员函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>？</h-inner></h-char></span><br>
+: 当不需要实例化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不需要访问非静态资源<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就有的确定行为<br>
+static语句放在public和private中是等效的</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-c-函数增强部分" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/07/09/c-%E5%87%BD%E6%95%B0%E5%A2%9E%E5%BC%BA%E9%83%A8%E5%88%86/" class="article-date">
@@ -575,58 +626,6 @@ gcc 编译器默认搜索头文件与库文件的路径<br>
 <p>这是因为我们没有将动态库加载到内存中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>默认动态库的位置是/usr/lib<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果我们的动态库在当下目录<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们可以<br>
 <code>export LD_LIBRARY_PATH=.</code></p>
 
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-二进制数据输入输出" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/02/01/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" class="article-date">
-  <time class="dt-published" datetime="2023-02-01T14:40:33.000Z" itemprop="datePublished">2023-02-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/">嵌入式学习</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/02/01/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">二进制数据输入输出</a>
-    </h1>
-  
-
-      </header>
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="**在标准-i/o 中,用于进行二进制文件进行读写时需要调用　fread 与 fwrite**"><strong>在标准 I/O 中,用于进行二进制文件进行读写时需要调用　fread 与 fwrite</strong></h3>
-<p>比如常见的图片或者音频文件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-简单介绍一下两个函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>实际用处可以通过查阅编程手册来获取详情信息<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-<strong>fread:</strong></p>
-        
-          <p class="article-more-link">
-            <a href="/2023/02/01/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/#more">Read More</a>
-          </p>
-        
       
     </div>
     <footer class="article-footer">

@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://zkrun.github.io/2025/01/08/%E8%BF%9B%E7%A8%8B-%E4%BF%A1%E5%8F%B7%E9%87%8F/</loc>
+    
+    <lastmod>2025-01-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zkrun.github.io/2023/02/23/%E8%BF%9B%E7%A8%8B-%E7%AE%A1%E9%81%93%E5%92%8C%E4%BF%A1%E5%8F%B7/</loc>
     
     <lastmod>2025-01-08</lastmod>
@@ -430,6 +439,13 @@
   
   <url>
     <loc>https://zkrun.github.io/tags/freertos/</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zkrun.github.io/tags/%E8%BF%9B%E7%A8%8B/</loc>
     <lastmod>2025-01-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
