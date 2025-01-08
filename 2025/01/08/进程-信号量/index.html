@@ -94,6 +94,17 @@
 <p><strong>初始化信号量</strong></p>
 <div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">semctl</span><span class="hljs-params">(<span class="hljs-keyword">int</span> semid, <span class="hljs-keyword">int</span> semnum, <span class="hljs-keyword">int</span> cmd, …)</span></span>;  
 </code></pre></div>
+<hr>
+<p><strong>信号量的操作</strong></p>
+<div class="highlight"><pre class="code"><code><span class="hljs-type">int</span> semop(<span class="hljs-type">int</span> semid, struct sembuf *sops, size_t nsops);
+//信号量操作函数&lt;span <span class="hljs-keyword">class</span>=&quot;bd-box&quot;&gt;&lt;h-<span class="hljs-type">char</span> <span class="hljs-keyword">class</span>=&quot;bd bd-beg&quot;&gt;&lt;h-<span class="hljs-keyword">inner</span>&gt;，&lt;/h-<span class="hljs-keyword">inner</span>&gt;&lt;/h-<span class="hljs-type">char</span>&gt;&lt;/span&gt;用于占用信号量&lt;span <span class="hljs-keyword">class</span>=&quot;bd-box&quot;&gt;&lt;h-<span class="hljs-type">char</span> <span class="hljs-keyword">class</span>=&quot;bd bd-beg&quot;&gt;&lt;h-<span class="hljs-keyword">inner</span>&gt;、&lt;/h-<span class="hljs-keyword">inner</span>&gt;&lt;/h-<span class="hljs-type">char</span>&gt;&lt;/span&gt;释放信号量&lt;span <span class="hljs-keyword">class</span>=&quot;bd-box&quot;&gt;&lt;h-<span class="hljs-type">char</span> <span class="hljs-keyword">class</span>=&quot;bd bd-beg&quot;&gt;&lt;h-<span class="hljs-keyword">inner</span>&gt;、&lt;/h-<span class="hljs-keyword">inner</span>&gt;&lt;/h-<span class="hljs-type">char</span>&gt;&lt;/span&gt;设置信号量等待  
+</code></pre></div>
+<p><strong>信号量集合的删除</strong></p>
+<div class="highlight"><pre class="code"><code>//信号量集合调用 semctl 函数&lt;span <span class="hljs-keyword">class</span>=&quot;bd-box&quot;&gt;&lt;h-<span class="hljs-type">char</span> <span class="hljs-keyword">class</span>=&quot;bd bd-beg&quot;&gt;&lt;h-<span class="hljs-keyword">inner</span>&gt;，&lt;/h-<span class="hljs-keyword">inner</span>&gt;&lt;/h-<span class="hljs-type">char</span>&gt;&lt;/span&gt;设置命令为 IPC_RMID
+ret = semctl(semid,IPC_RMID,<span class="hljs-keyword">NULL</span>);  
+</code></pre></div>
+<hr>
+<p><strong>信号量同步</strong></p>
 
       
     </div>
