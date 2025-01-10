@@ -47,6 +47,67 @@
       <div id="content" class="outer">
         <section id="main">
   
+    <article id="post-arm指令集" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/10/arm%E6%8C%87%E4%BB%A4%E9%9B%86/" class="article-date">
+  <time class="dt-published" datetime="2025-01-10T13:55:40.000Z" itemprop="datePublished">2025-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/10/arm%E6%8C%87%E4%BB%A4%E9%9B%86/">arm指令集</a>
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>学习arm指令之前复习一下关于位运算的知识<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
+16位数值0x1234中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>0x12是高位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>0x34是低位<br>
+<strong>大端序<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>Big Endian<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></strong><br>
+高位字节在前<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>低地址<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>低位字节在后<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>高地址<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+存储顺序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0x12 0x34<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+<strong>左移和右移</strong><br>
+左移右移便是将数据的<strong>二进制数据</strong>向左/向右移动若干位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时进行填充<br>
+实际应用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li><strong>提取高位</strong><br>
+int x = 0x1234;    // 二进制<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0001 0010 0011 0100<br>
+int high = x &gt;&gt; 8; // 高位右移 8 位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0000 0000 0001 0010<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>0x12<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></li>
+<li><strong>提取低位</strong><br>
+int x = 0x1234;     // 二进制<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0001 0010 0011 0100<br>
+int low = x &amp; 0xFF; // 低位与掩码按位与<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0011 0100<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>0x34<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></li>
+</ul>
+<hr>
+        
+          <p class="article-more-link">
+            <a href="/2025/01/10/arm%E6%8C%87%E4%BB%A4%E9%9B%86/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arm/" rel="tag">arm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-freeRTOS-任务管理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/01/09/freeRTOS-%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86/" class="article-date">
@@ -575,64 +636,11 @@ FIQ 模式为了提高中断处理效率<span class="bd-box"><h-char class="bd b
 
 
   
-    <article id="post-QString的使用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/10/QString%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time class="dt-published" datetime="2023-08-10T09:42:29.000Z" itemprop="datePublished">2023-08-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/qt/">qt</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/10/QString%E7%9A%84%E4%BD%BF%E7%94%A8/">QString的使用</a>
-    </h1>
-  
-
-      </header>
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="字符串拼接">字符串拼接</h3>
-<p>QString对于很多运算符做了重载<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>可以直接用+号<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>或者.append方法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>有时候想要用占位符替代的话<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要以下这种形式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<div class="highlight"><pre class="code"><code>QString str1 = <span class="hljs-built_in">QString</span>(<span class="hljs-string">&quot;%1---------------%2&quot;</span>).<span class="hljs-built_in">arg</span>(<span class="hljs-string">&quot;hello&quot;</span>).<span class="hljs-built_in">arg</span>(<span class="hljs-string">&quot; world!&quot;</span>);
-</code></pre></div>
-<p>这样输出str1的内容就是hello world!<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="字符串长度计算">字符串长度计算</h3>
-<p>str1.size() / str1.count()  /  str1.length()  都可以<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>一个中文算一个字符<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<h3 id="字符串判断为空">字符串判断为空</h3>
-<p>.isNull()  只有当未被赋值的时候才为真<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若 QString str1 = “”;  返回false<br>
-如果是.isEmpty()  返回真   <span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若未被赋值,  .isEmpty()也返回真</p>
-<h3 id="字符串提取子字符串">字符串提取子字符串</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">QString str;</span><br><span class="line">QString csv = <span class="string">&quot;forename,middlename,surname,phone&quot;</span>;</span><br><span class="line">QString path = <span class="string">&quot;/usr/local/bin/myapp&quot;</span>; <span class="comment">// First field is empty</span></span><br><span class="line">QString::SectionFlag flag = QString::SectionSkipEmpty;</span><br><span class="line"></span><br><span class="line">str = csv.<span class="built_in">section</span>(<span class="string">&#x27;,&#x27;</span>, <span class="number">2</span>, <span class="number">2</span>);   <span class="comment">// str == &quot;surname&quot;</span></span><br><span class="line">str = path.<span class="built_in">section</span>(<span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>, <span class="number">4</span>);  <span class="comment">// str == &quot;bin/myapp&quot;</span></span><br><span class="line">str = path.<span class="built_in">section</span>(<span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>, <span class="number">3</span>, flag); <span class="comment">// str == &quot;myapp&quot;</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>

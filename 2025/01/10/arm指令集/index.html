@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>arm指令集 | 故乡的雪花飘落了</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="学习arm指令之前复习一下关于位运算的知识：
+16位数值0x1234中，0x12是高位，0x34是低位
+大端序（Big Endian）：
+高位字节在前（低地址），低位字节在后（高地址）。
+存储顺序：0x12 0x34。
+左移和右移
+左移右移便是将数据的二进制数据向左/向右移动若干位，同时进行填充
+实际应用：
+
+提取高位
+int x = 0x1234;    // 二进制：0001 0010 0011 0100
+int high = x &amp;gt;&amp;gt; 8; // 高位右移 8 位：0000 0000 0001 0010（0x12）
+提取低位
+int x = 0x1234;     // 二进制：0001 0010 0011 0100
+int low = x &amp;amp; 0xFF; // 低位与掩码按位与：0011 0100（0x34）
+
+">
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css">
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="/" id="logo">故乡的雪花飘落了</a>
+  </h1>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-arm指令集" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/10/arm%E6%8C%87%E4%BB%A4%E9%9B%86/" class="article-date">
+  <time class="dt-published" datetime="2025-01-10T13:55:40.000Z" itemprop="datePublished">2025-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      arm指令集
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>学习arm指令之前复习一下关于位运算的知识<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
+16位数值0x1234中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>0x12是高位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>0x34是低位<br>
+<strong>大端序<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>Big Endian<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></strong><br>
+高位字节在前<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>低地址<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>低位字节在后<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>高地址<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+存储顺序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0x12 0x34<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+<strong>左移和右移</strong><br>
+左移右移便是将数据的<strong>二进制数据</strong>向左/向右移动若干位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时进行填充<br>
+实际应用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
+<ul>
+<li><strong>提取高位</strong><br>
+int x = 0x1234;    // 二进制<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0001 0010 0011 0100<br>
+int high = x &gt;&gt; 8; // 高位右移 8 位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0000 0000 0001 0010<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>0x12<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></li>
+<li><strong>提取低位</strong><br>
+int x = 0x1234;     // 二进制<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0001 0010 0011 0100<br>
+int low = x &amp; 0xFF; // 低位与掩码按位与<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0011 0100<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>0x34<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></li>
+</ul>
+<hr>
+<span id="more"></span>
+<p><strong>指令格式</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arm/" rel="tag">arm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/01/09/freeRTOS-%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          freeRTOS-任务管理
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 昆汀<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+
+<script src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="/mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+  </div>
+</body>
+</html>

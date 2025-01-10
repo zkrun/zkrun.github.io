@@ -47,6 +47,49 @@
       <div id="content" class="outer">
         <section id="main">
   
+    <article id="post-运算符重载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/12/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="article-date">
+  <time class="dt-published" datetime="2023-07-12T02:25:20.000Z" itemprop="datePublished">2023-07-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/c/">c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/12/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/">运算符重载</a>
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>有些棘手<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>脑子有点懵比<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>缓几天再看</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-const用法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/07/10/const%E7%94%A8%E6%B3%95/" class="article-date">
@@ -474,153 +517,11 @@ static语句放在public和private中是等效的</p>
 
 
   
-    <article id="post-进程-管道和信号" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/02/23/%E8%BF%9B%E7%A8%8B-%E7%AE%A1%E9%81%93%E5%92%8C%E4%BF%A1%E5%8F%B7/" class="article-date">
-  <time class="dt-published" datetime="2023-02-23T12:35:17.000Z" itemprop="datePublished">2023-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/02/23/%E8%BF%9B%E7%A8%8B-%E7%AE%A1%E9%81%93%E5%92%8C%E4%BF%A1%E5%8F%B7/">进程</a>
-    </h1>
-  
-
-      </header>
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>所谓进程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>顾名思义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>就是描述一个程序的执行过程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-<p>进程与程序的区别<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>程序是存储在磁盘资源中的静态指令集合<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>没有执行的概念</li>
-<li>进程是程序的动态过程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>包括创建<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>凋亡等等</li>
-</ul>
-<p>并发与并行的区别<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>并发是指在同一时间段有多个任务同时执行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由操作系统的调度算法来实现<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>比较经典的就是时间片轮转<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
-<li>并行是指在多个处理器核心下同时执行任务<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>比如一个cpu4核心<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么可以同时在每个核心中执行任务<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>也就是可以同时执行四个任务</li>
-</ul>
-<hr>
-<p>进程的地址空间由内核空间和用户空间组成<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>下面主要介绍用户空间</p>
-<blockquote>
-<p>stack用来存储非静态的局部变量<br>
-heap用来存储动态申请的内存<br>
-.bss用来存放未初始化的全局变量<br>
-.data用来存放初始化过并且值不等于0的全局变量<br>
-.rodata用来存放只读的变量<br>
-.text用来存放程序的文本段</p>
-</blockquote>
-<p>当用户进程需要通过内核获取资源时,会切换到内核态运行,这时当前进程会使用内核空间的资源</p>
-<hr>
-<p><strong>进程的状态</strong></p>
-<ul>
-<li>运行态</li>
-<li>睡眠态
-<blockquote>
-<p>可中断的睡眠<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>可被信号唤醒或者等待事件或者资源就绪<br>
-不可中断的睡眠<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>只能等待特定的事件或者资源就绪</p>
-</blockquote>
-</li>
-<li>停止态(进程暂停接受某种处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>例如<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>gdb调试断点信息处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>)</li>
-<li>僵尸态(进程已经结束但是资源未被释放)</li>
-</ul>
-<hr>
-<p><strong>进程之间的通信</strong><br>
-进程之间的通信方式有:<em>管道,信号,消息队列,共享内存,网络</em></p>
-<hr>
-<p>1.<strong>管道</strong><br>
-管道</p>
-<ul>
-<li><font color="blue">无名管道</font><br>
-无名管道用于<strong>父子</strong>进程之间通讯<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而且属于<strong>单向通讯</strong><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-无名管道读端与写端抽象成两个文件进行操作<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在无名管道创建成功之后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>则会返回读端与写端的文件描述符.<br>
-<img src="/2023/02/23/%E8%BF%9B%E7%A8%8B-%E7%AE%A1%E9%81%93%E5%92%8C%E4%BF%A1%E5%8F%B7/1.png" alt><br>
-<em>创建无名管道</em><br>
-<code>int pipe(int pipefd[2]);</code><br>
-<strong>特点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></strong><br>
-1.当管道为空时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>读管道会阻塞读进程<br>
-2.当管道的写端被关闭了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>从管道中读取剩余数据后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>read 函数返回 0<br>
-3.管道的大小是有限的,不能让父／子进程同时对管道进行读／写操作</li>
-<li><font color="blue">有名管道</font><br>
-有名管道是在 文件系统中可见的文件,但是不占用磁盘空间,仍然在内存中,可以通过 mkfifo 命令创建有名管道<br>
-有名管道用于 任意进程之间的通讯,当管道为空时,读进程会阻塞.<br>
-<em>创建有名管道</em><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">mkfifo</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *pathname, <span class="type">mode_t</span> mode)</span>;</span><br><span class="line"><span class="comment">//pathname : 有名管道路径名</span></span><br><span class="line"><span class="comment">//mode : 有名管道文件访问权限</span></span><br></pre></td></tr></table></figure>
-<strong>优缺点</strong><br>
-优点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>可以实现任意进程间通信<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>操作起来和文件操作一样<br>
-缺点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
-1.打开的时候需要读写一起进行否则就会阻塞<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>管道大小是 4096个字节<br>
-2.<strong>半双工</strong>的工作模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果和多个进程通信则需要创建多个管道</li>
-</ul>
-<hr>
-<p>2.<strong>信号</strong><br>
-定义<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<blockquote>
-<p>信号是在软件层次上 是一种通知机制,对中断机制的一种模拟<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>是一种异步通信方式</p>
-</blockquote>
-<p><font color="blue">信号的种类</font><span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
-信号的种类有很多<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>在linux下可以根据 kill -l命令查看<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>由于命令很多就不在此列举了<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>常用的一个信号是<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><strong>SIGKILL 该信号用来立即结束程序的运行<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>并且不能被阻塞<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>处理和忽略<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></strong> 它在操作系统中的定义如下:<br>
-<code>#define SIGKILL 9</code><br>
-所以我们想杀死进程可以用<br>
-<code>kill -9 someprocess</code><br>
-<font color="blue">信号的处理流程</font><span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
-1.信号的发送<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>由进程发出<br>
-2.信号的投递和处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>进程发出的信号由内核接受<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>然后投递给具体的进程处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-<img src="/2023/02/23/%E8%BF%9B%E7%A8%8B-%E7%AE%A1%E9%81%93%E5%92%8C%E4%BF%A1%E5%8F%B7/2.jpg" alt><br>
-如图中所示<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>处理方式有三种<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li>忽略(除SIGKILL及SIGSTOP)</li>
-<li>根据自定义处理函数进行处理</li>
-<li>执行默认操作</li>
-</ul>
-<p><font color="blue">信号的发送</font><br>
-<strong>函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></strong><br>
-<code>kill()和raise()</code><br>
-<font color="blue">信号的接收</font><br>
-<strong>函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></strong><br>
-<code>pause()//阻塞等待信号</code><br>
-<font color="blue">信号处理之用户自定义函数</font><br>
-先了解信号处理时注册到内核的函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
-<code>sighandler_t signal(int signum, sighandler_t handler);</code><br>
-其后参数的sighandler_t类型为:<br>
-<code>typedef void (*sighandler_t)(int);  typedef void (*)(int) sighandler_t;</code><br>
-以下为一个父进程向子进程发信号<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>子进程按照自定义处理的代码:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">do_sig_usr</span><span class="params">(<span class="type">int</span> sig)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; Receive %s \n&quot;</span>,strsignal(sig));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">pid_t</span> cpid;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置信号处理方式</span></span><br><span class="line">    <span class="keyword">if</span>(signal(SIGUSR1,do_sig_usr) == SIG_ERR)&#123;</span><br><span class="line">        perror(<span class="string">&quot;[ERROR] signal(): &quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cpid = fork();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(cpid == <span class="number">-1</span>)&#123;</span><br><span class="line">        perror(<span class="string">&quot;fork(): &quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(cpid == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Child Process &lt; %d &gt; start.\n&quot;</span>,getpid());</span><br><span class="line"></span><br><span class="line">        pause(); <span class="comment">// 等待信号唤醒,这里需要信号到达之前进入睡眠状态</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">exit</span>(EXIT_SUCCESS);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(cpid &gt; <span class="number">0</span>)&#123;</span><br><span class="line"></span><br><span class="line">        sleep(<span class="number">1</span>); <span class="comment">// 延时 1s,让子进程先执行</span></span><br><span class="line"></span><br><span class="line">        kill(cpid,SIGUSR1);<span class="comment">// 给子进程发送 SIGUSR1 信号</span></span><br><span class="line"></span><br><span class="line">        wait(<span class="literal">NULL</span>);<span class="comment">// 等待子进程退出</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>子进程退出信号</strong><br>
-因为父进程fork子进程后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果用wait阻塞等待子进程的结束就过于占用资源<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而且极其不方便<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以可以改进一下.<br>
-我们从子进程的退出事件为着手点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>因为子进程的退出是异步事件<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>即不影响父进程<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>而且子进程退出后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>会自动给父进程发送 <strong>SIGCHLD</strong> 信号<br>
-我们就利用这点<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-想法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>自定义处理函数do_sig_child对<strong>SIGCHLD</strong>进行处理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>处理方法<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>函数内部wait<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-代码如下<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">do_sig_child</span><span class="params">(<span class="type">int</span> sig)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Receive signal &lt; %s &gt;\n&quot;</span>,strsignal(sig));</span><br><span class="line">    wait(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">pid_t</span> cpid;</span><br><span class="line">    <span class="type">__sighandler_t</span> sigret;</span><br><span class="line"></span><br><span class="line">    sigret = signal(SIGCHLD,do_sig_child);</span><br><span class="line">    <span class="keyword">if</span> (sigret == SIG_ERR)&#123;</span><br><span class="line">        perror(<span class="string">&quot;[ERROR] signal(): &quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;   </span><br><span class="line">    </span><br><span class="line">    cpid = fork();</span><br><span class="line">    <span class="keyword">if</span> (cpid == <span class="number">-1</span>)&#123;</span><br><span class="line">        perror(<span class="string">&quot;[ERROR] fork(): &quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (cpid == <span class="number">0</span>)&#123; </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Child process &lt; %d &gt; start.\n&quot;</span>,getpid());</span><br><span class="line">        sleep(<span class="number">2</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_SUCCESS);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (cpid &gt; <span class="number">0</span>)&#123; </span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="comment">/*nothing*/</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
