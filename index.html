@@ -47,6 +47,46 @@
       <div id="content" class="outer">
         <section id="main">
   
+    <article id="post-freeRTOS-任务管理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/09/freeRTOS-%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2025-01-09T07:10:27.000Z" itemprop="datePublished">2025-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/09/freeRTOS-%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86/">freeRTOS-任务管理</a>
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/freertos/" rel="tag">freertos</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-进程-信号量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/01/08/%E8%BF%9B%E7%A8%8B-%E4%BF%A1%E5%8F%B7%E9%87%8F/" class="article-date">
@@ -313,7 +353,31 @@ uint8_t类型的变量以uc为前缀<span class="bd-box"><h-char class="bd bd-be
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p><strong>ARM核(ARMv7)的寄存器资源</strong><br>
+<img src="/2025/01/05/arm%E5%9F%BA%E7%A1%80%EF%BC%881%EF%BC%89/1.jpg" alt><br>
+User模式寄存器是基础寄存器集<br>
+当处理器运行在其他模式<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>如 Supervisor 或 IRQ 模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如果对应的模式没有自己独立的寄存器版本<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么就会直接使用 User 模式的寄存器<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>例如 R0_usr 到 R12_usr<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p><strong>某些模式有独立的寄存器版本</strong><br>
+快速中断模式<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>FIQ<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
+FIQ 模式为了提高中断处理效率<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>设计了<strong>独立</strong>的寄存器集<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>R8_fiq 到 R12_fiq<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p><strong>空白表示共享 User 模式的寄存器</strong><br>
+在 Supervisor<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>Abort 等模式中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>R0-R12 的寄存器列表是空白的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这意味着这些模式下仍然使用 User 模式的寄存器版本<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>例如 R0_usr 到 R12_usr<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<hr>
+<p><strong>ARM工作模式</strong></p>
+<ul>
+<li>User<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>用户模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>普通的用户态程序运行模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>System<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>系统模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>类似用户模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但拥有更高的权限<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>Supervisor<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>管理模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>处理系统调用和异常<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>比如 SVC<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>Abort<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>终止模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>访问无效内存时进入的模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>Undefined<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>未定义模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>运行未定义指令时进入的模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>IRQ<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>中断模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>处理普通中断<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>FIQ<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>快速中断模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>处理快速中断<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>Monitor<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>监控模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>安全扩展相关的模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>Hyp<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>虚拟化模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>虚拟化扩展相关的模式<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+</ul>
+<hr>
+<p><strong>寄存器用途分析</strong></p>
+
       
     </div>
     <footer class="article-footer">
@@ -550,50 +614,6 @@ uint8_t类型的变量以uc为前缀<span class="bd-box"><h-char class="bd bd-be
 如果是.isEmpty()  返回真   <span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若未被赋值,  .isEmpty()也返回真</p>
 <h3 id="字符串提取子字符串">字符串提取子字符串</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">QString str;</span><br><span class="line">QString csv = <span class="string">&quot;forename,middlename,surname,phone&quot;</span>;</span><br><span class="line">QString path = <span class="string">&quot;/usr/local/bin/myapp&quot;</span>; <span class="comment">// First field is empty</span></span><br><span class="line">QString::SectionFlag flag = QString::SectionSkipEmpty;</span><br><span class="line"></span><br><span class="line">str = csv.<span class="built_in">section</span>(<span class="string">&#x27;,&#x27;</span>, <span class="number">2</span>, <span class="number">2</span>);   <span class="comment">// str == &quot;surname&quot;</span></span><br><span class="line">str = path.<span class="built_in">section</span>(<span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>, <span class="number">4</span>);  <span class="comment">// str == &quot;bin/myapp&quot;</span></span><br><span class="line">str = path.<span class="built_in">section</span>(<span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>, <span class="number">3</span>, flag); <span class="comment">// str == &quot;myapp&quot;</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-qt-事件过滤器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/08/qt-%E4%BA%8B%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%99%A8/" class="article-date">
-  <time class="dt-published" datetime="2023-08-08T07:45:57.000Z" itemprop="datePublished">2023-08-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/qt/">qt</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/08/qt-%E4%BA%8B%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%99%A8/">qt-事件过滤器</a>
-    </h1>
-  
-
-      </header>
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>作为事件过滤器的要求是QOject对象<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>监听的事件为QEvent的对象<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-事件过滤器对象需要重写eventFilter()函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>函数的参数不需要自己传<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>目标对象会自动传<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>前提是使用了installEventFilter函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-
       
     </div>
     <footer class="article-footer">

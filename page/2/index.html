@@ -47,6 +47,50 @@
       <div id="content" class="outer">
         <section id="main">
   
+    <article id="post-qt-事件过滤器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/08/qt-%E4%BA%8B%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2023-08-08T07:45:57.000Z" itemprop="datePublished">2023-08-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/qt/">qt</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/08/qt-%E4%BA%8B%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%99%A8/">qt-事件过滤器</a>
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>作为事件过滤器的要求是QOject对象<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>监听的事件为QEvent的对象<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+事件过滤器对象需要重写eventFilter()函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>函数的参数不需要自己传<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>目标对象会自动传<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>前提是使用了installEventFilter函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-从零开始的桌面收音机" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/01/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E6%A1%8C%E9%9D%A2%E6%94%B6%E9%9F%B3%E6%9C%BA/" class="article-date">
@@ -448,53 +492,6 @@ vector内部实现实际上是动态数组<span class="bd-box"><h-char class="bd
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>有些棘手<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>脑子有点懵比<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>缓几天再看</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-const用法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/10/const%E7%94%A8%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2023-07-10T11:19:36.000Z" itemprop="datePublished">2023-07-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/c/">c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/07/10/const%E7%94%A8%E6%B3%95/">const用法</a>
-    </h1>
-  
-
-      </header>
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>const 修饰的成员变量只能在构造函数的参数列表中初始化<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-const 修饰的成员函数不能改变成员变量的值<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-定义:<br>
-<code>void function(void) const</code><br>
-const 修饰的对象只能调用常成员函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不能调用非 常成员函数</p>
 
       
     </div>

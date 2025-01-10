@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://zkrun.github.io/2025/01/05/arm%E5%9F%BA%E7%A1%80%EF%BC%881%EF%BC%89/</loc>
+    <lastmod>2025-01-10</lastmod>
+  </url>
+  <url>
+    <loc>https://zkrun.github.io/2025/01/09/freeRTOS-%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2025-01-09</lastmod>
+  </url>
+  <url>
     <loc>https://zkrun.github.io/2025/01/08/%E8%BF%9B%E7%A8%8B-%E4%BF%A1%E5%8F%B7%E9%87%8F/</loc>
     <lastmod>2025-01-08</lastmod>
   </url>
@@ -14,10 +22,6 @@
   </url>
   <url>
     <loc>https://zkrun.github.io/2025/01/05/freertos%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</loc>
-    <lastmod>2025-01-05</lastmod>
-  </url>
-  <url>
-    <loc>https://zkrun.github.io/2025/01/05/arm%E5%9F%BA%E7%A1%80%EF%BC%881%EF%BC%89/</loc>
     <lastmod>2025-01-05</lastmod>
   </url>
   <url>
