@@ -16,7 +16,8 @@
 二者的区别：
 
 xTaskCreate是使用动态分配内存，系统自动释放内存，适用于资源充足的系统
-xTaskCreateStatic是静态分配内容，要求用户在编译时分配内存，任务释放需要用">
+xTaskCreateStatic是静态分配内容，要求用户在编译时分配内存，任务释放需要用户手动管理，适用于内存受限系统
+">
   
   
   
@@ -80,6 +81,7 @@ xTaskCreateStatic是静态分配内容，要求用户在编译时分配内存，
 <li>xTaskCreate是使用动态分配内存<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>系统自动释放内存<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>适用于资源充足的系统</li>
 <li>xTaskCreateStatic是静态分配内容<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>要求用户在编译时分配内存<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>任务释放需要用户手动管理<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>适用于内存受限系统</li>
 </ul>
+<span id="more"></span>
 <p><strong>任务详细列表</strong></p>
 <div class="highlight"><pre class="code"><code><span class="hljs-type">void</span> vTaskList( <span class="hljs-type">char</span> *pcWriteBuffer );
 功能:
@@ -140,11 +142,11 @@ freeRTOS的调度模式有两种<span class="bd-box"><h-char class="bd bd-beg"><
     
 <nav id="article-nav">
   
-    <a href="/2023/01/24/Makefile%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/01/15/freeRTOS%E8%BD%AF%E4%BB%B6%E5%AE%9A%E6%97%B6%E5%99%A8/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Makefile的那些事
+          freeRTOS软件定时器
         
       </div>
     </a>

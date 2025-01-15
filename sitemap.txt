@@ -1,3 +1,4 @@
+https://zkrun.github.io/2023/01/15/freeRTOS%E8%BD%AF%E4%BB%B6%E5%AE%9A%E6%97%B6%E5%99%A8/
 https://zkrun.github.io/2023/01/09/freeRTOS-%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86/
 https://zkrun.github.io/2023/01/05/freertos%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/
 https://zkrun.github.io/2025/01/10/arm%E6%8C%87%E4%BB%A4%E9%9B%86/
@@ -52,6 +53,7 @@ https://zkrun.github.io/tags/%E5%85%B6%E4%BB%96/
 https://zkrun.github.io/tags/arm/
 https://zkrun.github.io/tags/freertos/
 https://zkrun.github.io/tags/%E8%BF%9B%E7%A8%8B/
+https://zkrun.github.io/tags/freeRTOS/
 https://zkrun.github.io/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AD%A6%E4%B9%A0/
 https://zkrun.github.io/categories/qt/
 https://zkrun.github.io/categories/C/
