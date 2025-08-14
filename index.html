@@ -47,6 +47,51 @@
       <div id="content" class="outer">
         <section id="main">
   
+    <article id="post-freeRTOS-消息队列" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/22/freeRTOS-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" class="article-date">
+  <time class="dt-published" datetime="2025-01-22T09:35:36.000Z" itemprop="datePublished">2025-01-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/22/freeRTOS-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">freeRTOS-消息队列</a>
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在实际项目中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>常常会遇到一个任务和另一个任务进行<span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span>沟通交流<span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char></span>的情况(即任务与任务之间的数据传递)<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>通常我们会考虑通过全局变量来完成任务间的数据传递<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但是全局变量数据无保护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>导致数据不安全<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当多个任务同时对该变量操作时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>数据易受损<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>无法追踪全局变量被谁使用或被谁更改<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> FreeRTOS对此提供一个叫做<strong>队列</strong>的机制<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+        
+          <p class="article-more-link">
+            <a href="/2025/01/22/freeRTOS-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/freeRTOS/" rel="tag">freeRTOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-arm指令集" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/01/10/arm%E6%8C%87%E4%BB%A4%E9%9B%86/" class="article-date">
@@ -74,18 +119,7 @@
 16位数值0x1234中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>0x12是高位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>0x34是低位<br>
 <strong>大端序<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>Big Endian<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></strong><br>
 高位字节在前<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>低地址<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>低位字节在后<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>高地址<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-存储顺序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0x12 0x34<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-<strong>左移和右移</strong><br>
-左移右移便是将数据的<strong>二进制数据</strong>向左/向右移动若干位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时进行填充<br>
-实际应用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
-<ul>
-<li><strong>提取高位</strong><br>
-int x = 0x1234;    // 二进制<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0001 0010 0011 0100<br>
-int high = x &gt;&gt; 8; // 高位右移 8 位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0000 0000 0001 0010<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>0x12<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></li>
-<li><strong>提取低位</strong><br>
-int x = 0x1234;     // 二进制<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0001 0010 0011 0100<br>
-int low = x &amp; 0xFF; // 低位与掩码按位与<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0011 0100<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>0x34<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></li>
-</ul>
+存储顺序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0x12 0x34<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
         
           <p class="article-more-link">
             <a href="/2025/01/10/arm%E6%8C%87%E4%BB%A4%E9%9B%86/#more">Read More</a>
@@ -131,36 +165,12 @@ int low = x &amp; 0xFF; // 低位与掩码按位与<span class="bd-box"><h-char 
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>介绍信号量之前<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>我们先介绍一下<strong>资源</strong>这些事<br>
-当多个进程同时访问一块共享空间的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>会出现资源争夺的情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最终导致数据混乱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-<strong>临界资源</strong><span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>只不能被多个进程同时访问的资源<br>
-<strong>同步与互斥</strong><br>
-互斥<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>即同一时间只能有一个进程访问资源<br>
-同步<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>在互斥的基础上增加不同进程对资源的访问顺序<br>
-实现以上的手段便是<strong>信号量</strong><br>
-信号量是什么<span class="bd-box"><h-char class="bd bd-beg"><h-inner>？</h-inner></h-char></span><br>
-信号量: 由内核维护的整数,其值被限制为大于或等于0</p>
-<hr>
-<p><strong>信号量集合的创建</strong></p>
-<div class="highlight"><pre class="code"><code><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/types.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/ipc.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/sem.h&gt;</span></span>
-<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">semget</span><span class="hljs-params">(<span class="hljs-keyword">key_t</span> key, <span class="hljs-keyword">int</span> nsems, <span class="hljs-keyword">int</span> semflg)</span></span>;  
-</code></pre></div>
-<p><strong>初始化信号量</strong></p>
-<div class="highlight"><pre class="code"><code><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">semctl</span><span class="hljs-params">(<span class="hljs-keyword">int</span> semid, <span class="hljs-keyword">int</span> semnum, <span class="hljs-keyword">int</span> cmd, …)</span></span>;  
-</code></pre></div>
-<hr>
-<p><strong>信号量的操作</strong></p>
-<div class="highlight"><pre class="code"><code><span class="hljs-type">int</span> semop(<span class="hljs-type">int</span> semid, struct sembuf *sops, size_t nsops);
-//信号量操作函数&lt;span <span class="hljs-keyword">class</span>=&quot;bd-box&quot;&gt;&lt;h-<span class="hljs-type">char</span> <span class="hljs-keyword">class</span>=&quot;bd bd-beg&quot;&gt;&lt;h-<span class="hljs-keyword">inner</span>&gt;，&lt;/h-<span class="hljs-keyword">inner</span>&gt;&lt;/h-<span class="hljs-type">char</span>&gt;&lt;/span&gt;用于占用信号量&lt;span <span class="hljs-keyword">class</span>=&quot;bd-box&quot;&gt;&lt;h-<span class="hljs-type">char</span> <span class="hljs-keyword">class</span>=&quot;bd bd-beg&quot;&gt;&lt;h-<span class="hljs-keyword">inner</span>&gt;、&lt;/h-<span class="hljs-keyword">inner</span>&gt;&lt;/h-<span class="hljs-type">char</span>&gt;&lt;/span&gt;释放信号量&lt;span <span class="hljs-keyword">class</span>=&quot;bd-box&quot;&gt;&lt;h-<span class="hljs-type">char</span> <span class="hljs-keyword">class</span>=&quot;bd bd-beg&quot;&gt;&lt;h-<span class="hljs-keyword">inner</span>&gt;、&lt;/h-<span class="hljs-keyword">inner</span>&gt;&lt;/h-<span class="hljs-type">char</span>&gt;&lt;/span&gt;设置信号量等待  
-</code></pre></div>
-<p><strong>信号量集合的删除</strong></p>
-<div class="highlight"><pre class="code"><code>//信号量集合调用 semctl 函数&lt;span <span class="hljs-keyword">class</span>=&quot;bd-box&quot;&gt;&lt;h-<span class="hljs-type">char</span> <span class="hljs-keyword">class</span>=&quot;bd bd-beg&quot;&gt;&lt;h-<span class="hljs-keyword">inner</span>&gt;，&lt;/h-<span class="hljs-keyword">inner</span>&gt;&lt;/h-<span class="hljs-type">char</span>&gt;&lt;/span&gt;设置命令为 IPC_RMID
-ret = semctl(semid,IPC_RMID,<span class="hljs-keyword">NULL</span>);  
-</code></pre></div>
-<hr>
-<p><strong>信号量同步</strong></p>
-
+当多个进程同时访问一块共享空间的时候<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>会出现资源争夺的情况<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>最终导致数据混乱<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+        
+          <p class="article-more-link">
+            <a href="/2025/01/08/%E8%BF%9B%E7%A8%8B-%E4%BF%A1%E5%8F%B7%E9%87%8F/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -560,50 +570,6 @@ FIQ 模式为了提高中断处理效率<span class="bd-box"><h-char class="bd b
 如果是.isEmpty()  返回真   <span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>若未被赋值,  .isEmpty()也返回真</p>
 <h3 id="字符串提取子字符串">字符串提取子字符串</h3>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">QString str;</span><br><span class="line">QString csv = <span class="string">&quot;forename,middlename,surname,phone&quot;</span>;</span><br><span class="line">QString path = <span class="string">&quot;/usr/local/bin/myapp&quot;</span>; <span class="comment">// First field is empty</span></span><br><span class="line">QString::SectionFlag flag = QString::SectionSkipEmpty;</span><br><span class="line"></span><br><span class="line">str = csv.<span class="built_in">section</span>(<span class="string">&#x27;,&#x27;</span>, <span class="number">2</span>, <span class="number">2</span>);   <span class="comment">// str == &quot;surname&quot;</span></span><br><span class="line">str = path.<span class="built_in">section</span>(<span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>, <span class="number">4</span>);  <span class="comment">// str == &quot;bin/myapp&quot;</span></span><br><span class="line">str = path.<span class="built_in">section</span>(<span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>, <span class="number">3</span>, flag); <span class="comment">// str == &quot;myapp&quot;</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-qt-事件过滤器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/08/qt-%E4%BA%8B%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%99%A8/" class="article-date">
-  <time class="dt-published" datetime="2023-08-08T07:45:57.000Z" itemprop="datePublished">2023-08-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/qt/">qt</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/08/qt-%E4%BA%8B%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%99%A8/">qt-事件过滤器</a>
-    </h1>
-  
-
-      </header>
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>作为事件过滤器的要求是QOject对象<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>监听的事件为QEvent的对象<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-事件过滤器对象需要重写eventFilter()函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>函数的参数不需要自己传<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>目标对象会自动传<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>前提是使用了installEventFilter函数<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
-
       
     </div>
     <footer class="article-footer">

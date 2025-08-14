@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>freeRTOS-消息队列 | 故乡的雪花飘落了</title>
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/ChineseMono-normal-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-italic-normal.min.css">
+  <link rel="stylesheet" href="/css/fonts/Chinese-normal-bold.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="在实际项目中，常常会遇到一个任务和另一个任务进行“沟通交流”的情况(即任务与任务之间的数据传递)，通常我们会考虑通过全局变量来完成任务间的数据传递，但是全局变量数据无保护，导致数据不安全，当多个任务同时对该变量操作时，数据易受损，无法追踪全局变量被谁使用或被谁更改。 FreeRTOS对此提供一个叫做队列的机制。">
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css">
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div id="nav-outer">
+  <nav id="main-nav" class="outer">
+    <a id="main-nav-toggle" class="nav-icon"></a>
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+    <div class="main-nav-space-between"></div>
+    
+  </nav>
+</div>
+<div id="header-title">
+  <h1 id="logo-wrap">
+    <a href="/" id="logo">故乡的雪花飘落了</a>
+  </h1>
+  
+</div>
+
+      <div id="content" class="outer">
+        <section id="main"><article id="post-freeRTOS-消息队列" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/22/freeRTOS-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" class="article-date">
+  <time class="dt-published" datetime="2025-01-22T09:35:36.000Z" itemprop="datePublished">2025-01-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      freeRTOS-消息队列
+    </h1>
+  
+
+      </header>
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在实际项目中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>常常会遇到一个任务和另一个任务进行<span class="bd-box"><h-char class="bd bd-end"><h-inner>“</h-inner></h-char></span>沟通交流<span class="bd-box"><h-char class="bd bd-beg"><h-inner>”</h-inner></h-char></span>的情况(即任务与任务之间的数据传递)<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>通常我们会考虑通过全局变量来完成任务间的数据传递<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>但是全局变量数据无保护<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>导致数据不安全<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>当多个任务同时对该变量操作时<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>数据易受损<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>无法追踪全局变量被谁使用或被谁更改<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span> FreeRTOS对此提供一个叫做<strong>队列</strong>的机制<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<span id="more"></span> 
+<p>队列中可以存储有限的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>大小固定的数据项目<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>任务与任务<span class="bd-box"><h-char class="bd bd-beg"><h-inner>、</h-inner></h-char></span>任务与中断之间要交流的数据保存在队列中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>叫做队列项目<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>队列所能保存的最大数据项目数量叫做队列的长度<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span><strong>创建队列的时候会指定数据项目的大小和队列的长度</strong><span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>由于队列用来传递消息的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>所以也称为消息队列<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>FreeRTOS 中的信号量的也是依据队列实现的<br>
+<img src="/2025/01/22/freeRTOS-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/1.jpg" alt><br>
+<img src="/2025/01/22/freeRTOS-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/2.jpg" alt></p>
+<hr>
+<h3 id="队列的特点">队列的特点</h3>
+<p><strong>数据入队出队方式</strong><br>
+先进先出<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>FIFO<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>: 往队列发送数据<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>入队<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>是发送到队列的尾部的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span>从队列提取数据<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>出队<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>是从队列的头部提取的<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+数据存放位置<br>
+入队<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>发送消息<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span><br>
+数据被存放到队列的尾部<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>队列当前可用位置<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+队列的尾部位置通过一个内部的写指针<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>writeIndex<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span>记录<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
+如果尾部到达缓冲区的末尾<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>队列会使用循环逻辑<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>将数据存放到缓冲区的开头<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<p><strong>数据传递方式</strong></p>
+<ul>
+<li>
+<p>值传递-传递的是数据</p>
+<ul>
+<li>值传递的优点<br>
+​  在数据发送到队列后<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>原先存储数据的缓冲区可以被删除或者覆写<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>这样的话缓冲区就可以一直被重复使用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></li>
+<li>值传递的缺点<br>
+​  如果需要传送大量的数据<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>需要进行数据拷贝<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>那么势必会消耗很多时间</li>
+</ul>
+</li>
+<li>
+<p>引用传递-传递的是指针</p>
+<ul>
+<li>
+<p>引用传递的优点<br>
+​  因为传递的数据存放的地址<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>不需要进行数据拷贝到队列中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>会大大引用传递的优点</p>
+</li>
+<li>
+<p>引用传递的缺点<br>
+​  采用引用传递的消息就必须保持可见性<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>也就是消息内容必须有效<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>如此的话<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>例如函数的局部变量就存在<br>
+会被随时删除的情况</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/freeRTOS/" rel="tag">freeRTOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/01/10/arm%E6%8C%87%E4%BB%A4%E9%9B%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          arm指令集
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 昆汀<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a><br>
+      
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
+
+<script src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+<script>
+  MathJax = {
+    options: {
+      enableMenu: false
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    }
+  };
+</script>
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    CommonHTML: {
+      linebreaks: false
+    }
+  });
+  </script> -->
+<script type="text/javascript" id="MathJax-script" async
+  src="/mathjax/tex-chtml.js">
+</script>
+<!-- <script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML">
+</script> -->
+
+  </div>
+</body>
+</html>

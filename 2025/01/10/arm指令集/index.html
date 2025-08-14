@@ -15,18 +15,7 @@
 16位数值0x1234中，0x12是高位，0x34是低位
 大端序（Big Endian）：
 高位字节在前（低地址），低位字节在后（高地址）。
-存储顺序：0x12 0x34。
-左移和右移
-左移右移便是将数据的二进制数据向左/向右移动若干位，同时进行填充
-实际应用：
-
-提取高位
-int x = 0x1234;    // 二进制：0001 0010 0011 0100
-int high = x &amp;gt;&amp;gt; 8; // 高位右移 8 位：0000 0000 0001 0010（0x12）
-提取低位
-int x = 0x1234;     // 二进制：0001 0010 0011 0100
-int low = x &amp;amp; 0xFF; // 低位与掩码按位与：0011 0100（0x34）
-">
+存储顺序：0x12 0x34。">
   
   
   
@@ -87,8 +76,9 @@ int low = x &amp;amp; 0xFF; // 低位与掩码按位与：0011 0100（0x34）
 16位数值0x1234中<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>0x12是高位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>0x34是低位<br>
 <strong>大端序<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>Big Endian<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></strong><br>
 高位字节在前<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>低地址<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>低位字节在后<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>高地址<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-存储顺序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0x12 0x34<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span><br>
-<strong>左移和右移</strong><br>
+存储顺序<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0x12 0x34<span class="bd-box"><h-char class="bd bd-beg"><h-inner>。</h-inner></h-char></span></p>
+<span id="more"></span>
+<p><strong>左移和右移</strong><br>
 左移右移便是将数据的<strong>二进制数据</strong>向左/向右移动若干位<span class="bd-box"><h-char class="bd bd-beg"><h-inner>，</h-inner></h-char></span>同时进行填充<br>
 实际应用<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span></p>
 <ul>
@@ -99,7 +89,6 @@ int high = x &gt;&gt; 8; // 高位右移 8 位<span class="bd-box"><h-char class
 int x = 0x1234;     // 二进制<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0001 0010 0011 0100<br>
 int low = x &amp; 0xFF; // 低位与掩码按位与<span class="bd-box"><h-char class="bd bd-beg"><h-inner>：</h-inner></h-char></span>0011 0100<span class="bd-box"><h-char class="bd bd-end"><h-inner>（</h-inner></h-char></span>0x34<span class="bd-box"><h-char class="bd bd-beg"><h-inner>）</h-inner></h-char></span></li>
 </ul>
-<span id="more"></span>
 <p><strong>指令格式</strong><br>
 <img src="/2025/01/10/arm%E6%8C%87%E4%BB%A4%E9%9B%86/1.jpg" alt></p>
 <hr>
@@ -118,6 +107,15 @@ int low = x &amp; 0xFF; // 低位与掩码按位与<span class="bd-box"><h-char 
   
     
 <nav id="article-nav">
+  
+    <a href="/2025/01/22/freeRTOS-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          freeRTOS-消息队列
+        
+      </div>
+    </a>
   
   
     <a href="/2025/01/08/%E8%BF%9B%E7%A8%8B-%E4%BF%A1%E5%8F%B7%E9%87%8F/" id="article-nav-older" class="article-nav-link-wrap">
